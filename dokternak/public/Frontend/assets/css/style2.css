@@ -1,0 +1,41 @@
+#title-ajakan{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
+body{
+	background: #fcfcfc;
+}
+h1{
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: 300;
+	color: #fff;
+}
+ 
+.tombol{
+	padding: 8px 15px;
+	border-radius: 3px;
+	background: #ECF0F1;
+	border: none;
+	color: #232323;
+	font-size: 12pt;
+}
+ 
+.kotak{
+	margin: 20px auto;
+	background: #ffffff;
+	width: 90%;	
+	padding: 20px 50px 50px 50px;
+	border-radius: 3px;
+}
+
+#container_btn{
+    float: right;
+}
+
+#container_btn input[type=submit]{
+    margin-inline-end: 20px;
+}
