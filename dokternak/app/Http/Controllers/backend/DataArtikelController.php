@@ -176,6 +176,15 @@ class DataArtikelController extends Controller
                         ->with('success','Data artikel telah berhasil diperbarui');
     }
 
+    public function detail($id)
+    {
+        $artikel = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
+                   ->orderBy('id_artikel','asc')
+                   ->where('id_artikel',$id)
+                   ->get();
+        return view('backend.data_artikel.detail',compact('artikel'));
+    }
+
     public function destroy($id)
     {
         $artikel = Artikel::where('id_artikel',$id)->delete();

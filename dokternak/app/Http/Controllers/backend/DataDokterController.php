@@ -18,7 +18,10 @@ class DataDokterController extends Controller
 {
     public function index()
     {
-        $dtdokter = DB::table('dokter')->get();
+        // $dtdokter = DB::table('dokter')->get();
+        $dtdokter = DB::table('dokter')
+            ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+            ->get();
         return view('backend.dokter.index', compact('dtdokter'));
     }
 
@@ -138,6 +141,15 @@ class DataDokterController extends Controller
         return redirect()->route('dtdokter.index')
                         ->with('success','Data dokter telah berhasil diperbarui');
 
+    }
+
+    public function detail($id)
+    {
+        $dtdokter = Dokter::join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+                   ->orderBy('id_dokter','asc')
+                   ->where('id_dokter',$id)
+                   ->get();
+        return view('backend.dokter.detail',compact('dtdokter'));
     }
 
     public function destroy($id)

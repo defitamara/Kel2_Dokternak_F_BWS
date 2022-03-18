@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Daftar Artikel</title>
+    <title>Data Artikel</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -68,7 +68,7 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Daftar Artikel
+                      Data Artikel
                     </li>
                   </ol>
                 </nav>
@@ -112,12 +112,12 @@
                         <table id="zero_config" class="table table-striped table-bordered">
                           <thead>
                             <tr>
-                              <th>NO</th>
-                              <th>ID Kategori</th>
+                              <th>No</th>
+                              <th>Judul</th>
+                              <th>Kategori</th>
                               <th>Tanggal</th>
                               <th>Nama Penulis</th>
-                              <th>Judul</th>
-                              <th> Isi</th>
+                              <th>Isi</th>
                               <th>Gambar</th>
                               <th>Sumber</th>
                               <th>Aksi</th>
@@ -129,11 +129,11 @@
                             <tr>
                               <td>{{ $no++ }}</td>
                               {{-- <td>{{ $item->id_artikel }}</td> --}}
+                              <td>{{ $item->judul }}</td>
                               <td>{{ $item->kategori_artikel }}</td>
                               <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
                               <td>{{ $item->nama_penulis }}</td>
-                              <td>{{ $item->judul }}</td>
-                              <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                              <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/dashboard/data_artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
                               <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
                               <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
                               <td>
@@ -146,7 +146,6 @@
                                       <button type="submit" class="btn btn-danger btn-sm text-white" 
                                       onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
                                       <span class="far fa-trash-alt"></span></button>
-                                      {{-- <span class="far fa-eye-slash"></span> --}}
                                   </form>
                                   <form action="{{ route('batalkonfirmasi',$item->id_artikel)}}" method="POST">
                                     @csrf
@@ -154,6 +153,7 @@
                                         <button type="submit" class="btn btn-warning btn-sm text-white" 
                                         onclick="return confirm('Apakah Anda yakin ingin mengarsipkan data ini?')">Arsipkan
                                         <span class="far fa-file-archive"></span></button>
+                                        {{-- <span class="far fa-eye-slash"></span> --}}
                                   </form>
                               </div>
                               </td>
@@ -162,12 +162,12 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <th>NO</th>
-                              <th>ID Kategori</th>
+                              <th>No</th>
+                              <th>Judul</th>
+                              <th>Kategori</th>
                               <th>Tanggal</th>
                               <th>Nama Penulis</th>
-                              <th>Judul</th>
-                              <th> Isi</th>
+                              <th>Isi</th>
                               <th>Gambar</th>
                               <th>Sumber</th>
                               <th>Aksi</th>
@@ -226,11 +226,11 @@
                     <table id="zero_config_2" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>NO</th>
-                          <th>ID Kategori</th>
+                          <th>No</th>
+                          <th>Judul</th>
+                          <th>Kategori</th>
                           <th>Tanggal</th>
                           <th>Nama Penulis</th>
-                          <th>Judul</th>
                           <th>Isi</th>
                           <th>Gambar</th>
                           <th>Sumber</th>
@@ -243,11 +243,11 @@
                         <tr>
                           <td>{{ $no++ }}</td>
                           {{-- <td>{{ $item->id_artikel }}</td> --}}
+                          <td>{{ $item->judul }}</td>
                           <td>{{ $item->kategori_artikel }}</td>
                           <td>{{ $item->tanggal }}</td>
                           <td>{{ $item->nama_penulis }}</td>
-                          <td>{{ $item->judul }}</td>
-                          <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/dashboard/data_artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
                           <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
                           <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
                           <td>
@@ -274,12 +274,12 @@
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>NO</th>
-                          <th>ID Kategori</th>
+                          <th>No</th>
+                          <th>Judul</th>
+                          <th>Kategori</th>
                           <th>Tanggal</th>
                           <th>Nama Penulis</th>
-                          <th>Judul</th>
-                          <th> Isi</th>
+                          <th>Isi</th>
                           <th>Gambar</th>
                           <th>Sumber</th>
                           <th>Aksi</th>
