@@ -1,207 +1,336 @@
 @extends('backend/layouts.template')
   
 @section('content')
-<main role="main" class="main-content">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="row align-items-center mb-2">
-          <div class="col">
-            <h2 class="h5 page-title">Welcome!</h2>
-          </div>
-          <div class="col-auto">
-            <form class="form-inline">
-              <div class="form-group d-none d-lg-inline">
-                <label for="reportrange" class="sr-only">Date Ranges</label>
-                <div id="reportrange" class="px-2 py-2 text-muted">
-                  <span class="small"></span>
-                </div>
-              </div>
-              <div class="form-group">
-                <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
-                <button type="button" class="btn btn-sm mr-2"><span class="fe fe-filter fe-16 text-muted"></span></button>
-              </div>
-            </form>
-          </div>
-        </div>
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Daftar Artikel</title>
+    <!-- Favicon icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ asset('backend/assets/images/favicon.png') }}"/>
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ asset('backend/assets/extra-libs/multicheck/multicheck.css') }}"/>
+    <link
+      href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
+      rel="stylesheet"/>
+    <link href="{{ asset('backend/dist/css/style.min.css') }}" rel="stylesheet" /> 
+  </head>
+
+  <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - tampilan loading -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
       </div>
-    </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
-  <div class="container-fluid"> 
-    <div class="row justify-content-center">
-      <div class="col-15">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper - tabel daftar artikel -->
+    <!-- ============================================================== -->
+    <div
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin5"
+      data-sidebartype="full"
+      data-sidebar-position="absolute"
+      data-header-position="absolute"
+      data-boxed-layout="full">
+      
+      <!-- ============================================================== -->
+      <!-- Page wrapper  -->
+      <!-- ============================================================== -->
+      <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Daftar Artikel</h4>
+              <div class="ms-auto text-end">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Daftar Artikel
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
-       @endif
-        {{-- <h2 class="page-title">Basic table</h2>
-        <p> Tables with built-in bootstrap styles </p>  --}}
-            <div class="card shadow">
-              <div class="card-body">
-                <div class="row align-items-center mb-2">
-                  <div class="col">
-                    <h5 class="card-title">Data Artikel</h5>
-                    </div>
-                  <div class="col-auto">
-                    <div class="form">
-                      <a href="{{ route('data_artikel.create') }}"><button class="btn btn-primary"
-                          type="button"><i class="fa fa-plus"></i><span>Tambah</span></button></a>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <div class="container-fluid"> 
+          <div class="row justify-content-center">
+            <div class="col-15">
+
+                  <div class="card shadow">
+                    <div class="card-body">
+
+                      {{-- Button in header --}}
+                      <a href="{{ route('data_artikel.create') }}" class="card-title">
+                        <button type="button" class="btn btn-primary">
+                          Tambah Data +
+                        </button>
+                      </a>
+                      <a href="/cetak_pdf/data_artikel" class="card-title" target="_blank">
+                        <button type="button" class="btn btn-secondary">
+                          Cetak PDF
+                        </button>
+                      </a>
+                      <br><br>
+
+                      {{-- Alert --}}
+                      @if ($message = Session::get('success'))
+                      <div class="alert alert-success" role="alert">
+                          {{ $message }}
+                      </div>
+                      @endif
+
+                      {{-- Tabel 1 - daftar artikel --}}
+                      <div class="table-responsive">
+                        <table id="zero_config" class="table table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>NO</th>
+                              <th>ID Kategori</th>
+                              <th>Tanggal</th>
+                              <th>Nama Penulis</th>
+                              <th>Judul</th>
+                              <th> Isi</th>
+                              <th>Gambar</th>
+                              <th>Sumber</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @php $no = 1; @endphp
+                            @foreach ($artikel as $item)
+                            <tr>
+                              <td>{{ $no++ }}</td>
+                              {{-- <td>{{ $item->id_artikel }}</td> --}}
+                              <td>{{ $item->kategori_artikel }}</td>
+                              <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
+                              <td>{{ $item->nama_penulis }}</td>
+                              <td>{{ $item->judul }}</td>
+                              <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                              <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
+                              <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
+                              <td>
+                              <div class="btn-group">
+                                  <a href="{{ route('data_artikel.edit',$item->id_artikel)}}" class="btn btn-cyan btn-sm text-white">Edit
+                                    <span class="fas fa-edit"></span></a>
+                                  <form action="{{ route('data_artikel.destroy',$item->id_artikel)}}" method="POST">
+                                  @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-danger btn-sm text-white" 
+                                      onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
+                                      <span class="far fa-trash-alt"></span></button>
+                                      {{-- <span class="far fa-eye-slash"></span> --}}
+                                  </form>
+                                  <form action="{{ route('batalkonfirmasi',$item->id_artikel)}}" method="POST">
+                                    @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-warning btn-sm text-white" 
+                                        onclick="return confirm('Apakah Anda yakin ingin mengarsipkan data ini?')">Arsipkan
+                                        <span class="far fa-file-archive"></span></button>
+                                  </form>
+                              </div>
+                              </td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <th>NO</th>
+                              <th>ID Kategori</th>
+                              <th>Tanggal</th>
+                              <th>Nama Penulis</th>
+                              <th>Judul</th>
+                              <th> Isi</th>
+                              <th>Gambar</th>
+                              <th>Sumber</th>
+                              <th>Aksi</th>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div> <!-- div responsive -->
                     </div>
                   </div>
-                </div>
-                <div class="widget-box">
-                  <a href="/cetak_pdf/data_artikel" class="btn btn-primary" target="_blank">CETAK PDF</a>
-                  {{-- <a href="{{ route('backend.data_artikel.cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                      <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                  {{-- <a href="{{ route('backend.data_artikel.cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                {{-- <a href="/dashboard/data_artikel/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                      </div>
-                </div>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>NO</th>
-                      {{-- <th>ID Artikel</th> --}}
-                      <th>ID Kategori</th>
-                      <th>Tanggal</th>
-                      <th>Nama Penulis</th>
-                      <th>Judul</th>
-                      <th> Isi</th>
-                      <th>Gambar</th>
-                      <th>Sumber</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @php $no = 1; @endphp
-                    @foreach ($artikel as $item)
-                    <tr>
-                        <td>{{ $no++ }}</td>
-                        {{-- <td>{{ $item->id_artikel }}</td> --}}
-                        <td>{{ $item->kategori_artikel }}</td>
-                        <td>{{ $item->tanggal }}</td>
-                        <td>{{ $item->nama_penulis }}</td>
-                        <td>{{ $item->judul }}</td>
-                        <td>{{\Illuminate\Support\Str::limit($item->isi , 250)}} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                        <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
-                        <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
-                        <td>
-                        <div class="btn-group">
-                            <a href="{{ route('data_artikel.edit',$item->id_artikel)}}" class="btn btn-warning">Edit<i class="fa fa-edit"></i></a>
-                            <form action="{{ route('data_artikel.destroy',$item->id_artikel)}}" method="POST">
-                            @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" 
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
-                                <i class="fa fa-trash-o"></i></button>
-                            </form>
-                            <form action="{{ route('batalkonfirmasi',$item->id_artikel)}}" method="POST">
+            </div> <!-- end section -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+      </div> <!-- End Page wrapper  -->
+    </div> <!-- End Wrapper -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper - tabel konfirmasi -->
+    <!-- ============================================================== -->
+    <div
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin5"
+      data-sidebartype="full"
+      data-sidebar-position="absolute"
+      data-header-position="absolute"
+      data-boxed-layout="full">
+      
+      <!-- ============================================================== -->
+      <!-- Page wrapper  -->
+      <!-- ============================================================== -->
+      <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Daftar Artikel yang Belum Dikonfirmasi</h4>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <div class="container-fluid"> 
+          <div class="row justify-content-center">
+            <div class="col-15">
+
+              <div class="card shadow">
+                <div class="card-body">
+                  
+                  <div class="table-responsive">
+                    <table id="zero_config_2" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Kategori</th>
+                          <th>Tanggal</th>
+                          <th>Nama Penulis</th>
+                          <th>Judul</th>
+                          <th>Isi</th>
+                          <th>Gambar</th>
+                          <th>Sumber</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($artikel2 as $item)
+                        <tr>
+                          <td>{{ $no++ }}</td>
+                          {{-- <td>{{ $item->id_artikel }}</td> --}}
+                          <td>{{ $item->kategori_artikel }}</td>
+                          <td>{{ $item->tanggal }}</td>
+                          <td>{{ $item->nama_penulis }}</td>
+                          <td>{{ $item->judul }}</td>
+                          <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
+                          <td>
+                          <div class="btn-group">
+                            <form action="{{ route('konfirmasi',$item->id_artikel)}}" method="POST">
                               @csrf
                                   @method('PUT')
-                                  <button type="submit" class="btn btn-primary" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menyembunyikan data ini?')">Sembunyikan
-                                  <i class="fa fa-trash-o"></i></button>
+                                  <button type="submit" class="btn btn-success btn-sm text-white" 
+                                  onclick="return confirm('Apakah Anda yakin ingin menampilkan data artikel ini?')">Tampilkan
+                                  <span class="fas fa-eye"></span></i></button>
                             </form>
-                        </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-            </div>
-        </div> <!-- end section -->
-    </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
-
-  <div class="container-fluid"> 
-    <div class="row justify-content-center">
-      <div class="col-15">
-        @if ($message = Session::get('konfirmasi'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-       @endif
-        {{-- <h2 class="page-title">Basic table</h2>
-        <p> Tables with built-in bootstrap styles </p>  --}}
-            <div class="card shadow">
-              <div class="card-body">
-                <div class="row align-items-center mb-2">
-                  <div class="col">
-                    <h5 class="card-title">Data Artikel Belum Terkonfirmasi</h5>
-                    </div>
-                  <div class="col-auto">
-                    <div class="form">
-                      <a href="{{ route('data_artikel.create') }}"><button class="btn btn-primary"
-                          type="button"><i class="fa fa-plus"></i><span>Tambah</span></button></a>
-                    </div>
-                  </div>
+                              <a href="{{ route('data_artikel.edit',$item->id_artikel)}}" class="btn btn-cyan btn-sm text-white">Edit<span class="fas fa-edit"></span></a>
+                              <form action="{{ route('data_artikel.destroy',$item->id_artikel)}}" method="POST">
+                              @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger btn-sm text-white" 
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
+                                  <span class="far fa-trash-alt"></span></button>
+                              </form>
+                          </div>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Kategori</th>
+                          <th>Tanggal</th>
+                          <th>Nama Penulis</th>
+                          <th>Judul</th>
+                          <th> Isi</th>
+                          <th>Gambar</th>
+                          <th>Sumber</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div> <!-- div responsive -->
                 </div>
-                <div class="widget-box">
-                  <a href="/cetak_pdf/data_artikel" class="btn btn-primary" target="_blank">CETAK PDF</a>
-                  {{-- <a href="{{ route('backend.data_artikel.cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                      <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                  {{-- <a href="{{ route('backend.data_artikel.cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                {{-- <a href="/dashboard/data_artikel/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
-                      </div>
-                </div>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>NO</th>
-                      {{-- <th>ID Artikel</th> --}}
-                      <th>ID Kategori</th>
-                      <th>Tanggal</th>
-                      <th>Nama Penulis</th>
-                      <th>Judul</th>
-                      <th> Isi</th>
-                      <th>Gambar</th>
-                      <th>Sumber</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @php $no = 1; @endphp
-                    @foreach ($artikel2 as $item)
-                    <tr>
-                        <td>{{ $no++ }}</td>
-                        {{-- <td>{{ $item->id_artikel }}</td> --}}
-                        <td>{{ $item->kategori_artikel }}</td>
-                        <td>{{ $item->tanggal }}</td>
-                        <td>{{ $item->nama_penulis }}</td>
-                        <td>{{ $item->judul }}</td>
-                        <td>{{\Illuminate\Support\Str::limit($item->isi , 250)}} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                        <td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
-                        <td>{{ \Illuminate\Support\Str::limit($item->sumber , 20) }}</td>
-                        <td>
-                        <div class="btn-group">
-                          <form action="{{ route('konfirmasi',$item->id_artikel)}}" method="POST">
-                            @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-primary" 
-                                onclick="return confirm('Apakah Anda yakin ingin menyembunyikan data ini?')">Tampilkan
-                                <i class="fa fa-trash-o"></i></button>
-                          </form>
-                            <a href="{{ route('data_artikel.edit',$item->id_artikel)}}" class="btn btn-warning">Edit<i class="fa fa-edit"></i></a>
-                            <form action="{{ route('data_artikel.destroy',$item->id_artikel)}}" method="POST">
-                            @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" 
-                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
-                                <i class="fa fa-trash-o"></i></button>
-                            </form>
-                        </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
               </div>
-            </div>
-        </div> <!-- end section -->
-    </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
-</main> <!-- main -->
+            </div> <!-- end section -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+      </div> <!-- End Page wrapper  -->
+    </div> <!-- End Wrapper -->
+    <!-- ============================================================== -->
 
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('backend/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{ asset('backend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ asset('backend/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('backend/dist/js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ asset('backend/dist/js/sidebarmenu.js') }}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ asset('backend/dist/js/custom.min.js') }}"></script>
+    <!-- this page js -->
+    <script src="{{ asset('backend/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
+    <script src="{{ asset('backend/assets/extra-libs/multicheck/jquery.multicheck.js') }}"></script>
+    <script src="{{ asset('backend/assets/extra-libs/DataTables/datatables.min.js') }}"></script>
+    <script>
+      /****************************************
+       *       Basic Table                   *
+       ****************************************/
+      $("#zero_config").DataTable();
+      $("#zero_config_2").DataTable();
+    </script>
+    {{-- Mengatur lamanya alert muncul --}}
+    <script type="text/javascript">
+      window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
+    </script>
+
+  </body>
+</html>
 @endsection
