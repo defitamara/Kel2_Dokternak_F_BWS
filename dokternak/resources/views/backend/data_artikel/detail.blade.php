@@ -17,16 +17,16 @@
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="{{ asset('backend/assets/images/favicon.png') }}"/>
+      href="{{ asset('Backend/assets/images/favicon.png') }}"/>
     <!-- Custom CSS -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ asset('backend/assets/extra-libs/multicheck/multicheck.css') }}"/>
+      href="{{ asset('Backend/assets/extra-libs/multicheck/multicheck.css') }}"/>
     <link
-      href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
+      href="{{ asset('Backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
       rel="stylesheet"/>
-    <link href="{{ asset('backend/dist/css/style.min.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" /> 
   </head>
 
   <body>
@@ -67,7 +67,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/data_Artikel">Data Artikel</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/data_artikel">Data Artikel</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
                       Detail Artikel
                     </li>
@@ -98,7 +98,7 @@
                 <div class="d-flex flex-row comment-row mt-0">
                   <div class="p-2">
                     <img
-                      src="{{ asset('backend/assets/icon/1.jpg') }}"
+                      src="{{ asset('Backend/assets/icon/1.jpg') }}"
                       alt="user"
                       width="50"
                       class="rounded-circle"
@@ -140,21 +140,22 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ asset('backend/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('Backend/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('backend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('Backend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('backend/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+    <script src="{{ asset('Backend/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/sparkline/sparkline.js') }}"></script>
     <!--Wave Effects -->
-    <script src="{{ asset('backend/dist/js/waves.js') }}"></script>
+    <script src="{{ asset('Backend/dist/js/waves.js') }}"></script>
     <!--Menu sidebar -->
-    <script src="{{ asset('backend/dist/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('Backend/dist/js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
-    <script src="{{ asset('backend/dist/js/custom.min.js') }}"></script>
+    <script src="{{ asset('Backend/dist/js/custom.min.js') }}"></script>
     <!-- this page js -->
-    <script src="{{ asset('backend/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
-    <script src="{{ asset('backend/assets/extra-libs/multicheck/jquery.multicheck.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/multicheck/jquery.multicheck.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/DataTables/datatables.min.js') }}"></script>
     
     {{-- Mengatur lamanya alert muncul --}}
     <script type="text/javascript">

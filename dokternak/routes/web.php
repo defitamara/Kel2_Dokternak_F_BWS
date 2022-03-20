@@ -41,11 +41,15 @@ Route::group(['namespace' => 'backend'], function()
     Route::resource('/dashboard/data_artikel', 'DataArtikelController');
     Route::get('/dashboard/data_artikel/{id}/detail','DataArtikelController@detail');
     Route::resource('/dashboard/data_puskeswan', 'DataPuskeswanController');
+    Route::resource('/dashboard/dtpenyuluh', 'DataPenyuluhController');
+    Route::get('/dashboard/dtpenyuluh/{id}/detail','DataPenyuluhController@detail');
     Route::resource('/dashboard/datapetugas', 'DataPetugasController');
     Route::resource('/dashboard/data_ks', 'DataKritikdanSaranController');
     Route::resource('/dashboard/dokumentasi', 'DokumentasiController');
     Route::resource('/dashboard/data_banner', 'DataBannerController');
 
+//Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
+Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
 
 //CRUD Data Artikel -------------------------------------------------------------------
 // Route::get('/dashboard/data_artikel', 'backend/DataArtikelController@index');

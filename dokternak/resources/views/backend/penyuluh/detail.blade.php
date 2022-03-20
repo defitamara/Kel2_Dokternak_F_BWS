@@ -62,14 +62,14 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Detail Dokter / Petugas</h4>
+              <h4 class="page-title">Detail Penyuluh Perikanan</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/dtdokter">Data Dokter</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/dtpenyuluh">Data Penyuluh</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Detail Dokter
+                      Detail Penyuluh
                     </li>
                   </ol>
                 </nav>
@@ -88,31 +88,25 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <div class="card">
-            @foreach ($dtdokter as $item)
+            @foreach ($dtpenyuluh as $item)
               <div class="card-body">
                 <div class="card-title">
                   <b><a href="/dashboard">Dashboard / </a>
-                  <a href="/dashboard/dtdokter">Data Dokter / </a>
-                  {{ $item->nama_dokter }}</b>
+                  <a href="/dashboard/dtpenyuluh">Data Penyuluh / </a>
+                  {{ $item->nama_penyuluh }}</b>
                 </div>
                 <div class="d-flex flex-row comment-row mt-0">
                   <div class="comment-text w-100">
                     <form class="needs-validation" id="dokter_form" action="">
                       <div class="form-row">
                         <div class="col-md-4 mb-2">
-                        <img src="/data/data_dokter/{{ $item->foto }}" width="150">
+                        <img src="/data/data_penyuluh/{{ $item->foto }}" width="150">
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="col-md-4 mb-2">
                           <label for="validationCustom3">Nama Lengkap</label>
-                          <input class="form-control" value="{{ $item->nama_dokter }}" disabled>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="col-md-4 mb-2">
-                          <label for="validationCustom3">Jabatan</label>
-                          <input class="form-control" value="{{ $item->jabatan }}" disabled>
+                          <input class="form-control" value="{{ $item->nama_penyuluh }}" disabled>
                         </div>
                       </div>
                       <div class="form-row">
@@ -141,7 +135,7 @@
                       </div>
                       <div class="form-row">
                         <div class="col-md-12 mb-2">
-                          <label for="validationCustom3">Tempat / Wilayah Kerja</label>
+                          <label for="validationCustom3">Wilayah Kerja</label>
                           <input class="form-control" value="{{ $item->tempat }}" disabled>
                         </div>
                       </div>
@@ -155,12 +149,12 @@
                     </form>
                     
                     <div class="comment-footer float-end">
-                      <a href="{{ route('dtdokter.index') }}"><button
+                      <a href="{{ route('dtpenyuluh.index') }}"><button
                         type="button"
                         class="btn btn-secondary btn-sm text-white">
                         Kembali
                       </button></a>
-                      <a href="{{ route('dtdokter.edit',$item->id_dokter) }}"><button
+                      <a href="{{ route('dtpenyuluh.edit',$item->id_penyuluh) }}"><button
                         type="button"
                         class="btn btn-cyan btn-sm text-white">
                         Edit
