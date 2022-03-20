@@ -78,15 +78,17 @@ class DataPuskeswanController extends Controller
             'id_puskeswan' => $id,
             'nama_puskeswan' => $request->nama_puskeswan,
             'alamat' =>$request->alamat,
+            'wilker' =>$request->wilker,
             'jam_kerja' =>$request->jam_kerja,
             'gambar' => $getimageName,
             'maps' =>$request->maps,
+            'nomer' =>$request->nomer,
         ];
 
         puskeswan::create($data_simpan);
 
         return redirect()->route('data_puskeswan.index')
-                        ->with('success','Data puskeswan baru telah berhasil disimpan, dimohon untuk menunggu konfirmasi dari Admin')
+                        ->with('success','Data puskeswan baru telah berhasil disimpan')
                         ->with('image',$getimageName);
     }
 
@@ -128,15 +130,25 @@ class DataPuskeswanController extends Controller
             'id_puskeswan' => $request->id_puskeswan,
             'nama_puskeswan' => $request->nama_puskeswan,
             'alamat' =>$request->alamat,
+            'wilker' =>$request->wilker,
             'jam_kerja' =>$request->jam_kerja,
             'gambar' => $getimageName,
             'maps' =>$request->maps,
+            'nomer' =>$request->nomer,
         ];
 
         Puskeswan::where('id_puskeswan', $id)->update($data_simpan);
 
         return redirect()->route('data_puskeswan.index')
                         ->with('success','Data puskeswan telah berhasil diperbarui');
+    }
+
+    public function detail($id)
+    {
+        $puskeswan = Puskeswan::orderBy('id_puskeswan','asc')
+                   ->where('id_puskeswan',$id)
+                   ->get();
+        return view('backend.data_puskeswan.detail',compact('puskeswan'));
     }
 
     public function destroy($id)

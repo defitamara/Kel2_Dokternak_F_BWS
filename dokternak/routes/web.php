@@ -41,6 +41,7 @@ Route::group(['namespace' => 'backend'], function()
     Route::resource('/dashboard/data_artikel', 'DataArtikelController');
     Route::get('/dashboard/data_artikel/{id}/detail','DataArtikelController@detail');
     Route::resource('/dashboard/data_puskeswan', 'DataPuskeswanController');
+    Route::get('/dashboard/data_puskeswan/{id}/detail','DataPuskeswanController@detail');
     Route::resource('/dashboard/dtpenyuluh', 'DataPenyuluhController');
     Route::get('/dashboard/dtpenyuluh/{id}/detail','DataPenyuluhController@detail');
     Route::resource('/dashboard/datapetugas', 'DataPetugasController');

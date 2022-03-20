@@ -10,6 +10,6 @@ class Puskeswan extends Model
     protected $table = 'puskeswan';
     protected $primaryKey = 'id_puskeswan';
     protected $fillable =  [
-        'id_puskeswan', 'nama_puskeswan', 'alamat', 'jam_kerja', 'gambar','maps', 
+        'id_puskeswan', 'nama_puskeswan', 'alamat', 'wilker', 'jam_kerja', 'gambar','maps', 'nomer',
     ];
 }

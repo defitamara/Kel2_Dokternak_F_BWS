@@ -61,7 +61,7 @@
                               <li><a href="#"><i class="fa fa-comments"></i>{{ $artikel->tanggal}}</a></li>
                            </ul>
                            <p class="excert">
-                              {{ $artikel->isi}}
+                              {!! $artikel->isi !!}
                            </p>
                            <div class="quote-wrapper">
                               <div class="quotes">
