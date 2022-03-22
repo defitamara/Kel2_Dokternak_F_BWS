@@ -124,6 +124,13 @@ class DataTutorialController extends Controller
                         ->with('success','Data tutorial telah berhasil diperbarui');
     }
 
+    public function detail($id)
+    {
+        $tutorial = Tutorial::where('id_tutorial',$id)->get();
+        return view('backend.data_tutorial.detail', compact('tutorial'));
+        
+    }
+
     public function destroy($id)
     {
         $tutorial = Tutorial::where('id_tutorial',$id)->delete();

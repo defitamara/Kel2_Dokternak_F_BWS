@@ -38,6 +38,7 @@ Route::group(['namespace' => 'backend'], function()
     Route::resource('/dashboard/dtdokter', 'DataDokterController');
     Route::get('/dashboard/dtdokter/{id}/detail','DataDokterController@detail');
     Route::resource('/dashboard/data_tutorial', 'DataTutorialController');
+    Route::get('/dashboard/data_tutorial/{id}/detail','DataTutorialController@detail');
     Route::resource('/dashboard/data_artikel', 'DataArtikelController');
     Route::get('/dashboard/data_artikel/{id}/detail','DataArtikelController@detail');
     Route::resource('/dashboard/data_puskeswan', 'DataPuskeswanController');
@@ -46,6 +47,7 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/dtpenyuluh/{id}/detail','DataPenyuluhController@detail');
     Route::resource('/dashboard/datapetugas', 'DataPetugasController');
     Route::resource('/dashboard/data_ks', 'DataKritikdanSaranController');
+    Route::get('/dashboard/data_ks/{id}/detail','DataKritikdanSaranController@detail');
     Route::resource('/dashboard/dokumentasi', 'DokumentasiController');
     Route::resource('/dashboard/data_banner', 'DataBannerController');
 

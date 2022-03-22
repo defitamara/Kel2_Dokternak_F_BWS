@@ -107,6 +107,13 @@ class DataKritikdanSaranController extends Controller
                         ->with('success','Data kritik_dan_saran telah berhasil diperbarui');
     }
 
+    public function detail($id)
+    {
+        $ks = KritikdanSaran::where('id_ks',$id)->get();
+        return view('backend.data_ks.detail', compact('ks'));
+        
+    }
+
     public function destroy($id)
     {
         $ks = KritikdanSaran::where('id_ks',$id)->delete();
