@@ -19,7 +19,7 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbstaf/artikel"
+                  href="/dbstaf/dt_artikel"
                   aria-expanded="false"
                   ><i class="mdi mdi-receipt"></i
                   ><span class="hide-menu">Artikel</span></a
