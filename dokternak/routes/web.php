@@ -26,6 +26,7 @@ Auth::routes();
 Auth::routes();
 Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('is_admin');
 Route::get('lppetugas', [App\Http\Controllers\HomeController::class, 'lppetugas'])->name('lppetugas')->middleware('is_admin');
+Route::get('dbstaf', [App\Http\Controllers\HomeController::class, 'dbstaf'])->name('dbstaf')->middleware('is_admin');
 // Route::get('home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 

@@ -47,6 +47,8 @@ class HomeController extends Controller
             return redirect()->route('lppetugas');
         }elseif($role  == 1) {
             return redirect()->route('dashboard');
+        }elseif($role == 3) {
+            return redirect()->route('dbstaf');
         }
         
 

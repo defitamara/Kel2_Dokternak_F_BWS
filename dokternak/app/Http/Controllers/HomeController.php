@@ -53,6 +53,8 @@ class HomeController extends Controller
         }
         elseif ($role  == 2) {
             return redirect()->route('lppetugas');
+        }elseif($role == 3) {
+            return redirect()->route('dbstaf');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }
@@ -85,41 +87,63 @@ class HomeController extends Controller
         }
         elseif ($role  == 1) {
             return redirect()->route('dashboard');
+        }elseif($role == 3) {
+            return redirect()->route('dbstaf');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }
     }
 
-    // Landing Page Penyuluh
-    public function lppenyuluh()
+    // Dashboard Staf IT
+    public function dbstaf()
     {
-        // Komentarin dulu karena authnya belum diatur
-        // $id = Auth::id();
-        // $user = User::where('id',$id)->first();
+        $id = Auth::id();
+        $user = User::where('id',$id)->first();
 
-        // $role = $user->is_admin;
-
-        // Auth manual buat liat tampilan tapi gagal
-        // $id = 33;
-        // $user = User::where('id',$id)->first();
-        // $role = 3;
+        $role = $user->is_admin;
 
         if ($role == 3) {
-            $penyuluh = DB::table('users')->join('penyuluh','penyuluh.id','=','users.id')
-            ->get();
-            $data = [
-                'artikel' => DB::table('artikel')->join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
-                ->orderBy('id_artikel','desc')
-                ->where('status','=','tampil')
-                ->paginate(2),
-            ];
-            return view('penyuluh.home',compact('data','penyuluh'));
-        }elseif ($role  == 2) {
+            return view('staf.dashboard');
+        }
+        elseif ($role  == 2) {
             return redirect()->route('lppetugas');
-        }elseif ($role  == 1) {
+        }elseif($role == 1) {
             return redirect()->route('dashboard');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }
     }
+
+    // Landing Page Penyuluh Gajadi
+    // public function lppenyuluh()
+    // {
+    //     // Komentarin dulu karena authnya belum diatur
+    //     // $id = Auth::id();
+    //     // $user = User::where('id',$id)->first();
+
+    //     // $role = $user->is_admin;
+
+    //     // Auth manual buat liat tampilan tapi gagal
+    //     // $id = 33;
+    //     // $user = User::where('id',$id)->first();
+    //     // $role = 3;
+
+    //     if ($role == 3) {
+    //         $penyuluh = DB::table('users')->join('penyuluh','penyuluh.id','=','users.id')
+    //         ->get();
+    //         $data = [
+    //             'artikel' => DB::table('artikel')->join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
+    //             ->orderBy('id_artikel','desc')
+    //             ->where('status','=','tampil')
+    //             ->paginate(2),
+    //         ];
+    //         return view('penyuluh.home',compact('data','penyuluh'));
+    //     }elseif ($role  == 2) {
+    //         return redirect()->route('lppetugas');
+    //     }elseif ($role  == 1) {
+    //         return redirect()->route('dashboard');
+    //     }elseif($role  == 0) {
+    //         return redirect()->route('home');
+    //     }
+    // }
 }
