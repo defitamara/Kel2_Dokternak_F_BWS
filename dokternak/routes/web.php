@@ -75,6 +75,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_ks/{id}/detail','DataKritikdanSaranController@detail');
     Route::resource('/dashboard/dokumentasi', 'DokumentasiController');
     Route::resource('/dashboard/data_banner', 'DataBannerController');
+    Route::resource('/dashboard/data_informasi', 'DataInformasiController');
+    Route::get('/dashboard/data_informasi/{id}/detail','DataInformasiController@detail');
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
 Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
@@ -129,6 +131,13 @@ Route::POST('dashboard/data_ks/simpandata','DataKritikdanSaranController@store')
 Route::match(['get','post'], 'dashboard/data_ks/edit/{id}','DataKritikdanSaranController@edit');
 Route::GET('dashboard/data_ks/delete/{id}','DataKritikdanSaranController@delete');
 Route::get('/cetak_pdf/data_ks','DataKritikdanSaranController@cetak_pdf')->name('backend.data_ks.cetak_pdf');
+
+//CRUD Data Informasi -------------------------------------------------------------------
+Route::POST('dashboard/data_informasi/simpandata','DataInformasiController@store')->name('simpandata');
+Route::match(['get','post'], 'dashboard/data_informasi/edit/{id}','DataInformasiController@edit');
+Route::GET('dashboard/data_informasi/delete/{id}','DataInformasiController@delete');
+Route::get('/cetak_pdf/data_informasi','DataInformasiController@cetak_pdf')->name('backend.data_informasi.cetak_pdf');
+
 
 //CRUD Data dokter -------------------------------------------------------------------
 Route::get('/cetak_pdf/dtdokter','DataDokterController@cetak_pdf')->name('backend.dokter.cetak_pdf');

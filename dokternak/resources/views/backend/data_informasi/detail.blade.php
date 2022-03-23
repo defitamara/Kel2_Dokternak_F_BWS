@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Detail Tutorial</title>
+    <title>Detail Informasi</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -62,14 +62,14 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Detail Tutorial</h4>
+              <h4 class="page-title">Detail Informasi </h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/data_tutorial">Data Tutorial</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/data_informasi">Data Informasi</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Detail Tutorial
+                      Detail Informasi
                     </li>
                   </ol>
                 </nav>
@@ -88,12 +88,12 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <div class="card">
-            @foreach ($tutorial as $item)
+            @foreach ($informasi as $item)
               <div class="card-body">
                 <div class="card-title">
                   <b><a href="/dashboard">Dashboard / </a>
-                  <a href="/dashboard/data_tutorial">Data Tutorial / </a>
-                  {{ $item->judul_tutorial }}</b>
+                  <a href="/dashboard/data_informasi">Data Informasi / </a>
+                  {{ $item->judul }}</b>
                 </div>
                 <div class="d-flex flex-row comment-row mt-0">
                   <div class="p-2">
@@ -105,17 +105,16 @@
                     />
                   </div>
                   <div class="comment-text w-100">
-                    <td><img src="/data/data_tutorial/{{ $item->icon }}" width="200"></td>
-                    <h5 class="font-medium">{{ $item->judul_tutorial }} | 
+                    <h5 class="font-medium">{{ $item->judul }} | 
                     <span class="mb-3 d-block">{!! $item->isi !!}
                     </span>
                     <div class="comment-footer float-end">
-                      <a href="{{ route('data_tutorial.index') }}"><button
+                      <a href="{{ route('data_informasi.index') }}"><button
                         type="button"
                         class="btn btn-secondary btn-sm text-white">
                         Kembali
                       </button></a>
-                      <a href="{{ route('data_tutorial.edit',$item->id_tutorial) }}"><button
+                      <a href="{{ route('data_informasi.edit',$item->id_info) }}"><button
                         type="button"
                         class="btn btn-cyan btn-sm text-white">
                         Edit

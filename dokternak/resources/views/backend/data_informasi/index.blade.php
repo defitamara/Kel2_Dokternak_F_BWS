@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Detail Tutorial</title>
+    <title>Data Informasi</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -26,9 +26,9 @@
     <link
       href="{{ asset('Backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
       rel="stylesheet"/>
-    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" />  
   </head>
-
+    
   <body>
     <!-- ============================================================== -->
     <!-- Preloader - tampilan loading -->
@@ -39,19 +39,19 @@
         <div class="lds-pos"></div>
       </div>
     </div>
-
+    
     <!-- ============================================================== -->
-    <!-- Main wrapper - tabel daftar artikel -->
+    <!-- Main wrapper - tabel daftar dokter/petugas -->
     <!-- ============================================================== -->
     <div
-      id="main-wrapper"
-      data-layout="vertical"
-      data-navbarbg="skin5"
-      data-sidebartype="full"
-      data-sidebar-position="absolute"
-      data-header-position="absolute"
-      data-boxed-layout="full">
-
+    id="main-wrapper"
+    data-layout="vertical"
+    data-navbarbg="skin5"
+    data-sidebartype="full"
+    data-sidebar-position="absolute"
+    data-header-position="absolute"
+    data-boxed-layout="full">
+          
       <!-- ============================================================== -->
       <!-- Page wrapper  -->
       <!-- ============================================================== -->
@@ -62,14 +62,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Detail Tutorial</h4>
+              <h4 class="page-title">Data Informasi</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/data_tutorial">Data Tutorial</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Detail Tutorial
+                      Data Informasi
                     </li>
                   </ol>
                 </nav>
@@ -80,56 +79,86 @@
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-          <!-- ============================================================== -->
-          <!-- Start Page Content -->
-          <!-- ============================================================== -->
-          <div class="card">
-            @foreach ($tutorial as $item)
-              <div class="card-body">
-                <div class="card-title">
-                  <b><a href="/dashboard">Dashboard / </a>
-                  <a href="/dashboard/data_tutorial">Data Tutorial / </a>
-                  {{ $item->judul_tutorial }}</b>
-                </div>
-                <div class="d-flex flex-row comment-row mt-0">
-                  <div class="p-2">
-                    <img
-                      src="{{ asset('Backend/assets/icon/1.jpg') }}"
-                      alt="user"
-                      width="50"
-                      class="rounded-circle"
-                    />
+  
+        <div class="container-fluid"> 
+          <div class="row justify-content-center">
+            <div class="col-15">
+              
+              <div class="card shadow">
+                <div class="card-body">
+
+                  {{-- Button in header --}}
+                  <a href="{{ route('data_informasi.create') }}" class="card-title">
+                    <button type="button" class="btn btn-primary">
+                      Tambah Data +
+                    </button>
+                  </a>
+                  <a href="/cetak_pdf/data_informasi" class="card-title" target="_blank">
+                    <button type="button" class="btn btn-secondary">
+                      Cetak PDF
+                    </button>
+                  </a>
+                  <br><br>
+
+                  {{-- Alert --}}
+                  @if ($message = Session::get('success'))
+                  <div class="alert alert-success" role="alert">
+                      {{ $message }}
                   </div>
-                  <div class="comment-text w-100">
-                    <td><img src="/data/data_tutorial/{{ $item->icon }}" width="200"></td>
-                    <h5 class="font-medium">{{ $item->judul_tutorial }} | 
-                    <span class="mb-3 d-block">{!! $item->isi !!}
-                    </span>
-                    <div class="comment-footer float-end">
-                      <a href="{{ route('data_tutorial.index') }}"><button
-                        type="button"
-                        class="btn btn-secondary btn-sm text-white">
-                        Kembali
-                      </button></a>
-                      <a href="{{ route('data_tutorial.edit',$item->id_tutorial) }}"><button
-                        type="button"
-                        class="btn btn-cyan btn-sm text-white">
-                        Edit
-                      </button></a>
-                    </div>
-                  </div>
+                  @endif
+
+                  <div class="table-responsive">
+                    <table id="zero_config" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Informasi</th>
+                          <th>Judul </th>
+                          <th>Isi</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($informasi as $item)
+                        <tr>
+                          <td>{{ $no++ }}</td>
+                          <td>{{ $item->id_info }}</td>
+                          <td>{{ $item->judul }}</td>
+                          <td>{!!\Illuminate\Support\Str::limit($item->isi , 50)!!} <a href="/dashboard/data_informasi/{{ $item->id_info}}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>
+                            <div class="btn-group">
+                              <a href="{{ route('data_informasi.edit',$item->id_info)}}" class="btn btn-cyan btn-sm text-white">Edit
+                                <span class="fas fa-edit"></span></a>
+                              <form action="{{ route('data_informasi.destroy',$item->id_info)}}" method="POST">
+                              @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger btn-sm text-white" 
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
+                                  <span class="far fa-trash-alt"></span></button>
+                              </form>
+                          </div>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                      {{-- <tfoot>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Informasi</th>
+                          <th>Judul </th>
+                          <th>Isi</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </tfoot> --}}
+                    </table>
+                  </div> <!-- div responsive -->
                 </div>
               </div>
-            @endforeach
-          </div>
-        </div>  <!-- End container fluid  -->
-      </div>  <!-- End Page wrapper  -->
-      <!-- ============================================================== -->
-
+            </div> <!-- end section -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+      </div> <!-- End Page wrapper  -->
     </div> <!-- End Wrapper -->
     <!-- ============================================================== -->
 
@@ -152,7 +181,12 @@
     <script src="{{ asset('Backend/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
     <script src="{{ asset('Backend/assets/extra-libs/multicheck/jquery.multicheck.js') }}"></script>
     <script src="{{ asset('Backend/assets/extra-libs/DataTables/datatables.min.js') }}"></script>
-    
+    <script>
+      /****************************************
+       *       Basic Table                   *
+       ****************************************/
+      $("#zero_config").DataTable();
+    </script>
     {{-- Mengatur lamanya alert muncul --}}
     <script type="text/javascript">
       window.setTimeout(function() {
@@ -164,5 +198,5 @@
 
   </body>
 </html>
-@endsection
 
+@endsection
