@@ -335,12 +335,17 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <img
+                @foreach($staf as $item)
+                @if ($item->id == Auth::user()->id)
+                  {{-- <img
                     src="{{ asset('data/data_staf/default.jpg') }}"
-                    alt="user"
+                    alt=""
                     class="rounded-circle"
                     width="31"
-                  />
+                  /> --}}
+                  <img src="/data/data_staf/{{ $item->foto }}" alt="" class="rounded-circle" width="30px" height="30px"/>
+                @endif
+                @endforeach
                 </a>
                 <ul
                   class="dropdown-menu dropdown-menu-end user-dd animated"

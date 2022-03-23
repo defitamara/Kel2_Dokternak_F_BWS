@@ -19,10 +19,73 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_akun"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-key"></i
+                  ><span class="hide-menu">Akun</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/dbstaf/dt_artikel"
                   aria-expanded="false"
-                  ><i class="mdi mdi-receipt"></i
+                  ><i class="mdi mdi-library-books"></i
                   ><span class="hide-menu">Artikel</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_dokter"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-box"></i
+                  ><span class="hide-menu">Petugas</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_penyuluh"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-box"></i
+                  ><span class="hide-menu">Penyuluh</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_staf"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-box"></i
+                  ><span class="hide-menu">Staf</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_kordinator"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-box"></i
+                  ><span class="hide-menu">Co Puskeswan</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_puskeswan"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-bank"></i
+                  ><span class="hide-menu">Puskeswan</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbstaf/dt_info"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-information"></i
+                  ><span class="hide-menu">FAQ</span></a
                 >
               </li>
               <li class="sidebar-item">

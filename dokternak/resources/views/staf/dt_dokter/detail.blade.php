@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Detail Artikel</title>
+    <title>Detail Petugas</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -26,7 +26,7 @@
     <link
       href="{{ asset('Backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
       rel="stylesheet"/>
-    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" />  
   </head>
 
   <body>
@@ -62,14 +62,14 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Detail Artikel</h4>
+              <h4 class="page-title">Detail Petugas</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dbstaf">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dbstaf/dt_artikel">Data Artikel</a></li>
+                    <li class="breadcrumb-item"><a href="/dbstaf/dt_dokter">Data Petugas</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Detail Artikel
+                      Detail Petugas
                     </li>
                   </ol>
                 </nav>
@@ -88,38 +88,79 @@
           <!-- Start Page Content -->
           <!-- ============================================================== -->
           <div class="card">
-            @foreach ($artikel as $item)
+            @foreach ($dtdokter as $item)
               <div class="card-body">
                 <div class="card-title">
                   <b><a href="/dbstaf">Dashboard / </a>
-                  <a href="/dbstaf/dt_artikel">Data Artikel / </a>
-                  {{ $item->judul }}</b>
+                  <a href="/dbstaf/dt_dokter">Data Petugas / </a>
+                  {{ $item->nama_dokter }}</b>
                 </div>
                 <div class="d-flex flex-row comment-row mt-0">
-                  <div class="p-2">
-                    <img
-                      src="{{ asset('Backend/assets/icon/1.jpg') }}"
-                      alt="user"
-                      width="50"
-                      class="rounded-circle"
-                    />
-                  </div>
                   <div class="comment-text w-100">
-                    <img src="/data/data_artikel/{{ $item->gambar }}" alt="" width="300"><br><br>
-                    <h5 class="font-medium">{{ $item->nama_penulis }} | 
-                    {{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}
-                    | {{ $item->kategori_artikel }} </h5>
-                    {{-- <span class="text-muted float-end">{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</span> --}}
-                    <span class="mb-3 d-block">{!! $item->isi !!}
-                    </span>
-                    <h6>Sumber: {{ $item->sumber }}</h6>
+                    <form class="needs-validation" id="dokter_form" action="">
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                        <img src="/data/data_dokter/{{ $item->foto }}" width="150">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          <label for="validationCustom3">Nama Lengkap</label>
+                          <input class="form-control" value="{{ $item->nama_dokter }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          <label for="validationCustom3">Jabatan</label>
+                          <input class="form-control" value="{{ $item->jabatan }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          <label for="validationCustom3">Email</label>
+                          <input class="form-control" value="{{ $item->email }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          <label for="validationCustom3">No Telpon</label>
+                          <input class="form-control" value="{{ $item->telpon }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                          <label for="validationCustom3">Jenis Kelamin</label>
+                          <input class="form-control" value="{{ $item->jenis_kelamin }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                          <label for="validationCustom3">Alamat</label>
+                          <textarea class="form-control" style="resize:none;width:1000px;height:100px;" disabled>{{ $item->alamat }}</textarea>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                          <label for="validationCustom3">Tempat / Wilayah Kerja</label>
+                          <input class="form-control" value="{{ $item->tempat }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                          <label for="validationCustom3">Jadwal Kerja</label>
+                          <textarea class="form-control" style="resize:none;width:1000px;height:100px;" disabled>{{ $item->jadwal_kerja }}</textarea>
+                        </div>
+                      </div>
+                      
+                    </form>
+                    
                     <div class="comment-footer float-end">
-                      <a href="{{ route('dt_artikel.index') }}"><button
+                      <a href="{{ route('dt_dokter.index') }}"><button
                         type="button"
                         class="btn btn-secondary btn-sm text-white">
                         Kembali
                       </button></a>
-                      <a href="{{ route('dt_artikel.edit',$item->id_artikel) }}"><button
+                      <a href="{{ route('dt_dokter.edit',$item->id_dokter) }}"><button
                         type="button"
                         class="btn btn-cyan btn-sm text-white">
                         Edit

@@ -36,7 +36,6 @@ class HomeController extends Controller
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3),
             'artikel' => Artikel::orderBy('tanggal', 'desc')->paginate(2),
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3),
-            
         ];
         return view('frontend.home',compact('data'));
         // return view('frontend.home');
@@ -104,7 +103,9 @@ class HomeController extends Controller
         $role = $user->is_admin;
 
         if ($role == 3) {
-            return view('staf.dashboard');
+            $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
+            ->get();
+            return view('staf.dashboard',compact('staf'));
         }
         elseif ($role  == 2) {
             return redirect()->route('lppetugas');

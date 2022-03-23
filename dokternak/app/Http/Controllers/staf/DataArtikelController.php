@@ -20,6 +20,9 @@ class DataArtikelController extends Controller
 {
     public function index()
     {
+        $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
+            ->get();
+
         $artikel = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
                     ->where('status','=','tampil')
                     ->orderBy('id_artikel','desc')
@@ -30,7 +33,7 @@ class DataArtikelController extends Controller
                     ->orderBy('id_artikel','desc')
                     ->get();
 
-        return view('staf.dt_artikel.index',compact('artikel','artikel2'));
+        return view('staf.dt_artikel.index',compact('artikel','artikel2','staf'));
     }
 
     public function cetakartikel()
@@ -51,8 +54,10 @@ class DataArtikelController extends Controller
 
     public function create()
     {
+        $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
+            ->get();
         $kategori = KatArtikel::all();
-        return view('staf.dt_artikel.create',compact('kategori'));
+        return view('staf.dt_artikel.create',compact('kategori','staf'));
     }
 
     public function store(Request $request)
@@ -95,9 +100,11 @@ class DataArtikelController extends Controller
     }
     public function edit($id)
     {
+        $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
+            ->get(); //agar foto staf di template.blade.php bisa muncul
         $artikel = Artikel::where('id_artikel',$id)->first();
         $kategori = KatArtikel::all();
-        return view('staf.dt_artikel.create',compact('artikel','kategori'));
+        return view('staf.dt_artikel.create',compact('artikel','kategori','staf'));
     }
 
     public function konfirmasi($id)
@@ -174,11 +181,13 @@ class DataArtikelController extends Controller
 
     public function detail($id)
     {
+        $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
+            ->get();
         $artikel = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
                    ->orderBy('id_artikel','asc')
                    ->where('id_artikel',$id)
                    ->get();
-        return view('staf.dt_artikel.detail',compact('artikel'));
+        return view('staf.dt_artikel.detail',compact('artikel','staf'));
     }
 
     public function destroy($id)
