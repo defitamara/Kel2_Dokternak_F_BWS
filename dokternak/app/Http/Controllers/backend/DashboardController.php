@@ -28,6 +28,8 @@ class DashboardController extends Controller
         }
         elseif ($role  == 2) {
             return redirect()->route('lppetugas');
+        }elseif($role == 3) {
+            return redirect()->route('dbstaf');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }

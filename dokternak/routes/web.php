@@ -26,8 +26,24 @@ Auth::routes();
 Auth::routes();
 Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('is_admin');
 Route::get('lppetugas', [App\Http\Controllers\HomeController::class, 'lppetugas'])->name('lppetugas')->middleware('is_admin');
+Route::get('dbstaf', [App\Http\Controllers\HomeController::class, 'dbstaf'])->name('dbstaf')->middleware('is_admin');
 // Route::get('home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
+
+// Route untuk Staf it ---------------------------------------------------
+Route::group(['namespace' => 'staf'], function()
+{
+    // Artikel
+    Route::resource('/dbstaf/dt_artikel', 'DataArtikelController');
+    Route::get('/dbstaf/dt_artikel/{id}/detail','DataArtikelController@detail');
+    //CRUD Data Artikel -------------------------------------------------------------------
+    Route::POST('dbstaf/dt_artikel/simpandata','DataArtikelController@store')->name('simpandata');
+    Route::match(['get','post'], 'dashboard/data_artikel/edit/{id}','DataArtikelController@edit');
+    Route::put('dbstaf/dt_artikel/{id}/konfirmasi','DataArtikelController@konfirmasi')->name('dt_artikel.konfirmasi');
+    Route::put('dbstaf/dt_artikel/{id}/batalkonfirmasi','DataArtikelController@batalkonfirmasi')->name('dt_artikel.batalkonfirmasi');
+    Route::GET('dbstaf/dt_artikel/delete/{id}','DataArtikelController@delete');
+    Route::get('/cetak_pdf/dt_artikel','DataArtikelController@cetakartikel')->name('dt_artikel.cetak_pdf');
+});
 
 // Route untuk Backend ----------------------------------------------------
 Route::resource('admin', 'backend\AdminController');
