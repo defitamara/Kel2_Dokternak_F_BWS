@@ -36,6 +36,7 @@ class HomeController extends Controller
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3),
             'artikel' => Artikel::orderBy('tanggal', 'desc')->paginate(2),
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3),
+            
         ];
         return view('frontend.home',compact('data'));
         // return view('frontend.home');

@@ -9,6 +9,7 @@ use App\Models\dokter;
 use App\Models\puskeswan;
 use App\Models\penyuluh;
 use App\Models\tutorial;
+use App\Models\informasi;
 
 
 class WelcomeController extends Controller
@@ -21,6 +22,7 @@ class WelcomeController extends Controller
             'tutorial' => Tutorial::orderBy('id_tutorial')->paginate(4, ['*'], 'tutorial'),
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3, ['*'], 'dokter'),
             'penyuluh' => penyuluh::orderBy('id_penyuluh')->paginate(3),
+            'informasi' => informasi::orderBy('id_info')->paginate(3),
         ];
         return view('welcome',compact('data'));
         // return view('frontend.home');
@@ -69,6 +71,7 @@ class WelcomeController extends Controller
             ->paginate(2),
 
             'tutorial' => Tutorial::orderBy('id_tutorial')->paginate(3),
+            'informasi' => informasi::orderBy('id_info')->paginate(3),
             'penyuluh' => DB::table('penyuluh')
             ->where('tempat', 'LIKE', '%' . $kategori . '%')
             ->where('nama_penyuluh', 'LIKE', "%" .$cari. "%")

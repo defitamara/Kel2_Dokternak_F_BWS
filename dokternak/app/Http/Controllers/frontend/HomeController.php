@@ -11,6 +11,7 @@ use App\Models\dokter;
 use App\Models\penyuluh;
 use App\Models\puskeswan;
 use App\Models\tutorial;
+use App\Models\informasi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -39,6 +40,7 @@ class HomeController extends Controller
                 ->paginate(2, ['*'], 'artikel'),
                   'tutorial' => Tutorial::orderBy('judul_tutorial', 'desc')->paginate(4, ['*'], 'tutorial'),
                   'penyuluh' => penyuluh::orderBy('nama_penyuluh', 'desc')->paginate(4, ['*'], 'penyuluh'),
+                  'informasi' => informasi::orderBy('id_info')->paginate(3),
                   
               ];
               return view('frontend.home',compact('data'));
@@ -78,6 +80,7 @@ class HomeController extends Controller
             ->where('tempat', 'LIKE', '%' . $kategori . '%')
             ->where('nama_penyuluh', 'LIKE', "%" .$cari. "%")
             ->paginate(3),
+            'informasi' => informasi::orderBy('id_info')->paginate(3),
             //penyuluh::orderBy('id_penyuluh')->paginate(3),
         ];
 
