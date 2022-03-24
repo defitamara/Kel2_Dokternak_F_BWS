@@ -38,7 +38,7 @@ Route::group(['namespace' => 'staf'], function()
     Route::get('/dbstaf/dt_artikel/{id}/detail','DataArtikelController@detail');
     //CRUD Data Artikel -------------------------------------------------------------------
     Route::POST('dbstaf/dt_artikel/simpandata','DataArtikelController@store')->name('simpandata');
-    Route::match(['get','post'], 'dashboard/data_artikel/edit/{id}','DataArtikelController@edit');
+    Route::match(['get','post'], 'dbstaf/dt_artikel/edit/{id}','DataArtikelController@edit');
     Route::put('dbstaf/dt_artikel/{id}/konfirmasi','DataArtikelController@konfirmasi')->name('dt_artikel.konfirmasi');
     Route::put('dbstaf/dt_artikel/{id}/batalkonfirmasi','DataArtikelController@batalkonfirmasi')->name('dt_artikel.batalkonfirmasi');
     Route::GET('dbstaf/dt_artikel/delete/{id}','DataArtikelController@delete');
@@ -49,9 +49,18 @@ Route::group(['namespace' => 'staf'], function()
     Route::get('/dbstaf/dt_dokter/{id}/detail','DataDokterController@detail');
     //CRUD Data Dokter/Petugas -------------------------------------------------------------------
     Route::POST('dbstaf/dt_dokter/simpandata','DataDokterController@store')->name('simpandata');
-    Route::match(['get','post'], 'dashboard/data_artikel/edit/{id}','DataDokterController@edit');
+    Route::match(['get','post'], 'dbstaf/dt_artikel/edit/{id}','DataDokterController@edit');
     Route::GET('dbstaf/dt_dokter/delete/{id}','DataDokterController@delete');
     Route::get('/cetak_pdf/dt_dokter','DataDokterController@cetak_pdf')->name('dt_artikel.cetak_pdf');
+
+    // Puskeswan
+    Route::resource('/dbstaf/dt_puskeswan', 'DataPuskeswanController');
+    Route::get('/dbstaf/dt_puskeswan/{id}/detail','DataPuskeswanController@detail');
+    //CRUD Data Dokter/Petugas -------------------------------------------------------------------
+    Route::POST('dbstaf/dt_puskeswan/simpandata','DataPuskeswanController@store')->name('simpandata');
+    Route::match(['get','post'], 'dbstaf/dt_puskeswan/edit/{id}','DataPuskeswanController@edit');
+    Route::GET('dbstaf/dt_puskeswan/delete/{id}','DataPuskeswanController@delete');
+    Route::get('/cetak_pdf/dt_puskeswan','DataPuskeswanController@cetak_pdf')->name('dt_puskeswan.cetak_pdf');
 });
 
 // Route untuk Backend ----------------------------------------------------

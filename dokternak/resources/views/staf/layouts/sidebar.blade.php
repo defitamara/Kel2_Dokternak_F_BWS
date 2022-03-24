@@ -18,12 +18,27 @@
               </li>
               <li class="sidebar-item">
                 <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbstaf/dt_akun"
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
                   aria-expanded="false"
                   ><i class="mdi mdi-account-key"></i
                   ><span class="hide-menu">Akun</span></a
                 >
+                {{-- Submenu --}}
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_ap" class="sidebar-link"
+                      ><i class="mdi mdi-note-outline"></i
+                      ><span class="hide-menu"> Akun Petugas </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_as" class="sidebar-link"
+                      ><i class="mdi mdi-note-plus"></i
+                      ><span class="hide-menu"> Akun Staf </span></a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="sidebar-item">
                 <a
@@ -63,21 +78,27 @@
               </li>
               <li class="sidebar-item">
                 <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbstaf/dt_kordinator"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-account-box"></i
-                  ><span class="hide-menu">Co Puskeswan</span></a
-                >
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbstaf/dt_puskeswan"
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
                   aria-expanded="false"
                   ><i class="mdi mdi-bank"></i
                   ><span class="hide-menu">Puskeswan</span></a
                 >
+                {{-- Submenu --}}
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_puskeswan" class="sidebar-link"
+                      ><i class="mdi mdi-note-outline"></i
+                      ><span class="hide-menu"> Puskeswan </span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_ppus" class="sidebar-link"
+                      ><i class="mdi mdi-note-plus"></i
+                      ><span class="hide-menu"> Petugas Puskeswan </span></a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="sidebar-item">
                 <a
