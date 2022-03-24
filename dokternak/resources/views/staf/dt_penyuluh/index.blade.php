@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Data Petugas</title>
+    <title>Data Penyuluh Perikanan</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -62,13 +62,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Data Puskeswan (Pusat Kesehatan Hewan)</h4>
+              <h4 class="page-title">Data Penyuluh</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/dbstaf">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Data Puskeswan
+                      Data Penyuluh
                     </li>
                   </ol>
                 </nav>
@@ -88,12 +88,12 @@
                 <div class="card-body">
 
                   {{-- Button in header --}}
-                  <a href="{{ route('dt_puskeswan.create') }}" class="card-title">
+                  <a href="{{ route('dt_penyuluh.create') }}" class="card-title">
                     <button type="button" class="btn btn-primary">
                       Tambah Data +
                     </button>
                   </a>
-                  <a href="/cetak_pdf/dt_puskeswan" class="card-title" target="_blank">
+                  <a href="/cetak_pdf/dt_penyuluh" class="card-title" target="_blank">
                     <button type="button" class="btn btn-secondary">
                       Cetak PDF
                     </button>
@@ -112,39 +112,41 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Puskeswan</th>
-                          <th>Gambar</th>
-                          <th>ID Puskeswan</th>
+                          <th>Nama</th>
+                          <th>Foto</th>
+                          <th>ID Penyuluh</th>
+                          <th>Email</th>
+                          <th>Jenis Kelamin</th>
                           <th>Alamat</th>
-                          <th>WA Koordinator</th>
-                          <th>Wilayah Kerja</th>
-                          <th>Jam Kerja</th>
-                          <th>Maps</th>
+                          <th>Wilker</th>
+                          <th>Telpon</th>
+                          <th>Jadwal Kerja</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         @php $no = 1; @endphp
-                        @foreach ($puskeswan as $item)
+                        @foreach ($dtpenyuluh as $item)
                         <tr>
                           <td>{{ $no++ }}</td>
-                          <td>{{ $item->nama_puskeswan }}</td>
-                          <td><img src="/data/data_puskeswan/{{ $item->gambar }}" width="200"></td>
-                          <td>{{ $item->id_puskeswan }}</td>
-                          <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbstaf/dt_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          <td>{{ $item->nomer }}</td>
-                          <td>{{ \Illuminate\Support\Str::limit($item->wilker , 50) }} <a href="/dbstaf/dt_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          <td>{{ \Illuminate\Support\Str::limit($item->jam_kerja , 50) }} <a href="/dbstaf/dt_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          <td>{{ $item->maps }}</td>
+                          <td>{{ $item->nama_penyuluh }}</td>
+                          <td><img src="/data/data_penyuluh/{{ $item->foto }}" width="100"></td>
+                          <td>{{ $item->id_penyuluh }}</td>
+                          <td>{{ $item->email }}</td>
+                          <td>{{ $item->jenis_kelamin }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbstaf/dt_penyuluh/{{ $item->id_penyuluh }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>{{ $item->tempat }}</td>
+                          <td>{{ $item->telpon }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->jadwal_kerja , 50) }} <a href="/dbstaf/dt_penyuluh/{{ $item->id_penyuluh }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
                           <td>
                             <div class="btn-group">
-                              <a href="{{ route('dt_puskeswan.edit',$item->id_puskeswan)}}" class="btn btn-cyan btn-sm text-white">Edit
+                              <a href="{{ route('dt_penyuluh.edit',$item->id_penyuluh)}}" class="btn btn-cyan btn-sm text-white">Edit
                                 <span class="fas fa-edit"></span></a>
-                              <form action="{{ route('dt_puskeswan.destroy',$item->id_puskeswan)}}" method="POST">
+                              <form action="{{ route('dt_penyuluh.destroy',$item->id_penyuluh)}}" method="POST">
                               @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm text-white" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data penyuluh {{ $item->nama_penyuluh }} ini?')">Hapus
                                   <span class="far fa-trash-alt"></span></button>
                               </form>
                           </div>
@@ -155,14 +157,15 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Puskeswan</th>
-                          <th>Gambar</th>
-                          <th>ID Puskeswan</th>
+                          <th>Nama</th>
+                          <th>Foto</th>
+                          <th>ID Penyuluh</th>
+                          <th>Email</th>
+                          <th>Jenis Kelamin</th>
                           <th>Alamat</th>
-                          <th>WA Koordinator</th>
-                          <th>Wilayah Kerja</th>
-                          <th>Jam Kerja</th>
-                          <th>Maps</th>
+                          <th>Wilker</th>
+                          <th>Telpon</th>
+                          <th>Jadwal Kerja</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>

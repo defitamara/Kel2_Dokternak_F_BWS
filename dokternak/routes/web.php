@@ -61,6 +61,15 @@ Route::group(['namespace' => 'staf'], function()
     Route::match(['get','post'], 'dbstaf/dt_puskeswan/edit/{id}','DataPuskeswanController@edit');
     Route::GET('dbstaf/dt_puskeswan/delete/{id}','DataPuskeswanController@delete');
     Route::get('/cetak_pdf/dt_puskeswan','DataPuskeswanController@cetak_pdf')->name('dt_puskeswan.cetak_pdf');
+
+    // Penyuluh
+    Route::resource('/dbstaf/dt_penyuluh', 'DataPenyuluhController');
+    Route::get('/dbstaf/dt_penyuluh/{id}/detail','DataPenyuluhController@detail');
+    //CRUD Data Penyuluh -------------------------------------------------------------------
+    Route::POST('dbstaf/dt_penyuluh/simpandata','DataPenyuluhController@store')->name('simpandata');
+    Route::match(['get','post'], 'dbstaf/dt_penyuluh/edit/{id}','DataPenyuluhController@edit');
+    Route::GET('dbstaf/dt_penyuluh/delete/{id}','DataPenyuluhController@delete');
+    Route::get('/cetak_pdf/dt_penyuluh','DataPenyuluhController@cetak_pdf')->name('dt_penyuluh.cetak_pdf');
 });
 
 // Route untuk Backend ----------------------------------------------------
