@@ -93,7 +93,7 @@
                     >
                   </li>
                   <li class="sidebar-item">
-                    <a href="/dbstaf/dt_ppus" class="sidebar-link"
+                    <a href="/dbstaf/dt_dokpus" class="sidebar-link"
                       ><i class="mdi mdi-note-plus"></i
                       ><span class="hide-menu"> Petugas Puskeswan </span></a
                     >

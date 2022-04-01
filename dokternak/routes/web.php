@@ -78,6 +78,13 @@ Route::group(['namespace' => 'staf'], function()
     Route::match(['get','post'], 'dbstaf/dt_staf/edit/{id}','DataStafController@edit');
     Route::GET('dbstaf/dt_staf/delete/{id}','DataStafController@delete');
     Route::get('/cetak_pdf/dt_staf','DataStafController@cetak_pdf')->name('dt_staf.cetak_pdf');
+
+    // Dokter Puskeswan
+    Route::resource('/dbstaf/dt_dokpus', 'DataDokpusController');
+    //CRUD Data Dokpus -------------------------------------------------------------------
+    Route::match(['get','post'], 'dbstaf/dt_dokpus/edit/{id}','DataDokpusController@edit');
+    Route::GET('dbstaf/dt_dokpus/delete/{id}','DataDokpusController@delete');
+    Route::get('/cetak_pdf/dt_dokpus','DataDokpusController@cetak_pdf')->name('dt_dokpus.cetak_pdf');
 });
 
 // Route untuk Backend ----------------------------------------------------
