@@ -39,7 +39,7 @@
                         <td>{{ $item->jenis_kelamin }}</td>
                         <td>{{ $item->telpon }}</td>
                         <td>{{ $item->alamat }}</td>
-                        <td><img src="/data/data_dokter/{{ $item->foto }}" width="100"></td>
+                        <td><img src="/data/data_staf/{{ $item->foto }}" width="100"></td>
 			</tr>
 			@endforeach
 		</tbody>

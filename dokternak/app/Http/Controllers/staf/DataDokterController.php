@@ -6,7 +6,7 @@ use App\Http\Controllers\controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\dokter;
+use App\Models\Dokter;
 use App\Models\jabatan;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;

@@ -6,7 +6,7 @@ use App\Http\Controllers\controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\puskeswan;
+use App\Models\Puskeswan;
 use DateTime;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;

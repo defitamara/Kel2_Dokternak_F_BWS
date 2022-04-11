@@ -6,7 +6,7 @@ use App\Http\Controllers\controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\artikel;
+use App\Models\Artikel;
 use App\Models\KatArtikel;
 use App\Models\Staf_it;
 use Dotenv\Validator;
