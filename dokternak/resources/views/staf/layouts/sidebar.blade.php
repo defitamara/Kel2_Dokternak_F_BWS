@@ -27,7 +27,7 @@
                 {{-- Submenu --}}
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="sidebar-item">
-                    <a href="/dbstaf/dt_ap" class="sidebar-link"
+                    <a href="/dbstaf/dt_user_petugas" class="sidebar-link"
                       ><i class="mdi mdi-note-outline"></i
                       ><span class="hide-menu"> Akun Petugas </span></a
                     >
@@ -103,13 +103,13 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbstaf/dt_info"
+                  href="/dbstaf/dt_informasi"
                   aria-expanded="false"
                   ><i class="mdi mdi-information"></i
-                  ><span class="hide-menu">FAQ</span></a
+                  ><span class="hide-menu">Informasi</span></a
                 >
               </li>
-              <li class="sidebar-item">
+              {{-- <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/dbstaf/galeri"
@@ -117,7 +117,7 @@
                   ><i class="mdi mdi-multiplication-box"></i
                   ><span class="hide-menu">Gallery</span></a
                 >
-              </li>
+              </li> --}}
               
             </ul>
           </nav>
