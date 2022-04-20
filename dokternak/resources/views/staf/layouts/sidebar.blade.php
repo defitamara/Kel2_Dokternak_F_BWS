@@ -33,7 +33,7 @@
                     >
                   </li>
                   <li class="sidebar-item">
-                    <a href="/dbstaf/dt_as" class="sidebar-link"
+                    <a href="/dbstaf/dt_user_staf" class="sidebar-link"
                       ><i class="mdi mdi-note-plus"></i
                       ><span class="hide-menu"> Akun Staf </span></a
                     >

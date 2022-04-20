@@ -102,6 +102,14 @@ Route::group(['namespace' => 'staf'], function()
     Route::PUT('dbstaf/dt_user_petugas/ubahpw/{id}/simpan','DataUserPetugasController@ubahpassword')->name('dt_user_petugas.ubahpassword');
     Route::GET('dbstaf/dt_user_petugas/delete/{id}','DataUserPetugasController@delete');
     Route::get('/cetak_pdf/dt_user_petugas','DataUserPetugasController@cetak_pdf')->name('staf.dt_user_petugas.cetak_pdf');
+
+    //CRUD Data User Staf -------------------------------------------------------------------
+    Route::resource('/dbstaf/dt_user_staf', 'DataUserStafController');
+    Route::match(['get','post'], 'dbstaf/dt_user_staf/edit/{id}','DataUserStafController@edit');
+    Route::match(['get','post'], 'dbstaf/dt_user_staf/ubahpw/{id}','DataUserStafController@ubahpw')->name('dt_user_staf.ubahpw');
+    Route::PUT('dbstaf/dt_user_staf/ubahpw/{id}/simpan','DataUserStafController@ubahpassword')->name('dt_user_staf.ubahpassword');
+    Route::GET('dbstaf/dt_user_staf/delete/{id}','DataUserStafController@delete');
+    Route::get('/cetak_pdf/dt_user_staf','DataUserStafController@cetak_pdf')->name('staf.dt_user_staf.cetak_pdf');
 });
 
 // Route untuk Backend ----------------------------------------------------
