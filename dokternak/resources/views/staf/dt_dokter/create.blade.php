@@ -25,6 +25,7 @@
                             {!! isset($dtdokter) ? method_field('PUT') : '' !!}
                   <input type="hidden" name="id_dokter" value="{{ isset($dtdokter) ? $dtdokter->id_dokter : '' }}"> <br/>
                   <input type="hidden" name="sertifikasi" value="{{ isset($dtdokter) ? $dtdokter->sertifikasi : 'kosong' }}"> <br/>
+                  <input type="hidden" name="id" value="{{ isset($dtdokter) ? $dtdokter->id : '' }}"> <br/>
                   <div class="form-row">
                   <div class="col-md-4 mb-2">
                     <label for="validationCustom3">Nama Lengkap</label>

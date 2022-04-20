@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Dokter;
 use App\Models\jabatan;
+use App\Models\User;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Crypt;
@@ -129,8 +130,25 @@ class DataDokterController extends Controller
 
         Dokter::where('id_dokter', $id)->update($data_simpan);
 
-        return redirect()->route('dt_dokter.index')
-                        ->with('success','Data petugas telah berhasil diperbarui');
+        // Request id, agar bisa melakukan update nama dan email di tabel users sesuai id
+        $id_user = $request->id;
+
+        if($id_user != 0)
+        {
+            $data_simpan2 = [
+                'name' => $request->nama,
+                'email' => $request->email,
+            ];
+    
+            User::where('id', $id_user)->update($data_simpan2);
+
+            return redirect()->route('dt_dokter.index')
+                ->with('success','Data petugas dan akun petugas telah berhasil diperbarui');
+
+        }else{
+            return redirect()->route('dt_dokter.index')
+                ->with('success','Data petugas telah berhasil diperbarui');
+        }
 
     }
 
