@@ -55,6 +55,8 @@ class HomeController extends Controller
             return redirect()->route('lppetugas');
         }elseif($role == 3) {
             return redirect()->route('dbstaf');
+        }elseif ($role  == 4) {
+            return redirect()->route('dbkopus');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }
@@ -89,6 +91,8 @@ class HomeController extends Controller
             return redirect()->route('dashboard');
         }elseif($role == 3) {
             return redirect()->route('dbstaf');
+        }elseif ($role  == 4) {
+            return redirect()->route('dbkopus');
         }elseif($role  == 0) {
             return redirect()->route('home');
         }
@@ -107,7 +111,35 @@ class HomeController extends Controller
             ->get();
             return view('staf.dashboard',compact('staf'));
         }
-        elseif ($role  == 2) {
+        elseif ($role  == 4) {
+            return redirect()->route('dbkopus');
+        }elseif ($role  == 2) {
+            return redirect()->route('lppetugas');
+        }elseif($role == 1) {
+            return redirect()->route('dashboard');
+        }elseif($role  == 0) {
+            return redirect()->route('home');
+        }
+    }
+
+    // Dashboard Koordinator Puskeswan
+    public function dbkopus()
+    {
+        $id = Auth::id();
+        $user = User::where('id',$id)->first();
+
+        $role = $user->is_admin;
+
+        if ($role == 4) {
+            $kopus = DB::table('users')
+            ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
+            ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
+            ->get();
+            return view('kopus.dashboard',compact('kopus'));
+        }
+        elseif ($role  == 3) {
+            return redirect()->route('dbstaf');
+        }elseif ($role  == 2) {
             return redirect()->route('lppetugas');
         }elseif($role == 1) {
             return redirect()->route('dashboard');

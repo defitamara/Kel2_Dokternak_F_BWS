@@ -6,7 +6,7 @@ use App\Http\Controllers\controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Informasi;
+use App\Models\informasi;
 use App\Models\Staf_it;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;
@@ -22,14 +22,14 @@ class DataInformasiController extends Controller
         $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
             ->get();
 
-        $informasi = Informasi::all();
+        $informasi = informasi::all();
 
         return view('staf.dt_informasi.index',compact('informasi','staf'));
     }
 
     public function cetakinformasi()
     {
-        $informasi = Informasi::all();
+        $informasi = informasi::all();
     	$pdf = PDF::loadview('staf/dt_informasi/cetak_pdf',['informasi'=>$informasi]);
     	return view('staf.dt_informasi.cetak_pdf',compact('informasi'));
     }
@@ -60,7 +60,7 @@ class DataInformasiController extends Controller
             'isi' => $request->isi,
         ];
 
-        Informasi::create($data_simpan);
+        informasi::create($data_simpan);
 
         return redirect()->route('dt_informasi.index')
                         ->with('success','Data informasi baru telah berhasil disimpan');
@@ -69,7 +69,7 @@ class DataInformasiController extends Controller
     {
         $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
             ->get(); //agar foto staf di template.blade.php bisa muncul
-        $informasi = Informasi::where('id_info',$id)->first();
+        $informasi = informasi::where('id_info',$id)->first();
         return view('staf.dt_informasi.create',compact('informasi','staf'));
     }
 
@@ -81,7 +81,7 @@ class DataInformasiController extends Controller
             'isi' => $request->isi,
         ];
 
-        Informasi::where('id_info', $id)->update($data_simpan);
+        informasi::where('id_info', $id)->update($data_simpan);
 
         return redirect()->route('dt_informasi.index')
                         ->with('success','Data informasi telah berhasil diperbarui');
@@ -91,7 +91,7 @@ class DataInformasiController extends Controller
     {
         $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
             ->get();
-        $informasi = Informasi::orderBy('id_info','asc')
+        $informasi = informasi::orderBy('id_info','asc')
                    ->where('id_info',$id)
                    ->get();
         return view('staf.dt_informasi.detail',compact('informasi','staf'));
@@ -99,7 +99,7 @@ class DataInformasiController extends Controller
 
     public function destroy($id)
     {
-        $informasi = Informasi::where('id_info',$id)->delete();
+        $informasi = informasi::where('id_info',$id)->delete();
         return redirect()->route('dt_informasi.index')
                         ->with('success','Data informasi telah berhasil dihapus');
     }
