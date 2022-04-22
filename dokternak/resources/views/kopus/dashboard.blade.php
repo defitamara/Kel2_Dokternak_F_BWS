@@ -39,6 +39,7 @@
           <div class="row">
             {{-- Selamat datang --}}
             @foreach($kopus as $item)
+            @if ($item->id == Auth::user()->id)
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
@@ -49,6 +50,7 @@
                 </div>
               </div>
             </div>
+            @endif
             @endforeach
             <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">
