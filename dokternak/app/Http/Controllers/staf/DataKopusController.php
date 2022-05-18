@@ -23,7 +23,7 @@ class DataKopusController extends Controller
         $dtkopus = DB::table('koordinator_puskeswan')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
             ->select('koordinator_puskeswan.id_kp','koordinator_puskeswan.nama_kp','koordinator_puskeswan.jabatan','koordinator_puskeswan.jenis_kelamin',
-            'koordinator_puskeswan.telpon','koordinator_puskeswan.alamat','koordinator_puskeswan.foto','puskeswan.nama_puskeswan')
+            'koordinator_puskeswan.telpon','koordinator_puskeswan.alamat','koordinator_puskeswan.foto','puskeswan.nama_puskeswan','koordinator_puskeswan.id')
             ->get();
         return view('staf.dt_kopus.index', compact('dtkopus','staf'));
     }

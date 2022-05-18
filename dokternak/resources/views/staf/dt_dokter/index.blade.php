@@ -122,6 +122,7 @@
                           <th>Tempat</th>
                           <th>Telpon</th>
                           <th>Jadwal Kerja</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -142,8 +143,15 @@
                           <td>{{ $item->telpon }}</td>
                           {{-- <td>{{ $item->jadwal_kerja }}</td> --}}
                           <td>{{ \Illuminate\Support\Str::limit($item->jadwal_kerja , 50) }} <a href="/dbstaf/dt_dokter/{{ $item->id_dokter }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          {{-- <td>{{ $item->username }}</td>
-                          <td>{{ $item->password }}</td> --}}
+                          <td>
+                            @if ($item->id != 0)
+                              <div class="text-success">Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_petugas" class="more-btn">  <strong> Lihat » </strong></a>
+                            @else
+                              <div class="text-danger">Belum Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_petugas/create" class="more-btn">  <strong> Daftarkan » </strong></a>
+                            @endif 
+                          </td>
                           <td>
                             <div class="btn-group">
                               <a href="{{ route('dt_dokter.edit',$item->id_dokter)}}" class="btn btn-cyan btn-sm text-white">Edit
@@ -173,6 +181,7 @@
                           <th>Tempat</th>
                           <th>Telpon</th>
                           <th>Jadwal Kerja</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>

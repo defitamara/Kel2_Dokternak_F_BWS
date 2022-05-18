@@ -120,6 +120,7 @@
                           <th>Jenis Kelamin</th>
                           <th>Telpon</th>
                           <th>Alamat</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -136,6 +137,16 @@
                           <td>{{ $item->jenis_kelamin }}</td>
                           <td>{{ $item->telpon }}</td>
                           <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbstaf/dt_kopus/{{ $item->id_kp }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>
+                            @if ($item->id != 0)
+                              <div class="text-success">Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_kopus/{{ $item->id }}/detail/" class="more-btn">  <strong> Lihat » </strong></a>
+                            @else
+                              <div class="text-danger">Belum Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_kopus/create" class="more-btn">  <strong> Daftarkan » </strong></a>
+                            @endif 
+                          </td>
+                          {{-- <td>{{ $item->id != 0 ? 'Terdaftar' : 'Belum Terdaftar' }} }}</td> --}}
                           <td>
                             <div class="btn-group">
                               <a href="{{ route('dt_kopus.edit',$item->id_kp)}}" class="btn btn-cyan btn-sm text-white">Edit
@@ -163,6 +174,7 @@
                           <th>Jenis Kelamin</th>
                           <th>Telpon</th>
                           <th>Alamat</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
