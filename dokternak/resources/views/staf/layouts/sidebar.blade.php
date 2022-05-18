@@ -98,6 +98,12 @@
                       ><span class="hide-menu"> Petugas Puskeswan </span></a
                     >
                   </li>
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_kopus" class="sidebar-link"
+                      ><i class="mdi mdi-note-plus"></i
+                      ><span class="hide-menu"> Koordinator Puskeswan </span></a
+                    >
+                  </li>
                 </ul>
               </li>
               <li class="sidebar-item">

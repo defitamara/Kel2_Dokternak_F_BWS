@@ -111,6 +111,15 @@ Route::group(['namespace' => 'staf'], function()
     Route::PUT('dbstaf/dt_user_staf/ubahpw/{id}/simpan','DataUserStafController@ubahpassword')->name('dt_user_staf.ubahpassword');
     Route::GET('dbstaf/dt_user_staf/delete/{id}','DataUserStafController@delete');
     Route::get('/cetak_pdf/dt_user_staf','DataUserStafController@cetak_pdf')->name('staf.dt_user_staf.cetak_pdf');
+
+    // Koordinator Puskeswan
+    Route::resource('/dbstaf/dt_kopus', 'DataKopusController');
+    Route::get('/dbstaf/dt_kopus/{id}/detail','DataKopusController@detail');
+    Route::POST('/dbstaf/dt_kopus/create','DataKopusController@create')->name('staf.dt_kopus.create');
+    //CRUD Data Staf -------------------------------------------------------------------
+    Route::match(['get','post'], 'dbstaf/dt_kopus/edit/{id}','DataKopusController@edit');
+    Route::GET('dbstaf/dt_kopus/delete/{id}','DataKopusController@delete');
+    Route::get('/cetak_pdf/dt_kopus','DataKopusController@cetak_pdf')->name('dt_kopus.cetak_pdf');
 });
 
 // Route untuk Backend ----------------------------------------------------
