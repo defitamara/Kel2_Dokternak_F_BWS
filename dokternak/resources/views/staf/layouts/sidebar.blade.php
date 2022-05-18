@@ -38,6 +38,12 @@
                       ><span class="hide-menu"> Akun Staf </span></a
                     >
                   </li>
+                  <li class="sidebar-item">
+                    <a href="/dbstaf/dt_user_kopus" class="sidebar-link"
+                      ><i class="mdi mdi-note-plus"></i
+                      ><span class="hide-menu"> Akun Koordinator Puskeswan </span></a
+                    >
+                  </li>
                 </ul>
               </li>
               <li class="sidebar-item">

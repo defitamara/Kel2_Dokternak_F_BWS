@@ -112,6 +112,14 @@ Route::group(['namespace' => 'staf'], function()
     Route::GET('dbstaf/dt_user_staf/delete/{id}','DataUserStafController@delete');
     Route::get('/cetak_pdf/dt_user_staf','DataUserStafController@cetak_pdf')->name('staf.dt_user_staf.cetak_pdf');
 
+    //CRUD Data User Kopus -------------------------------------------------------------------
+    Route::resource('/dbstaf/dt_user_kopus', 'DataUserKopusController');
+    Route::match(['get','post'], 'dbstaf/dt_user_kopus/edit/{id}','DataUserKopusController@edit');
+    Route::match(['get','post'], 'dbstaf/dt_user_kopus/ubahpw/{id}','DataUserKopusController@ubahpw')->name('dt_user_kopus.ubahpw');
+    Route::PUT('dbstaf/dt_user_kopus/ubahpw/{id}/simpan','DataUserKopusController@ubahpassword')->name('dt_user_kopus.ubahpassword');
+    Route::GET('dbstaf/dt_user_kopus/delete/{id}','DataUserKopusController@delete');
+    Route::get('/cetak_pdf/dt_user_kopus','DataUserKopusController@cetak_pdf')->name('staf.dt_user_kopus.cetak_pdf');
+
     // Koordinator Puskeswan
     Route::resource('/dbstaf/dt_kopus', 'DataKopusController');
     Route::get('/dbstaf/dt_kopus/{id}/detail','DataKopusController@detail');
