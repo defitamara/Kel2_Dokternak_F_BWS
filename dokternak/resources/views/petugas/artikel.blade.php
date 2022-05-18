@@ -67,7 +67,7 @@
                                             <h2><a href="/petugas/artikel/{{ $data_artikel->id_artikel }}/detail/">{{ $data_artikel->judul }}</a></h2>
                                         </a>
                                         {{-- Code untuk memotong text menggunakan Str limit --}}
-                                        <p>{{\Illuminate\Support\Str::limit($data_artikel->isi, 250)}}  <a href="/artikel/{{ $data_artikel->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></p>
+                                        <p>{!! \Illuminate\Support\Str::limit($data_artikel->isi, 250) !!}<a href="/artikel/{{ $data_artikel->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></p>
                                         <ul class="blog-info-link">
                                             <li><a>{{ $data_artikel->kategori_artikel }}</a></li>
                                             <li><a>{{ $data_artikel->tanggal }}</a></li>
