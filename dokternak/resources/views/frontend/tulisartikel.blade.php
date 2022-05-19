@@ -146,9 +146,6 @@
             </div>
         </div>
     </div>
-    
-    @include('frontend/layouts.footer');
-    
 
         <!-- All JS Custom Plugins Link Here here -->
         <script src="{{ asset('Petugas/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
