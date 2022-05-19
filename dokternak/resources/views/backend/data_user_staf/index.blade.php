@@ -88,12 +88,12 @@
                 <div class="card-body">
 
                   {{-- Button in header --}}
-                  <a href="{{ route('data_staf.create') }}" class="card-title">
+                  <a href="{{ route('data_user_staf.create') }}" class="card-title">
                     <button type="button" class="btn btn-primary">
                       Tambah Data +
                     </button>
                   </a>
-                  <a href="/cetak_pdf/data_staf" class="card-title" target="_blank">
+                  <a href="/cetak_pdf/data_user_staf" class="card-title" target="_blank">
                     <button type="button" class="btn btn-secondary">
                       Cetak PDF
                     </button>
@@ -112,47 +112,32 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama</th>
+                          <th>Nama Staf</th>
                           <th>Foto</th>
-                          <th>Id Staf</th>
-                          <th>Jabatan</th>
-                          <th>Jenis Kelamin</th>
-                          <th>Telpon</th>
-                          <th>Alamat</th>
-                          <th>Akun</th>
+                          <th>Email</th>
+                          <th>Password Enkripsi</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         @php $no = 1; @endphp
-                        @foreach ($data_staf as $item)
+                        @foreach ($data as $item)
                         <tr>
                           <td>{{ $no++ }}</td>
-                          <td>{{ $item->nama_staf }}</td>
+                          <td>{{ $item->name }}</td>
                           <td><img src="/data/data_staf/{{ $item->foto }}" width="100"></td>
-                          <td>{{ $item->id_staf }}</td>
-                          <td>{{ $item->jabatan }}</td>
-                          <td>{{ $item->jenis_kelamin }}</td>
-                          <td>{{ $item->telpon }}</td>
-                          <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dashboard/data_staf/{{ $item->id_staf }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          <td>
-                            @if ($item->id != 0)
-                              <div class="text-success">Terdaftar</div> 
-                              <a href="/dashboard/data_user_staf/" class="more-btn">  <strong> Lihat » </strong></a>
-                            @else
-                              <div class="text-danger">Belum Terdaftar</div> 
-                              <a href="/dashboard/data_user_staf/create" class="more-btn">  <strong> Daftarkan » </strong></a>
-                            @endif 
-                          </td>
+                          <td>{{ $item->email }}</td>
+                          <td>{{\Illuminate\Support\Str::limit ($item->password,10) }}</td>
+                          {{-- <td><i>Diamankan</i></td> --}}
                           <td>
                             <div class="btn-group">
-                              <a href="{{ route('data_staf.edit',$item->id_staf)}}" class="btn btn-cyan btn-sm text-white">Edit
+                              <a href="{{ route('data_user_staf.edit',$item->id) }}" class="btn btn-cyan btn-sm text-white">Edit
                                 <span class="fas fa-edit"></span></a>
-                              <form action="{{ route('data_staf.destroy',$item->id_staf)}}" method="POST">
+                              <form action="{{ route('data_user_staf.destroy',$item->id)}}" method="POST">
                               @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm text-white" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data {{ $item->nama_staf }} ini?')">Hapus
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus akun staf {{ $item->nama_staf }}')">Hapus
                                   <span class="far fa-trash-alt"></span></button>
                               </form>
                           </div>
@@ -163,14 +148,10 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama</th>
+                          <th>Nama Petugas</th>
                           <th>Foto</th>
-                          <th>Id Staf</th>
-                          <th>Jabatan</th>
-                          <th>Jenis Kelamin</th>
-                          <th>Telpon</th>
-                          <th>Alamat</th>
-                          <th>Akun</th>
+                          <th>Email</th>
+                          <th>Password Enkripsi</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>

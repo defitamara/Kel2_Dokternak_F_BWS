@@ -173,6 +173,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_informasi/{id}/detail','DataInformasiController@detail');
     Route::resource('/dashboard/data_staf', 'DataStafController');
     Route::get('/dashboard/data_staf/{id}/detail','DataStafController@detail');
+    Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
+    Route::get('/dashboard/data_user_staf/{id}/detail','DataUserStafController@detail');
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
 Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
@@ -215,6 +217,14 @@ Route::POST('dashboard/datapetugas/simpandata','DataPetugasController@store')->n
 Route::match(['get','post'], 'dashboard/datapetugas/edit/{id}','DataPetugasController@edit');
 Route::GET('dashboard/datapetugas/delete/{id}','DataPetugasController@delete');
 Route::get('/cetak_pdf/datapetugas','DataPetugasController@cetak_pdf')->name('backend.datapetugas.cetak_pdf');
+
+//CRUD Data User Staf -------------------------------------------------------------------
+Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
+Route::match(['get','post'], 'dashboard/data_user_staf/edit/{id}','DataUserStafController@edit');
+Route::match(['get','post'], 'dashboard/data_user_staf/ubahpw/{id}','DataUserStafController@ubahpw')->name('data_user_staf.ubahpw');
+Route::POST('dashboard/data_user_staf/ubahpw/{id}/simpan','DataUserStafController@ubahpassword')->name('data_user_staf.ubahpassword');
+Route::GET('dashboard/data_user_staf/delete/{id}','DataUserStafController@delete');
+Route::get('/cetak_pdf/data_user_staf','DataUserStafController@cetak_pdf')->name('backend.data_user_staf.cetak_pdf');
 
 //CRUD Data Staf -------------------------------------------------------------------
 Route::get('/dashboard/data_staf','DataStafController@detail');
