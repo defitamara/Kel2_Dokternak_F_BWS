@@ -62,13 +62,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Data Staf IT</h4>
+              <h4 class="page-title">Data User Staf IT</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Data Staf IT
+                      Data User Staf IT
                     </li>
                   </ol>
                 </nav>
@@ -148,7 +148,7 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Petugas</th>
+                          <th>Nama Staf</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
