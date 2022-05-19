@@ -152,7 +152,7 @@
             <div class="pagination-area pb-300 text-center">
                 <div class="blog_right_sidebar"> 
                   <aside class="single_sidebar_widget search_widget">
-                    <form action="/penyuluh/cari" method="GET">
+                    <form action="/penyuluh/cari" method="POST">
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder='Masukkan nama Penyuluh atau lokasi Kecamatan anda'

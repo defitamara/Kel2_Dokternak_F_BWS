@@ -19,18 +19,52 @@ class PenyuluhController extends Controller
     public function cari(Request $request)
     {
         //Menangkap data pencarian
-        $cari = $request->cari;
-        $penyuluh = DB::table('penyuluh')
-        ->where('nama_penyuluh'.'LIKE'. "%".$cari."%")
-        ->paginate(2);
+        // $cari = $request->cari;
 
-        //mengambil data dari tabel puskeswan sesuai pencarian data
-        $puskeswan = DB::table('penyuluh')
-        ->where('nama_penyuluh','like',"%".$cari."%")
-        ->paginate(2);
-        //mengirim data puskeswan ke view puskeswan
-        return view('frontend.penyuluh',compact('penyuluh'));
+        // //mengambul data dari tabel artikel sesuai pencarian data
+        // $dokter = DB::table('dokter')
+        // ->where('nama_dokter','like',"%".$cari."%")
+        // ->paginate(2);
+
+        // //mengirim data artikel ke view artikel
+        // return view('frontend.dokter',compact('dokter'));
+
+                //Menangkap data pencarian
+                $cari = $request->cari;
+
+                //mengambul data dari tabel artikel sesuai pencarian data
+                // $dokter = DB::table('dokter')
+                // ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_dokter')
+                // ->where('nama_dokter','like',"%".$cari."%")
+                // ->paginate(3);
+                $kode = 11;
+                $penyuluh = DB::table('penyuluh')
+                    // ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+                    ->where('nama_penyuluh','like',"%".$cari."%")
+                    ->paginate(2);
+                //mengirim data artikel ke view artikel
+                return view('frontend.penyuluh',compact('penyuluh','kode'));
     }
+
+    // public function cari(Request $request)
+    // {
+    //     //Menangkap data pencarian
+    //     $cari = $request->cari;
+    //     $penyuluh = DB::table('penyuluh')
+    //     ->where('nama_penyuluh'.'LIKE'. "%".$cari."%")
+    //     ->paginate(2);
+
+    //     //mengambil data dari tabel puskeswan sesuai pencarian data
+    //     $puskeswan = DB::table('penyuluh')
+    //     ->where('nama_penyuluh','like',"%".$cari."%")
+    //     ->paginate(2);
+    //     //mengirim data puskeswan ke view puskeswan
+    //     return view('frontend.penyuluh',compact('penyuluh'));
+    // }
+
+
+
+
 
     // public function kategori(Request $request)
     // {

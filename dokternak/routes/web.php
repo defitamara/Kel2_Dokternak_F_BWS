@@ -412,10 +412,8 @@ Route::POST('/dokter/kategori', [App\Http\Controllers\frontend\DaftarDokterContr
 
 //route penyuluh
 Route::get('/penyuluh', 'frontend\PenyuluhController@index');
-Route::get('/penyuluh/cari', 'frontend\PenyuluhController@cari');
+Route::POST('/penyuluh/cari', [App\Http\Controllers\frontend\PenyuluhController::class, 'cari'])->name('penyuluh.cari');
 Route::get('/penyuluh/{id}/detail', 'frontend\PenyuluhController@detail');
-//Route::POST('/penyuluh/cari', [App\Http\Controllers\frontend\PenyuluhController::class, 'cari'])->name('penyuluh.cari');
-
 
 //Route Puskeswan
 Route::get('/puskeswan', 'frontend\PuskeswanController@index');
