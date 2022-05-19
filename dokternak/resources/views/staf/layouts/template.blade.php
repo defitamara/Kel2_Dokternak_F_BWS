@@ -356,9 +356,10 @@
                   <div class="dropdown-item">
                     {{ Auth::user()->name }}
                   </div>
-                  <a class="dropdown-item" href="javascript:void(0)"
+                  <a class="dropdown-item" href="{{ route('dt_profil.index')}}"
                     ><i class="mdi mdi-account me-1 ms-1"></i> Akun Profil
                   </a>
+                  
                   <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

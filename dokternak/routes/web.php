@@ -128,6 +128,10 @@ Route::group(['namespace' => 'staf'], function()
     Route::match(['get','post'], 'dbstaf/dt_kopus/edit/{id}','DataKopusController@edit');
     Route::GET('dbstaf/dt_kopus/delete/{id}','DataKopusController@delete');
     Route::get('/cetak_pdf/dt_kopus','DataKopusController@cetak_pdf')->name('dt_kopus.cetak_pdf');
+
+    // Profil akun dan edit profil
+    Route::resource('/dbstaf/dt_profil', 'ProfilController');
+    Route::match(['get','post'], 'dbstaf/dt_profil/edit/{id}','ProfilController@edit');
 });
 
 // Route untuk Backend ----------------------------------------------------
