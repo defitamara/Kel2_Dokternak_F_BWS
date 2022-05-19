@@ -19,7 +19,7 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbkopus/dt_puskeswan"
+                  href="/dbkopus/tabel_puskeswan"
                   aria-expanded="false"
                   ><i class="mdi mdi-bank"></i
                   ><span class="hide-menu">Data Puskeswan</span></a
@@ -28,7 +28,7 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/dbkopus/dt_dokpus"
+                  href="/dbkopus/tabel_dokpus"
                   aria-expanded="false"
                   ><i class="mdi mdi-bank"></i
                   ><span class="hide-menu">Data Petugas Puskeswan</span></a

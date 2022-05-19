@@ -1,4 +1,4 @@
-@extends('staf/layouts.template')
+@extends('kopus/layouts.template')
   
 @section('content')
 
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Data Staf</title>
+    <title>Data Petugas</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -62,13 +62,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Data Staf IT</h4>
+              <h4 class="page-title">Data Puskeswan (Pusat Kesehatan Hewan)</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dbstaf">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Data Staf
+                      Data Puskeswan
                     </li>
                   </ol>
                 </nav>
@@ -88,17 +88,20 @@
                 <div class="card-body">
 
                   {{-- Button in header --}}
-                  {{-- <a href="{{ route('dt_staf.create') }}" class="card-title">
+                  {{-- Kopus tidak bisa menambah data puskeswan --}}
+                  {{-- <a href="{{ route('dta_puskeswan.create') }}" class="card-title">
                     <button type="button" class="btn btn-primary">
                       Tambah Data +
                     </button>
                   </a> --}}
-                  <a href="/cetak_pdf/dt_staf" class="card-title" target="_blank">
+                  @foreach ($kopus as $item)
+                  <a href="{{ route('tabel_puskeswan.cetak_pdf',$item->id_puskeswan) }}" class="card-title" target="_blank">
                     <button type="button" class="btn btn-secondary">
                       Cetak PDF
                     </button>
                   </a>
                   <br><br>
+                  @endforeach
 
                   {{-- Alert --}}
                   @if ($message = Session::get('success'))
@@ -112,68 +115,60 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama</th>
-                          <th>Foto</th>
-                          <th>Id Staf</th>
-                          <th>Jabatan</th>
-                          <th>Jenis Kelamin</th>
-                          <th>Telpon</th>
+                          <th>Nama Puskeswan</th>
+                          <th>Gambar</th>
+                          <th>ID Puskeswan</th>
                           <th>Alamat</th>
-                          <th>Akun</th>
+                          <th>WA Koordinator</th>
+                          <th>Wilayah Kerja</th>
+                          <th>Jam Kerja</th>
+                          <th>Maps</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         @php $no = 1; @endphp
-                        @foreach ($dtstaf as $item)
+                        @foreach ($kopus as $item)
                         <tr>
                           <td>{{ $no++ }}</td>
-                          <td>{{ $item->nama_staf }}</td>
-                          <td><img src="/data/data_staf/{{ $item->foto }}" width="100"></td>
-                          <td>{{ $item->id_staf }}</td>
-                          <td>{{ $item->jabatan }}</td>
-                          <td>{{ $item->jenis_kelamin }}</td>
-                          <td>{{ $item->telpon }}</td>
-                          <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbstaf/dt_staf/{{ $item->id_staf }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
-                          <td>
-                            @if ($item->id != 0)
-                              <div class="text-success">Terdaftar</div> 
-                              <a href="/dbstaf/dt_user_staf/" class="more-btn">  <strong> Lihat » </strong></a>
-                            @else
-                              <div class="text-danger">Belum Terdaftar</div> 
-                              {{-- <a href="/dbstaf/dt_user_staf/create" class="more-btn">  <strong> Daftarkan » </strong></a> --}}
-                            @endif 
-                          </td>
+                          <td>{{ $item->nama_puskeswan }}</td>
+                          <td><img src="/data/data_puskeswan/{{ $item->gambar }}" width="200"></td>
+                          <td>{{ $item->id_puskeswan }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbkopus/tabel_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>{{ $item->nomer }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->wilker , 50) }} <a href="/dbkopus/tabel_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>{{ \Illuminate\Support\Str::limit($item->jam_kerja , 50) }} <a href="/dbkopus/tabel_puskeswan/{{ $item->id_puskeswan }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>{{ $item->maps }}</td>
                           <td>
                             <div class="btn-group">
-                              <a href="{{ route('dt_staf.edit',$item->id_staf)}}" class="btn btn-cyan btn-sm text-white">Edit
+                              <a href="{{ route('tabel_puskeswan.edit',$item->id_puskeswan)}}" class="btn btn-cyan btn-sm text-white">Edit
                                 <span class="fas fa-edit"></span></a>
-                              <form action="{{ route('dt_staf.destroy',$item->id_staf)}}" method="POST">
+                              {{-- <form action="{{ route('dta_puskeswan.destroy',$item->id_puskeswan)}}" method="POST">
                               @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm text-white" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data {{ $item->nama_staf }} ini?')">Hapus
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
                                   <span class="far fa-trash-alt"></span></button>
-                              </form>
+                              </form> --}}
                           </div>
                           </td>
                         </tr>
                         @endforeach
                       </tbody>
-                      <tfoot>
+                      {{-- <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama</th>
-                          <th>Foto</th>
-                          <th>Id Staf</th>
-                          <th>Jabatan</th>
-                          <th>Jenis Kelamin</th>
-                          <th>Telpon</th>
+                          <th>Nama Puskeswan</th>
+                          <th>Gambar</th>
+                          <th>ID Puskeswan</th>
                           <th>Alamat</th>
-                          <th>Akun</th>
+                          <th>WA Koordinator</th>
+                          <th>Wilayah Kerja</th>
+                          <th>Jam Kerja</th>
+                          <th>Maps</th>
                           <th>Aksi</th>
                         </tr>
-                      </tfoot>
+                      </tfoot> --}}
                     </table>
                   </div> <!-- div responsive -->
                 </div>

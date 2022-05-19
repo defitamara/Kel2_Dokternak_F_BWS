@@ -31,6 +31,20 @@ Route::get('dbkopus', [App\Http\Controllers\HomeController::class, 'dbkopus'])->
 // Route::get('home', [HomeController::class, 'index'])->name('home');
 Auth::routes();
 
+// Route untuk Koordinator Puskeswan
+Route::group(['namespace' => 'kopus'], function()
+{
+    // Puskeswan
+    Route::resource('/dbkopus/tabel_puskeswan', 'DataPuskeswanController');
+    Route::get('/dbkopus/tabel_puskeswan/{id}/detail','DataPuskeswanController@detail');
+    Route::match(['get','post'], 'dbkopus/tabel_puskeswan/edit/{id}','DataPuskeswanController@edit');
+    //CRUD Data Puskeswan -------------------------------------------------------------------
+    Route::POST('dbkopus/tabel_puskeswan/simpandata','DataPuskeswanController@store')->name('simpandata');
+    Route::match(['get','post'], '/dbstaf/tabel_puskeswan/edit/{id}','DataPuskeswanController@edit');
+    Route::GET('/dbkopus/tabel_puskeswan/delete/{id}','DataPuskeswanController@delete');
+    Route::get('/cetak_pdf/tabel_puskeswan/{id}','DataPuskeswanController@cetak_pdf')->name('tabel_puskeswan.cetak_pdf');
+});
+
 // Route untuk Staf it ---------------------------------------------------
 Route::group(['namespace' => 'staf'], function()
 {
