@@ -46,10 +46,12 @@
                 <div class="form-row">
                   <div class="col-md-4 mb-2">
                     <label for="exampleInputJenisKelamin">Jenis Kelamin</label>
-                    <input type="jenis_kelamin" class="form-control" id="exampleInputJenisKelamin" name="jenis_kelamin" minlength="5" placeholder="Masukkan Jenis Kelamin" aria-describedby="Masukkan jenis_kelamin" 
-                    value="{{ isset($dtstaf) ? $dtstaf->jenis_kelamin : '' }}"  
-                    required>
-                    <div class="invalid-feedback"> Please use a valid jenis kelamin </div>
+                    <div class="form-row">
+                      <input type="radio" name="jenis_kelamin" id="laki" value="Laki-Laki" {{ ($dtstaf->jenis_kelamin=="Laki-Laki")? "checked" : "" }}>
+                      <label for="laki" class="tab-label">Laki-Laki</label> <br>
+                      <input type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan" {{ ($dtstaf->jenis_kelamin=="Perempuan")? "checked" : "" }}>
+                      <label for="perempuan" class="tab-label">Perempuan</label>
+                    </div>
                   </div>
                 </div>
                 <div class="form-row">

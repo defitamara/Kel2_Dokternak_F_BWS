@@ -140,7 +140,7 @@
                           <td>
                             @if ($item->id != 0)
                               <div class="text-success">Terdaftar</div> 
-                              <a href="/dbstaf/dt_user_kopus/{{ $item->id }}/detail/" class="more-btn">  <strong> Lihat » </strong></a>
+                              <a href="/dbstaf/dt_user_kopus" class="more-btn">  <strong> Lihat » </strong></a>
                             @else
                               <div class="text-danger">Belum Terdaftar</div> 
                               <a href="/dbstaf/dt_user_kopus/create" class="more-btn">  <strong> Daftarkan » </strong></a>

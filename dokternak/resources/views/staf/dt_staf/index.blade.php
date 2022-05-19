@@ -119,6 +119,7 @@
                           <th>Jenis Kelamin</th>
                           <th>Telpon</th>
                           <th>Alamat</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
@@ -134,6 +135,15 @@
                           <td>{{ $item->jenis_kelamin }}</td>
                           <td>{{ $item->telpon }}</td>
                           <td>{{ \Illuminate\Support\Str::limit($item->alamat , 50) }} <a href="/dbstaf/dt_staf/{{ $item->id_staf }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+                          <td>
+                            @if ($item->id != 0)
+                              <div class="text-success">Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_staf/" class="more-btn">  <strong> Lihat » </strong></a>
+                            @else
+                              <div class="text-danger">Belum Terdaftar</div> 
+                              <a href="/dbstaf/dt_user_staf/create" class="more-btn">  <strong> Daftarkan » </strong></a>
+                            @endif 
+                          </td>
                           <td>
                             <div class="btn-group">
                               <a href="{{ route('dt_staf.edit',$item->id_staf)}}" class="btn btn-cyan btn-sm text-white">Edit
@@ -160,6 +170,7 @@
                           <th>Jenis Kelamin</th>
                           <th>Telpon</th>
                           <th>Alamat</th>
+                          <th>Akun</th>
                           <th>Aksi</th>
                         </tr>
                       </tfoot>
