@@ -153,7 +153,7 @@ Route::resource('admin', 'backend\AdminController');
 Route::group(['namespace' => 'backend'], function()
 {
     Route::resource('/dashboard/peternak', 'PeternakController');
-    Route::resource('/dashboard/admin', 'AdminController');
+    // Route::resource('/dashboard/admin', 'AdminController');
     Route::resource('/dashboard/dtdokter', 'DataDokterController');
     Route::get('/dashboard/dtdokter/{id}/detail','DataDokterController@detail');
     Route::resource('/dashboard/data_tutorial', 'DataTutorialController');
@@ -177,6 +177,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_user_staf/{id}/detail','DataUserStafController@detail');
     Route::resource('/dashboard/data_user_peternak', 'DataUserPeternakController');
     Route::get('/dashboard/data_user_peternak/{id}/detail','DataUserPeternakController@detail');
+    Route::resource('/dashboard/data_user_admin', 'DataUserAdminController');
+    Route::get('/dashboard/data_user_admin/{id}/detail','DataUserAdminController@detail');
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
 Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
@@ -228,6 +230,14 @@ Route::POST('dashboard/data_user_peternak/ubahpw/{id}/simpan','DataUserPeternakC
 Route::GET('dashboard/data_user_peternak/delete/{id}','DataUserPeternakController@delete');
 Route::get('/cetak_pdf/data_user_peternak','DataUserPeternakController@cetak_pdf')->name('backend.data_user_peternak.cetak_pdf');
 
+//CRUD Data User Admin -------------------------------------------------------------------
+Route::resource('/dashboard/data_user_admin', 'DataUserAdminController');
+Route::match(['get','post'], 'dashboard/data_user_admin/edit/{id}','DataUserAdminController@edit');
+Route::match(['get','post'], 'dashboard/data_user_admin/ubahpw/{id}','DataUserAdminController@ubahpw')->name('data_user_admin.ubahpw');
+Route::POST('dashboard/data_user_admin/ubahpw/{id}/simpan','DataUserAdminController@ubahpassword')->name('data_user_admin.ubahpassword');
+Route::GET('dashboard/data_user_admin/delete/{id}','DataUserAdminController@delete');
+Route::get('/cetak_pdf/data_user_admin','DataUserAdminController@cetak_pdf')->name('backend.data_user_admin.cetak_pdf');
+
 //CRUD Data User Staf -------------------------------------------------------------------
 Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
 Route::match(['get','post'], 'dashboard/data_user_staf/edit/{id}','DataUserStafController@edit');
@@ -245,10 +255,10 @@ Route::GET('dashboard/data_staf/delete/{id}','DataStafController@delete');
 Route::get('/cetak_pdf/data_staf','DataStafController@cetak_pdf')->name('backend.data_staf.cetak_pdf');
 
 //CRUD Data admin -------------------------------------------------------------------
-Route::POST('dashboard/admin/simpandata','AdminController@store')->name('simpandata');
-Route::match(['get','post'], 'dashboard/admin/edit/{id}','AdminController@edit');
-Route::GET('dashboard/admin/delete/{id}','AdminController@delete');
-Route::get('/cetak_pdf/admin','AdminController@cetak_pdf')->name('backend.admin.cetak_pdf');
+// Route::POST('dashboard/admin/simpandata','AdminController@store')->name('simpandata');
+// Route::match(['get','post'], 'dashboard/admin/edit/{id}','AdminController@edit');
+// Route::GET('dashboard/admin/delete/{id}','AdminController@delete');
+// Route::get('/cetak_pdf/admin','AdminController@cetak_pdf')->name('backend.admin.cetak_pdf');
 
 //CRUD Data Kritik dan saran -------------------------------------------------------------------
 Route::POST('dashboard/data_ks/simpandata','DataKritikdanSaranController@store')->name('simpandata');
