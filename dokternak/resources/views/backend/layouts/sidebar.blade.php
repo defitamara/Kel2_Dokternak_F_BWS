@@ -43,7 +43,7 @@
               <ul  class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item dropdown">
                     <li class="nav-item">
-                      <a class="nav-link pl-3" href="/dashboard/peternak"><span class="ml-1 item-text">Data User Peternak</span>
+                      <a class="nav-link pl-3" href="/dashboard/data_user_peternak"><span class="ml-1 item-text">Data User Peternak</span>
                       </a>
                     </li>
                 </li>
@@ -51,7 +51,7 @@
               <ul  class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item dropdown">
                     <li class="nav-item">
-                      <a class="nav-link pl-3" href="/dashboard/admin"><span class="ml-1 item-text">Data User Admin</span>
+                      <a class="nav-link pl-3" href="/dashboard/data_user_admin"><span class="ml-1 item-text">Data User Admin</span>
                       </a>
                     </li>
                 </li>
@@ -59,7 +59,7 @@
               <ul  class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item dropdown">
                     <li class="nav-item">
-                      <a class="nav-link pl-3" href="/dashboard/datapetugas"><span class="ml-1 item-text">Data User Petugas</span>
+                      <a class="nav-link pl-3" href="/dashboard/data_user_petugas"><span class="ml-1 item-text">Data User Petugas</span>
                       </a>
                     </li>
                 </li>

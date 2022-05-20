@@ -175,6 +175,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_staf/{id}/detail','DataStafController@detail');
     Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
     Route::get('/dashboard/data_user_staf/{id}/detail','DataUserStafController@detail');
+    Route::resource('/dashboard/data_user_peternak', 'DataUserPeternakController');
+    Route::get('/dashboard/data_user_peternak/{id}/detail','DataUserPeternakController@detail');
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
 Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
@@ -217,6 +219,14 @@ Route::POST('dashboard/datapetugas/simpandata','DataPetugasController@store')->n
 Route::match(['get','post'], 'dashboard/datapetugas/edit/{id}','DataPetugasController@edit');
 Route::GET('dashboard/datapetugas/delete/{id}','DataPetugasController@delete');
 Route::get('/cetak_pdf/datapetugas','DataPetugasController@cetak_pdf')->name('backend.datapetugas.cetak_pdf');
+
+//CRUD Data User Peternak -------------------------------------------------------------------
+Route::resource('/dashboard/data_user_peternak', 'DataUserPeternakController');
+Route::match(['get','post'], 'dashboard/data_user_peternak/edit/{id}','DataUserPeternakController@edit');
+Route::match(['get','post'], 'dashboard/data_user_peternak/ubahpw/{id}','DataUserPeternakController@ubahpw')->name('data_user_peternak.ubahpw');
+Route::POST('dashboard/data_user_peternak/ubahpw/{id}/simpan','DataUserPeternakController@ubahpassword')->name('data_user_peternak.ubahpassword');
+Route::GET('dashboard/data_user_peternak/delete/{id}','DataUserPeternakController@delete');
+Route::get('/cetak_pdf/data_user_peternak','DataUserPeternakController@cetak_pdf')->name('backend.data_user_peternak.cetak_pdf');
 
 //CRUD Data User Staf -------------------------------------------------------------------
 Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
