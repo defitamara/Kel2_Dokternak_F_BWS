@@ -19,27 +19,20 @@
 		<thead>
 			<tr>
 				<th>No</th>
-                <th>Nama</th>
-                <th>Id Staf</th>
-                <th>Jabatan</th>
-                <th>Jenis Kelamin</th>
-                <th>Telpon</th>
-                <th>Alamat</th>
+                <th>Nama Peternak</th>
                 <th>Foto</th>
+                <th>Email</th>
 			</tr>
 		</thead>
 		<tbody>
 			@php $no = 1; @endphp
-                    @foreach ($data_staf as $item)
+                    @foreach ($data_peternak as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $item->nama_staf }}</td>
-                        <td>{{ $item->id_staf }}</td>
-                        <td>{{ $item->jabatan }}</td>
-                        <td>{{ $item->jenis_kelamin }}</td>
-                        <td>{{ $item->telpon }}</td>
-                        <td>{{ $item->alamat }}</td>
-                        <td><img src="/data/data_staf/{{ $item->foto }}" width="100"></td>
+                        <td>{{ $item->name }}</td>
+                        <td><img src="/data/data_peternak/{{ $item->foto }}" width="100"></td>
+                        <td>{{ $item->email_peternak }}</td>
+                        
 			</tr>
 			@endforeach
 		</tbody>
