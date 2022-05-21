@@ -111,7 +111,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Koordinator</th>
+                          <th>Nama Akun Koordinator</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
@@ -146,7 +146,7 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Koordinator</th>
+                          <th>Nama Akun Koordinator</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>

@@ -113,7 +113,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Staf</th>
+                          <th>Nama Akun Staf</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
@@ -149,7 +149,7 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Petugas</th>
+                          <th>Nama Akun Staf</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>

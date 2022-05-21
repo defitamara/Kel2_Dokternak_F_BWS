@@ -120,6 +120,7 @@ class DataUserPetugasController extends Controller
         ], $message)->validate();
 
         $data_update2 = [
+            'name' => $request->name,
             'email' => $request->email,
         ];
 
