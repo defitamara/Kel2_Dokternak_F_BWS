@@ -19,7 +19,7 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Nama Petugas</th>
+				<th>Nama Akun Petugas</th>
 				<th>Foto</th>
 				<th>Email</th>
 				<th>Password Ter-Enkripsi</th>

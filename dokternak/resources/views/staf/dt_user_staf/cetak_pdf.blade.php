@@ -19,7 +19,7 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Nama Staf</th>
+				<th>Nama Akun Staf</th>
 				<th>Foto</th>
 				<th>Email</th>
 				<th>Password Ter-Enkripsi</th>

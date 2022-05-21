@@ -27,10 +27,10 @@
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label for="validationCustom3">Nama Puskeswan</label>
-                    @foreach ($puskeswan as $item)
-                    <input type="text" class="form-control" name="nama_puskeswan" id="nama_puskeswan" value="{{ isset($dtdokpus) ? $dtdokpus->nama_puskeswan : $item->nama_puskeswan }}" disabled> 
-                    <input type="hidden" class="form-control" name="id_puskeswan" id="id_puskeswan" value="{{ isset($dtdokpus) ? $dtdokpus->id_puskeswan : $item->id_puskeswan }}"> 
-                    @endforeach
+
+                    <input type="text" class="form-control" name="nama_puskeswan" id="nama_puskeswan" value="{{ isset($dtdokpus) ? $dtdokpus->nama_puskeswan : '' }}" disabled> 
+                    <input type="hidden" class="form-control" name="id_puskeswan" id="id_puskeswan" value="{{ isset($dtdokpus) ? $dtdokpus->id_puskeswan : '' }}"> 
+
                     {{-- <input list="id_puskeswan" class="form-control {{ $errors->has('id_puskeswan') ? 'is-invalid' : ''}}" placeholder='Masukkan id puskeswan (hanya angka)' value="{{ isset($dtdokpus) ? $dtdokpus->id_puskeswan : '' }}" name="id_puskeswan" >
                       @if ( $errors->has('id_puskeswan'))
                           <span class="text-danger small">

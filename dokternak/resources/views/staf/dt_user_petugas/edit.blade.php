@@ -25,7 +25,7 @@
                                 {!! isset($datapetugas) ? method_field('PUT') : '' !!}
                       <input type="hidden" name="id" value="{{ isset($datapetugas) ? $datapetugas->id : '' }}"> <br/>
                     
-                      <div class="form-row">
+                    <div class="form-row">
                       <div class="col-md-8 mb-3">
                         <label for="exampleInputEmail2">Nama Akun</label>
                         <input type="text" class="form-control" id="exampleInputEmail2" name="name" minlength="5" placeholder="Masukkan nama akun" aria-describedby="Masukkan nama akun" 
