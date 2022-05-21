@@ -157,7 +157,15 @@ class HomeController extends Controller
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
             ->get();
-            return view('kopus.dashboard',compact('kopus'));
+            $petugas_pus = DB::table('users')
+            ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
+            ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
+            ->join('dokter_puskeswan','dokter_puskeswan.id_puskeswan','=','puskeswan.id_puskeswan')
+            ->join('dokter','dokter.id_dokter','=','dokter_puskeswan.id_dokter')
+            ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+            ->count();
+            $count_petugas = Dokter::count();
+            return view('kopus.dashboard',compact('kopus','petugas_pus','count_petugas'));
         }
         elseif ($role  == 3) {
             return redirect()->route('dbstaf');

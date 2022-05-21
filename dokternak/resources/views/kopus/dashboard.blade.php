@@ -50,42 +50,42 @@
                 </div>
               </div>
             </div>
-            @endif
-            @endforeach
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="col-md-6 col-lg-4 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-cyan text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-view-dashboard"></i>
+                    <i class="mdi mdi-bank"></i>
                   </h1>
-                  <h6 class="text-white">Dashboard</h6>
+                  <a href="/dbkopus/tabel_puskeswan"><h6 class="text-white">{{ $item->nama_puskeswan }}</h6></a>
+                </div>
+              </div>
+            </div>
+            @endif
+            @endforeach
+            <!-- Column -->
+            <div class="col-md-6 col-lg-4 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-success text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-account-card-details"></i>
+                  </h1>
+                  <a href="/dbkopus/tabel_dokpus"><h6 class="text-white">Jumlah Petugas : {{ $petugas_pus }} Orang</h6></a>
                 </div>
               </div>
             </div>
             <!-- Column -->
             <div class="col-md-6 col-lg-4 col-xlg-3">
               <div class="card card-hover">
-                <div class="box bg-success text-center">
-                  <h1 class="font-light text-white">
-                    <i class="mdi mdi-chart-areaspline"></i>
-                  </h1>
-                  <h6 class="text-white">Charts</h6>
-                </div>
-              </div>
-            </div>
-            <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
-              <div class="card card-hover">
                 <div class="box bg-warning text-center">
                   <h1 class="font-light text-white">
                     <i class="mdi mdi-collage"></i>
                   </h1>
-                  <h6 class="text-white">Widgets</h6>
+                  <a href="/dbkopus/tabel_dokter"><h6 class="text-white">Total Petugas Pada Website : {{ $count_petugas }}  Orang</h6></a>
                 </div>
               </div>
             </div>
-            <!-- Column -->
+            {{-- <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
@@ -163,7 +163,7 @@
                 </div>
               </div>
             </div>
-            <!-- Column -->
+            <!-- Column --> --}}
           </div>
           
         </div>
