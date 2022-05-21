@@ -163,6 +163,7 @@ class HomeController extends Controller
             ->join('dokter_puskeswan','dokter_puskeswan.id_puskeswan','=','puskeswan.id_puskeswan')
             ->join('dokter','dokter.id_dokter','=','dokter_puskeswan.id_dokter')
             ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+            ->where('users.id','=',$id)
             ->count();
             $count_petugas = Dokter::count();
             return view('kopus.dashboard',compact('kopus','petugas_pus','count_petugas'));

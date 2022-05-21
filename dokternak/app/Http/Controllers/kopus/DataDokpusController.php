@@ -10,16 +10,27 @@ use App\Models\dokter_puskeswan;
 use App\Models\Puskeswan;
 use App\Models\Dokter;
 use App\Models\jabatan;
+use App\Models\User;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Auth;
+
 
 class DataDokpusController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
+
+        $id = Auth::id();
+        $user = User::where('id',$id)->first();
 
         $kopus = DB::table('users')
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
@@ -32,6 +43,7 @@ class DataDokpusController extends Controller
             ->join('dokter_puskeswan','dokter_puskeswan.id_puskeswan','=','puskeswan.id_puskeswan')
             ->join('dokter','dokter.id_dokter','=','dokter_puskeswan.id_dokter')
             ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+            ->where('users.id','=',$id)
             ->get();
 
         return view('kopus.tabel_dokpus.index', compact('dtdokpus','kopus'));
