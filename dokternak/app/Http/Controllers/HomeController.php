@@ -11,6 +11,11 @@ use App\Models\tutorial;
 use App\Models\jabatan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Staf_it;
+use App\Models\KoordinatorPuskeswan;
+use App\Models\penyuluh;
+use App\Models\DokterUser;
+use App\Models\informasi;
 
 
 class HomeController extends Controller
@@ -109,7 +114,24 @@ class HomeController extends Controller
         if ($role == 3) {
             $staf = DB::table('users')->join('staf_it','staf_it.id','=','users.id')
             ->get();
-            return view('staf.dashboard',compact('staf'));
+
+            // Hitung jumlah data 
+            $count_artikel = Artikel::count();
+            $count_petugas = Dokter::count();
+            $count_staf = Staf_it::count();
+            $count_kopus = KoordinatorPuskeswan::count();
+            $count_py = Penyuluh::count();
+            $count_pus = puskeswan::count();
+            $c_userpetugas = DokterUser::select('dokter.*', 'users.*')
+            ->join('users', 'users.id', '=', 'dokter.id') 
+            ->where('dokter.id','!=',0)
+            ->count();
+            $c_userstaf = User::where('is_admin',3)->count();
+            $c_userkopus = User::where('is_admin',4)->count();
+            $c_informasi = informasi::count();
+
+            return view('staf.dashboard',compact('staf','count_artikel','count_petugas','count_staf',
+            'count_kopus','count_py','count_pus','c_userpetugas','c_userstaf','c_userkopus','c_informasi'));
         }
         elseif ($role  == 4) {
             return redirect()->route('dbkopus');
