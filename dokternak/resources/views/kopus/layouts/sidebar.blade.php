@@ -34,6 +34,15 @@
                   ><span class="hide-menu">Data Petugas Puskeswan</span></a
                 >
               </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/dbkopus/tabel_dokter"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-box"></i
+                  ><span class="hide-menu">Data Petugas</span></a
+                >
+              </li>
               
             </ul>
           </nav>
