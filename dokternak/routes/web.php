@@ -43,6 +43,13 @@ Route::group(['namespace' => 'kopus'], function()
     Route::match(['get','post'], '/dbstaf/tabel_puskeswan/edit/{id}','DataPuskeswanController@edit');
     Route::GET('/dbkopus/tabel_puskeswan/delete/{id}','DataPuskeswanController@delete');
     Route::get('/cetak_pdf/tabel_puskeswan/{id}','DataPuskeswanController@cetak_pdf')->name('tabel_puskeswan.cetak_pdf');
+
+     // Dokter/Petugas Puskeswan
+     Route::resource('/dbkopus/tabel_dokpus', 'DataDokpusController');
+     //CRUD Data Dokpus -------------------------------------------------------------------
+     Route::match(['get','post'], 'dbkopus/tabel_dokpus/edit/{id}','DataDokpusController@edit');
+     Route::GET('dbkopus/tabel_dokpus/delete/{id}','DataDokpusController@delete');
+     Route::get('/cetak_pdf/tabel_dokpus','DataDokpusController@cetak_pdf')->name('tabel_dokpus.cetak_pdf');
 });
 
 // Route untuk Staf it ---------------------------------------------------
