@@ -344,8 +344,6 @@
                     width="31"
                   /> --}}
                   <img src="/data/data_kopus/{{ $item->foto }}" alt="" class="rounded-circle" width="30px" height="30px"/>
-                @endif
-                @endforeach
                 </a>
                 <ul
                   class="dropdown-menu dropdown-menu-end user-dd animated"
@@ -354,9 +352,12 @@
                     ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
                   > --}}
                   <div class="dropdown-item">
-                    {{ Auth::user()->name }}
+                    {{-- {{ Auth::user()->name }} --}}
+                    {{ $item->nama_kp }}
                   </div>
-                  <a class="dropdown-item" href="javascript:void(0)"
+                  @endif
+                  @endforeach
+                  <a class="dropdown-item" href="/dbkopus/tabel_profil"
                     ><i class="mdi mdi-account me-1 ms-1"></i> Akun Profil
                   </a>
                   <a class="dropdown-item" href="{{ route('logout') }}"

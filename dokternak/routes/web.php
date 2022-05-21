@@ -58,6 +58,10 @@ Route::group(['namespace' => 'kopus'], function()
     Route::match(['get','post'], 'dbkopus/tabel_artikel/edit/{id}','DataDokterController@edit');
     Route::GET('dbkopus/tabel_dokter/delete/{id}','DataDokterController@delete');
     Route::get('/cetak_pdf/tabel_dokter','DataDokterController@cetak_pdf')->name('tabel_dokter.cetak_pdf');
+
+    // Profil akun dan edit profil
+    Route::resource('/dbkopus/tabel_profil', 'ProfilController');
+    Route::match(['get','post'], 'dbkopus/tabel_profil/edit/{id}','ProfilController@edit');
 });
 
 // Route untuk Staf it ---------------------------------------------------

@@ -129,7 +129,7 @@
               <div class="row">
                   <div class="col-xl-12">
                       <div class="hero-cap text-center">
-                          <h2>Profil Akun Staf</h2>
+                          <h2>Profil Akun Koordinator Puskeswan</h2>
                       </div>
                   </div>
               </div>
@@ -144,26 +144,28 @@
                   <div class="card">
                       <div class="box">
                         @csrf
-                        @foreach ($dtstaf as $item)
+                        @foreach ($dtkopus as $item)
                           <div class="img">
-                            <img src="/data/data_staf/{{ $item->foto }}" alt="foto staf" width="300px">
+                            <img src="/data/data_kopus/{{ $item->foto }}" alt="foto staf" width="300px">
                           </div>        
-                          <br><h3><b>{{ $item->nama_staf }}</b><br></h3>
+                          <br><h3><b>{{ $item->nama_kp }}</b><br></h3>
                           <h2><span></span></h2><hr>
                           <span>Jabatan</span><br>
                           <span><b>{{ $item->jabatan }}</b></span> <BR><hr>
+                          <span>Tempat Dinas</span><br>
+                          <span><b>{{ $item->nama_puskeswan }}</b></span> <BR><hr>
                           <span>Jenis Kelamin:</span><br>
                           <span><b>{{ $item->jenis_kelamin }}</b></span> <BR><hr>
                           <span>Telpon :</span><br>
                           <span><b>{{ $item->telpon }}</b></span><HR>
                           <span>Alamat :</span><br>
                           <span><b>{{ $item->alamat }}</b></span><HR>
-                          <span>
+                          <span><BR><hr>
                               <ul>
-                                <li><a href="{{ route("dbstaf") }}" ><i class="fas fa-arrow-left" aria-hidden="true"></i><span>Kembali</span></a></li>
-                                <li><a href="{{ route("dt_profil.edit",$item->id_staf) }}" ><i class="fas fa-edit" aria-hidden="true"></i><span>Edit Akun</span></a></li>
+                                <li><a href="{{ route("dbkopus") }}" ><i class="fas fa-arrow-left" aria-hidden="true"></i><span>Kembali</span></a></li>
+                                <li><a href="{{ route("tabel_profil.edit",$item->id_kp) }}" ><i class="fas fa-edit" aria-hidden="true"></i><span>Edit Akun</span></a></li>
                               </ul>
-                          </span>
+                          </span><BR><hr>
                       </div>
                   </div>
                   @endforeach
