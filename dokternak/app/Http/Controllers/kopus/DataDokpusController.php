@@ -64,6 +64,8 @@ class DataDokpusController extends Controller
 
     public function create()
     {
+        $id = Auth::id();
+
         $kopus = DB::table('users')
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
@@ -71,6 +73,7 @@ class DataDokpusController extends Controller
         $puskeswan = DB::table('puskeswan')
         ->join('koordinator_puskeswan','koordinator_puskeswan.id_puskeswan','=','puskeswan.id_puskeswan')
         ->join('users','users.id','=','koordinator_puskeswan.id')
+        ->where('users.id','=',$id)
         ->get();
         $dokter = Dokter::all();
         return view('kopus.tabel_dokpus.create',compact('puskeswan','dokter','kopus'));
