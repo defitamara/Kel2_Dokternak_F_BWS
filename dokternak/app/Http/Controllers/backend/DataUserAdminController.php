@@ -17,9 +17,7 @@ class DataUserAdminController extends Controller
 {
     public function index()
     {
-        $data = AdminUser::select('admin.*', 'users.*')
-            ->join('users', 'users.id', '=', 'admin.id') 
-            ->where('admin.id','!=',0)
+        $data = User:: where('is_admin','=',1)
             ->get();
 
         return view('backend.data_user_admin.index',compact('data'));
@@ -27,10 +25,8 @@ class DataUserAdminController extends Controller
 
     public function cetak_pdf()
     {
-        $data_admin = AdminUser::select('admin.*', 'users.*')
-            ->join('users', 'users.id', '=', 'admin.id') 
-            ->where('admin.id','!=',0)
-            ->get();
+        $data_admin = User:: where('is_admin','=',1)
+        ->get();
     	$pdf = PDF::loadview('backend/data_user_admin/cetak_pdf',['data_admin'=>$data_admin]);
     	return view('backend.data_user_admin.cetak_pdf',compact('data_admin'));
     }
@@ -39,9 +35,8 @@ class DataUserAdminController extends Controller
     {
 
 
-        $data_admin = AdminUser::select('admin.*')
-            ->where('id',0)
-            ->get();
+        $data_admin = User:: where('is_admin','=',1)
+        ->get();
 
         return view('backend.data_user_admin.create',compact('data_admin'));
     }
@@ -88,15 +83,12 @@ class DataUserAdminController extends Controller
     public function edit($id)
     {
 
-        $data = AdminUser::select('admin.*','users.*')
-        ->join('users', 'users.id', '=', 'admin.id') 
-        ->where('admin.id', $id)->first();
+        $data = User::where('is_admin','=',1)->first();
 
-        $admin = AdminUser::select('admin.*')
-            ->where('id','!=',0)
-            ->get();
+        $admin = User:: where('is_admin','=',1)
+        ->get();
         
-        $ptnk = DB::table('users')->join('admin','admin.id','=','users.id')
+        $ptnk = DB::table('users')->join('is_admin','=','users.id')
             ->get();
         return view('backend.data_user_admin.edit',compact('data','admin'));
     }
@@ -125,9 +117,7 @@ class DataUserAdminController extends Controller
 
     public function ubahpw($id)
     {
-        $data = AdminUser::select('admin.*','users.*')
-        ->join('users', 'users.id', '=', 'admin.id') 
-        ->where('admin.id', $id)->first();
+        $data = User:: where('is_admin','=',1) ->first();
         
         $ptnk = DB::table('users')->join('admin','admin.id','=','users.id')
             ->get();
