@@ -7,11 +7,11 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <h2 class="page-title">Form Data User Admin</h2>
-        <p class="text-muted">Tambahkan data user admin baru melalui form dibawah ini!</p>
+        <p class="text-muted">Tambahkan data akun admin baru melalui form dibawah ini!</p>
           <div class="card shadow">
             <div class="card-header">
                 <b><a href="/dashboard">Dashboard / </a></b>
-                <b><a href="/dashboard/data_user_admin"> Data User Admin / </a></b>
+                <b><a href="/dashboard/data_user_admin"> Data Akun Admin / </a></b>
                 <b>Form</b>
             </div>
             
@@ -24,14 +24,14 @@
 
                 <div class="form-row">
                   <div class="col-md-8 mb-3">
-                    <label>Nama Peternak </label>
+                    <label>Nama Admin </label>
                     <select name="nama" class="form-select" id="default-select">
                         <option disabled selected> Pilih </option>
                         @foreach ($data_admin as $item)
                         <option value="{{ $item->nama }}" selected>{{ $item->nama}}</option>
                         @endforeach
                     </select>
-                    <small id="emailHelp1" class="form-text text-muted">Nama Admin yang muncul adalah koordinator yang belum mempunyai akun</small>
+                    <small id="emailHelp1" class="form-text text-muted">Nama Admin yang muncul adalah admin yang belum mempunyai akun</small>
                     </div> 
                 </div>
 

@@ -20,8 +20,8 @@
 			<tr>
 				<th>No</th>
                 <th>Nama Admin</th>
-                <th>Foto</th>
             	<th>Email</th>
+				<th>Password Ter-Enkripsi</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,9 +29,9 @@
                     @foreach ($data_admin as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $item->nama }}</td>
-						<td><img src="/data/data_admin/{{ $item->foto }}" width="100"></td>
+                        <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
+						<td>{{ $item->password }}</td>
 
 			</tr>
 			@endforeach
