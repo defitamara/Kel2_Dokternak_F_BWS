@@ -113,7 +113,6 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Admin</th>
-                          <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
                           <th>Aksi</th>
@@ -125,7 +124,6 @@
                         <tr>
                           <td>{{ $no++ }}</td>
                           <td>{{ $item->name }}</td>
-                          <td><img src="/data/data_admin/{{ $item->foto }}" width="100"></td>
                           <td>{{ $item->email }}</td>
                           <td>{{\Illuminate\Support\Str::limit ($item->password,10) }}</td>
                           {{-- <td><i>Diamankan</i></td> --}}
@@ -149,7 +147,6 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Admin</th>
-                          <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
                           <th>Aksi</th>
