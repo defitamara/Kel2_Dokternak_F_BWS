@@ -62,14 +62,14 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Detail Tutorial</h4>
+              <h4 class="page-title">Detail Staf IT</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/data_tutorial">Data Tutorial</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/data_staf">Data Staf </a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Detail Tutorial
+                      Detail Staf IT
                     </li>
                   </ol>
                 </nav>
