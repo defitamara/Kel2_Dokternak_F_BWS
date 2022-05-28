@@ -137,7 +137,7 @@
                               @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm text-white" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menghapus akun staf {{ $item->namadepan_peternak }}')">Hapus
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus akun peternak {{ $item->namadepan_peternak }}')">Hapus
                                   <span class="far fa-trash-alt"></span></button>
                               </form>
                           </div>

@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Data Admin</title>
+    <title>Data User Petugas</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -62,13 +62,13 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Data User Admin</h4>
+              <h4 class="page-title">Data User Petugas</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Data User Admin
+                      Data User Petugas
                     </li>
                   </ol>
                 </nav>
@@ -88,12 +88,12 @@
                 <div class="card-body">
 
                   {{-- Button in header --}}
-                  <a href="{{ route('data_user_admin.create') }}" class="card-title">
+                  <a href="{{ route('data_user_petugas.create') }}" class="card-title">
                     <button type="button" class="btn btn-primary">
                       Tambah Data +
                     </button>
                   </a>
-                  <a href="/cetak_pdf/data_user_admin" class="card-title" target="_blank">
+                  <a href="/cetak_pdf/data_user_petugas" class="card-title" target="_blank">
                     <button type="button" class="btn btn-secondary">
                       Cetak PDF
                     </button>
@@ -112,7 +112,8 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Admin</th>
+                          <th>Nama Petugas</th>
+                          <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
                           <th>Aksi</th>
@@ -124,18 +125,19 @@
                         <tr>
                           <td>{{ $no++ }}</td>
                           <td>{{ $item->name }}</td>
+                          <td><img src="/data/data_dokter/{{ $item->foto }}" width="100"></td>
                           <td>{{ $item->email }}</td>
                           <td>{{\Illuminate\Support\Str::limit ($item->password,10) }}</td>
                           {{-- <td><i>Diamankan</i></td> --}}
                           <td>
                             <div class="btn-group">
-                              <a href="{{ route('data_user_admin.edit',$item->id) }}" class="btn btn-cyan btn-sm text-white">Edit
+                              <a href="{{ route('data_user_petugas.edit',$item->id) }}" class="btn btn-cyan btn-sm text-white">Edit
                                 <span class="fas fa-edit"></span></a>
-                              <form action="{{ route('data_user_admin.destroy',$item->id)}}" method="POST">
+                              <form action="{{ route('data_user_petugas.destroy',$item->id)}}" method="POST">
                               @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger btn-sm text-white" 
-                                  onclick="return confirm('Apakah Anda yakin ingin menghapus akun admin {{ $item->nama }}')">Hapus
+                                  onclick="return confirm('Apakah Anda yakin ingin menghapus akun petugas {{ $item->nama_petugas }}')">Hapus
                                   <span class="far fa-trash-alt"></span></button>
                               </form>
                           </div>
@@ -146,7 +148,8 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Admin</th>
+                          <th>Nama Petugas</th>
+                          <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
                           <th>Aksi</th>

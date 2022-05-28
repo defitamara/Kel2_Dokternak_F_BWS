@@ -7,46 +7,50 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
-use App\Models\AdminUser;
-use App\Models\admin;
+use App\Models\DokterUser;
 use App\Models\Role;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 
-class DataUserAdminController extends Controller
+class DataUserPetugasController extends Controller
 {
     public function index()
     {
-        $data = User:: where('is_admin','=',1)
+        $data = DokterUser::select('dokter.*', 'users.*')
+            ->join('users', 'users.id', '=', 'dokter.id') 
+            ->where('dokter.id','!=',0)
             ->get();
 
-        return view('backend.data_user_admin.index',compact('data'));
+        return view('backend.data_user_petugas.index',compact('data'));
     }
 
     public function cetak_pdf()
     {
-        $data_admin = User:: where('is_admin','=',1)
-        ->get();
-    	$pdf = PDF::loadview('backend/data_user_admin/cetak_pdf',['data_admin'=>$data_admin]);
-    	return view('backend.data_user_admin.cetak_pdf',compact('data_admin'));
+        $data_petugas = DokterUser::select('dokter.*', 'users.*')
+            ->join('users', 'users.id', '=', 'dokter.id') 
+            ->where('dokter.id','!=',0)
+            ->get();
+    	$pdf = PDF::loadview('backend/data_user_petugas/cetak_pdf',['data_petugas'=>$data_petugas]);
+    	return view('backend.data_user_petugas.cetak_pdf',compact('data_petugas'));
     }
 
     public function create()
     {
 
 
-        $data_admin = User:: where('is_admin','=',1)
-        ->get();
+        $data_petugas = DokterUser::select('dokter.*')
+            ->where('id',0)
+            ->get();
 
-        return view('backend.data_user_admin.create',compact('data_admin'));
+        return view('backend.data_user_petugas.create',compact('data_petugas'));
     }
 
     public function store(Request $request)
     {
 
-        $nama = $request->nama;  
+        $nama = $request->nama_dokter;  
 
-        $role = 1;
+        $role = 3;
         $user = User::create([
             'name' =>$nama,
             'email' =>$request->email,
@@ -73,24 +77,27 @@ class DataUserAdminController extends Controller
             'id' => $id_user,
         ];
 
-        AdminUser::where('nama', $nama)->update($data_simpan);
+        DokterUser::where('nama_dokter', $nama)->update($data_simpan);
 
-        return redirect()->route('data_user_admin.index')
-                        ->with('success','Data Peternak baru telah berhasil disimpan');
+        return redirect()->route('data_user_petugas.index')
+                        ->with('success','Data petugas baru telah berhasil disimpan');
     }
 
 
     public function edit($id)
     {
 
-        $data = User::where('is_admin','=',1)->first();
+        $data = DokterUser::select('dokter.*','users.*')
+        ->join('users', 'users.id', '=', 'dokter.id') 
+        ->where('dokter.id', $id)->first();
 
-        $admin = User:: where('is_admin','=',1)
-        ->get();
-        
-        $ptnk = DB::table('users')->join('is_admin','=','users.id')
+        $dokter = DokterUser::select('dokter.*')
+            ->where('id','!=',0)
             ->get();
-        return view('backend.data_user_admin.edit',compact('data','admin'));
+        
+        $petugas = DB::table('users')->join('dokter','dokter.id','=','users.id')
+            ->get();
+        return view('backend.data_user_petugas.edit',compact('data','dokter'));
     }
 
     public function update(Request $request, $id)
@@ -111,18 +118,20 @@ class DataUserAdminController extends Controller
         User::where('id', $id)->update($data_update);
 
 
-        return redirect()->route('data_user_admin.index')
-                        ->with('success','Data admin telah berhasil diperbarui');
+        return redirect()->route('data_user_petugas.index')
+                        ->with('success','Data petugas telah berhasil diperbarui');
     }
 
     public function ubahpw($id)
     {
-        $data = User:: where('is_admin','=',1) ->first();
+        $data = DokterUser::select('dokter.*','users.*')
+        ->join('users', 'users.id', '=', 'dokter.id') 
+        ->where('dokter.id', $id)->first();
         
-        $ptnk = DB::table('users')->join('admin','admin.id','=','users.id')
+        $petugas = DB::table('users')->join('dokter','dokter.id','=','users.id')
             ->get();
         
-        return view('backend.data_user_admin.ubahpw',compact('data'));
+        return view('backend.data_user_petugas.ubahpw',compact('data'));
     }
 
     public function ubahpassword(Request $request, $id)
@@ -141,24 +150,24 @@ class DataUserAdminController extends Controller
 
         User::where('id', $id)->update($data_update);
 
-        return redirect()->route('data_user_admin.index')
-                        ->with('success','Password Akun Admin telah berhasil diperbarui');
+        return redirect()->route('data_user_petugas.index')
+                        ->with('success','Password Akun petugas telah berhasil diperbarui');
     }
 
     public function destroy($id)
     {
         $admin = User::where('id',$id)->delete();
 
-        // Mengubah id di data staf menjadi 0, artinya tidak punya akun
+        // Mengubah id di data petugas menjadi 0, artinya tidak punya akun
         $hapusId = 0;
         $data_simpan = [
             'id' => $hapusId,
         ];
 
-        AdminUser::where('id', $id)->update($data_simpan);
+        DokterUser::where('id', $id)->update($data_simpan);
 
         // $petugasuser= DokterUser::where('id',$id)->delete();
-        return redirect()->route('data_user_admin.index')
-                        ->with('success','Data admin telah berhasil dihapus');
+        return redirect()->route('data_user_petugas.index')
+                        ->with('success','Data petugas telah berhasil dihapus');
     }
 }

@@ -19,19 +19,22 @@
 		<thead>
 			<tr>
 				<th>No</th>
-                <th>Nama Admin</th>
-            	<th>Email</th>
+				<th>Nama Akun Petugas</th>
+				<th>Foto</th>
+				<th>Email</th>
 				<th>Password Ter-Enkripsi</th>
 			</tr>
 		</thead>
 		<tbody>
 			@php $no = 1; @endphp
-                    @foreach ($data_admin as $item)
+                    @foreach ($data_petugas as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->name }}</td>
+						<td><img src="/data/data_dokter/{{ $item->foto }}" width="100"></td>
                         <td>{{ $item->email }}</td>
-						<td>{{ $item->password }}</td>
+                        <td>{{ $item->password }}</td>
+
 
 			</tr>
 			@endforeach
