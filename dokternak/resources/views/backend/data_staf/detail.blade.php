@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="robots" content="noindex,nofollow" />
-    <title>Detail Tutorial</title>
+    <title>Detail Staf IT</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
