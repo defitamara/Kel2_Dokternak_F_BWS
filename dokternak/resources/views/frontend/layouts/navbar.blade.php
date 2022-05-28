@@ -23,15 +23,16 @@
                                     <div class="main-menu">
                                         <nav class="d-none d-lg-block">
                                             <ul id="navigation">
-                                                <li><a href="/">HOME</a></li>
-                                                <li><a href="/artikel">ARTIKEL </a></li>
-                                                <li><a href="{{ route('login') }}">KONSULTASI</a></li>
-                                                <li><a href="dokter">DOKTER</a></li>
-                                                <li><a href="#">INFORMASI</a>
+                                                <li><a href="/">Home</a></li>
+                                               <li><a href="/dokter">Petugas Keswan</a></li>
+                                                <li><a href="{{ route('login') }}">Konsultasi</a></li>
+                                                 <li><a href="/penyuluh">Penyuluh</a></li>
+                                                <li><a href="#">Informasi</a>
                                                     <ul class="submenu">
-                                                        <li><a href="puskeswan">PUSKESWAN</a></li>
-                                                        <li><a href="tutorial">TUTORIAL</a></li>
-                                                        <li><a href="tentangkami">TENTANG KAMI</a></li>                                                 
+                                                         <li><a href="/artikel">Artikel</a></li>
+                                                        <li><a href="/puskeswan">Puskeswan</a></li>
+                                                        <li><a href="/tutorial">Tutorial</a></li>
+                                                        <li><a href="/tentangkami">Tentang Kami</a></li>                             
                                                     </ul>
                                                 </li>
                                             </ul>
