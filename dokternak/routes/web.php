@@ -43,6 +43,25 @@ Route::group(['namespace' => 'kopus'], function()
     Route::match(['get','post'], '/dbstaf/tabel_puskeswan/edit/{id}','DataPuskeswanController@edit');
     Route::GET('/dbkopus/tabel_puskeswan/delete/{id}','DataPuskeswanController@delete');
     Route::get('/cetak_pdf/tabel_puskeswan/{id}','DataPuskeswanController@cetak_pdf')->name('tabel_puskeswan.cetak_pdf');
+
+     // Dokter/Petugas Puskeswan
+     Route::resource('/dbkopus/tabel_dokpus', 'DataDokpusController');
+     //CRUD Data Dokpus -------------------------------------------------------------------
+     Route::match(['get','post'], 'dbkopus/tabel_dokpus/edit/{id}','DataDokpusController@edit');
+     Route::GET('dbkopus/tabel_dokpus/delete/{id}','DataDokpusController@delete');
+     Route::get('/cetak_pdf/tabel_dokpus','DataDokpusController@cetak_pdf')->name('tabel_dokpus.cetak_pdf');
+
+     // Dokter/Petugas
+    Route::resource('/dbkopus/tabel_dokter', 'DataDokterController');
+    Route::get('/dbkopus/tabel_dokter/{id}/detail','DataDokterController@detail');
+    //CRUD Data Dokter/Petugas -------------------------------------------------------------------
+    Route::match(['get','post'], 'dbkopus/tabel_artikel/edit/{id}','DataDokterController@edit');
+    Route::GET('dbkopus/tabel_dokter/delete/{id}','DataDokterController@delete');
+    Route::get('/cetak_pdf/tabel_dokter','DataDokterController@cetak_pdf')->name('tabel_dokter.cetak_pdf');
+
+    // Profil akun dan edit profil
+    Route::resource('/dbkopus/tabel_profil', 'ProfilController');
+    Route::match(['get','post'], 'dbkopus/tabel_profil/edit/{id}','ProfilController@edit');
 });
 
 // Route untuk Staf it ---------------------------------------------------
@@ -66,7 +85,7 @@ Route::group(['namespace' => 'staf'], function()
     Route::POST('dbstaf/dt_dokter/simpandata','DataDokterController@store')->name('simpandata');
     Route::match(['get','post'], 'dbstaf/dt_artikel/edit/{id}','DataDokterController@edit');
     Route::GET('dbstaf/dt_dokter/delete/{id}','DataDokterController@delete');
-    Route::get('/cetak_pdf/dt_dokter','DataDokterController@cetak_pdf')->name('dt_artikel.cetak_pdf');
+    Route::get('/cetak_pdf/dt_dokter','DataDokterController@cetak_pdf')->name('dt_dokter.cetak_pdf');
 
     // Puskeswan
     Route::resource('/dbstaf/dt_puskeswan', 'DataPuskeswanController');

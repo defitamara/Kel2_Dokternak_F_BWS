@@ -115,6 +115,7 @@ class DataUserKopusController extends Controller
         ], $message)->validate();
 
         $data_update = [
+            'name' => $request->name,
             'email' => $request->email,
         ];
 

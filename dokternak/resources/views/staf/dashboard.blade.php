@@ -42,20 +42,20 @@
               <div class="card card-hover">
                 <div class="box bg-cyan text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-view-dashboard"></i>
+                    <i class="mdi mdi-library-books"></i>
                   </h1>
-                  <h6 class="text-white">Dashboard</h6>
+                  <a href="/dbstaf/dt_artikel"><h6 class="text-white">{{ $count_artikel }} Data Artikel</h6></a>
                 </div>
               </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
+            <div class="col-md-6 col-lg-3 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-success text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-chart-areaspline"></i>
+                    <i class="mdi mdi-account-card-details"></i>
                   </h1>
-                  <h6 class="text-white">Charts</h6>
+                  <a href="/dbstaf/dt_dokter"><h6 class="text-white">{{ $count_petugas }} Data Petugas</h6></a>
                 </div>
               </div>
             </div>
@@ -64,20 +64,20 @@
               <div class="card card-hover">
                 <div class="box bg-warning text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-collage"></i>
+                    <i class="mdi mdi-account-card-details"></i>
                   </h1>
-                  <h6 class="text-white">Widgets</h6>
+                  <a href="/dbstaf/dt_staf"><h6 class="text-white">{{ $count_staf }} Data Staf IT</h6></a>
                 </div>
               </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="col-md-6 col-lg-3 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-border-outside"></i>
+                    <i class="mdi mdi-account-card-details"></i>
                   </h1>
-                  <h6 class="text-white">Tables</h6>
+                  <a href="/dbstaf/dt_kopus"><h6 class="text-white">{{ $count_kopus }} Data Koor. Puskeswan</h6></a>
                 </div>
               </div>
             </div>
@@ -86,21 +86,21 @@
               <div class="card card-hover">
                 <div class="box bg-info text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-arrow-all"></i>
+                    <i class="mdi mdi-account-card-details"></i>
                   </h1>
-                  <h6 class="text-white">Full Width</h6>
+                  <a href="/dbstaf/dt_penyuluh"><h6 class="text-white">{{ $count_py }} Data Penyuluh</h6></a>
                 </div>
               </div>
             </div>
             <!-- Column -->
             <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
+            <div class="col-md-6 col-lg-3 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-receipt"></i>
+                    <i class="mdi mdi-bank"></i>
                   </h1>
-                  <h6 class="text-white">Forms</h6>
+                  <a href="/dbstaf/dt_puskeswan"><h6 class="text-white">{{ $count_pus }} Data Puskeswan</h6></a>
                 </div>
               </div>
             </div>
@@ -109,9 +109,9 @@
               <div class="card card-hover">
                 <div class="box bg-info text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-relative-scale"></i>
+                    <i class="mdi mdi-account-key"></i>
                   </h1>
-                  <h6 class="text-white">Buttons</h6>
+                  <a href="/dbstaf/dt_user_petugas"><h6 class="text-white">{{ $c_userpetugas }} Akun Petugas</h6></a>
                 </div>
               </div>
             </div>
@@ -120,20 +120,20 @@
               <div class="card card-hover">
                 <div class="box bg-cyan text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-pencil"></i>
+                    <i class="mdi mdi-account-key"></i>
                   </h1>
-                  <h6 class="text-white">Elements</h6>
+                  <a href="/dbstaf/dt_user_staf"><h6 class="text-white">{{ $c_userstaf }} Akun Staf</h6></a>
                 </div>
               </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
+            <div class="col-md-6 col-lg-3 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-success text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-calendar-check"></i>
+                    <i class="mdi mdi-account-key"></i>
                   </h1>
-                  <h6 class="text-white">Calendar</h6>
+                  <a href="/dbstaf/dt_user_kopus"><h6 class="text-white">{{ $c_userkopus }} Akun Koor. Puskeswan</h6></a>
                 </div>
               </div>
             </div>
@@ -142,9 +142,9 @@
               <div class="card card-hover">
                 <div class="box bg-warning text-center">
                   <h1 class="font-light text-white">
-                    <i class="mdi mdi-alert"></i>
+                    <i class="mdi mdi-information"></i>
                   </h1>
-                  <h6 class="text-white">Errors</h6>
+                  <a href="/dbstaf/dt_informasi"><h6 class="text-white">{{ $c_informasi }} Data Informasi</h6></a>
                 </div>
               </div>
             </div>

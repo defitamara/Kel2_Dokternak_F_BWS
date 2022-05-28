@@ -112,7 +112,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Petugas</th>
+                          <th>Nama Akun Petugas</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>
@@ -148,7 +148,7 @@
                       <tfoot>
                         <tr>
                           <th>No</th>
-                          <th>Nama Petugas</th>
+                          <th>Nama Akun Petugas</th>
                           <th>Foto</th>
                           <th>Email</th>
                           <th>Password Enkripsi</th>

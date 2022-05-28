@@ -146,7 +146,7 @@
                         @csrf
                         @foreach ($dtstaf as $item)
                           <div class="img">
-                            <img src="/data/data_kopus/{{ $item->foto }}" alt="foto staf" width="300px">
+                            <img src="/data/data_staf/{{ $item->foto }}" alt="foto staf" width="300px">
                           </div>        
                           <br><h3><b>{{ $item->nama_staf }}</b><br></h3>
                           <h2><span></span></h2><hr>

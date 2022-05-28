@@ -7,20 +7,33 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Puskeswan;
+use App\Models\User;
 use DateTime;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Auth;
 
 class DataPuskeswanController extends Controller
 {
+
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
+
+        $id = Auth::id();
+        $user = User::where('id',$id)->first();
         $kopus = DB::table('users')
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
+            ->where('users.id','=',$id)
             ->get();
         return view('kopus.tabel_puskeswan.index', compact('kopus'));
     }
