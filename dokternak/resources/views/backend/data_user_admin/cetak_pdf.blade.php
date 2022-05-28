@@ -12,7 +12,7 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan PDF </h4>
+		<h5>Laporan Data Akun Admin </h4>
 	</center>
  
 	<table class='table table-bordered'>

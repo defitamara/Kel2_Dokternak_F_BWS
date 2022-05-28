@@ -39,7 +39,7 @@
                   <div class="col-md-8 mb-3">
                     <label for="exampleInputEmail2">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail2" name="email" minlength="5" placeholder="Masukkan email" aria-describedby="Masukkan email" 
-                    value="{{ isset($dataadmin) ? $dataadmin->email : '' }}"  
+                    value="{{ isset($dadmin) ? $dadmin->email : '' }}"  
                     required>
                     <div class="invalid-feedback"> Please use a valid email </div>
                   </div>
@@ -51,7 +51,7 @@
                   <label for="validationCustomPassword">Password</label>
                   <div class="input-group">
                     <input type="password" class="form-control" id="pass" name="password" minlength="5" placeholder="Masukkan password" aria-describedby="inputGroupPrepend" 
-                    value="{{ isset($dataadmin) ? $dataadmin->password : '' }}"  
+                    value="{{ isset($dadmin) ? $dadmin->password : '' }}"  
                     required>
                     <span class="btn btn-light" onclick="change()" id="mybutton"><i class="fas fa-eye"></i></span>
                     <div class="invalid-feedback"> Please choose a password. </div>
