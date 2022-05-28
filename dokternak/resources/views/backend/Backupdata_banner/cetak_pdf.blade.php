@@ -12,16 +12,16 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan Data Banner </h4>
+		<h5>Laporan PDF </h4>
 	</center>
  
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
-				<th>No</th>
-                <th>ID Banner</th>
-                <th>Gambar</th>
-                <th>Status</th>
+				<th>NO</th>
+                      <th>ID Banner</th>
+                      <th>Gambar</th>
+                      <th>Status</th>
 			</tr>
 		</thead>
 		<tbody>

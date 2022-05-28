@@ -1,74 +1,128 @@
 @extends('backend/layouts.template')
   
 @section('content')
-<main role="main" class="main-content">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="row align-items-center mb-2">
-          <div class="col">
-            <h2 class="h5 page-title">Welcome!</h2>
-          </div>
-          <div class="col-auto">
-            <form class="form-inline">
-              <div class="form-group d-none d-lg-inline">
-                <label for="reportrange" class="sr-only">Date Ranges</label>
-                <div id="reportrange" class="px-2 py-2 text-muted">
-                  <span class="small"></span>
-                </div>
-              </div>
-              <div class="form-group">
-                <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
-                <button type="button" class="btn btn-sm mr-2"><span class="fe fe-filter fe-16 text-muted"></span></button>
-              </div>
-            </form>
-          </div>
-        </div>
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Data Banner</title>
+    <!-- Favicon icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ asset('Backend/assets/images/favicon.png') }}"/>
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ asset('Backend/assets/extra-libs/multicheck/multicheck.css') }}"/>
+    <link
+      href="{{ asset('Backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
+      rel="stylesheet"/>
+    <link href="{{ asset('Backend/dist/css/style.min.css') }}" rel="stylesheet" />  
+  </head>
+    
+  <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - tampilan loading -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
       </div>
-    </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
-  <div class="container-fluid"> 
-    <div class="row justify-content-center">
-      <div class="col-15">
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+    </div>
+    
+    <!-- ============================================================== -->
+    <!-- Main wrapper - tabel daftar dokter/petugas -->
+    <!-- ============================================================== -->
+    <div
+    id="main-wrapper"
+    data-layout="vertical"
+    data-navbarbg="skin5"
+    data-sidebartype="full"
+    data-sidebar-position="absolute"
+    data-header-position="absolute"
+    data-boxed-layout="full">
+          
+      <!-- ============================================================== -->
+      <!-- Page wrapper  -->
+      <!-- ============================================================== -->
+      <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Data Banner</h4>
+              <div class="ms-auto text-end">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Data Banner
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
-       @endif
-        {{-- <h2 class="page-title">Basic table</h2>
-        <p> Tables with built-in bootstrap styles </p>  --}}
-            <div class="card shadow">
-              <div class="card-body">
-                <div class="row align-items-center mb-2">
-                  <div class="col">
-                    <h5 class="card-title">Data Banner</h5>
-                    </div>
-                  <div class="col-auto">
-                    <div class="form">
-                      <a href="{{ route('data_banner.create') }}"><button class="btn btn-primary"
-                          type="button"><i class="fa fa-plus"></i><span>Tambah</span></button></a>
-                    </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+  
+        <div class="container-fluid"> 
+          <div class="row justify-content-center">
+            <div class="col-15">
+              
+              <div class="card shadow">
+                <div class="card-body">
+
+                  {{-- Button in header --}}
+                  <a href="{{ route('data_banner.create') }}" class="card-title">
+                    <button type="button" class="btn btn-primary">
+                      Tambah Data +
+                    </button>
+                  </a>
+                  <a href="/cetak_pdf/data_banner" class="card-title" target="_blank">
+                    <button type="button" class="btn btn-secondary">
+                      Cetak PDF
+                    </button>
+                  </a>
+                  <br><br>
+
+                  {{-- Alert --}}
+                  @if ($message = Session::get('success'))
+                  <div class="alert alert-success" role="alert">
+                      {{ $message }}
                   </div>
-                </div>
-                <div class="widget-box">
-                  <a href="/cetak_pdf/data_banner" class="btn btn-primary" target="_blank">CETAK PDF</a>
-                      <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                      </div>
-                </div>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>NO</th>
-                      <th>ID Banner</th>
-                      <th>Gambar</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @php $no = 1; @endphp
-                    @foreach ($banner as $item)
-                    <tr>
-                        <td>{{ $no++ }}</td>
+                  @endif
+
+                  <div class="table-responsive">
+                    <table id="zero_config" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Banner</th>
+                          <th>Gambar</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @php $no = 1; @endphp
+                        @foreach ($banner as $item)
+                        <tr>
+                          <td>{{ $no++ }}</td>
                         <td>{{ $item->id_banner }}</td>
                         <td><img src="/data/data_banner/{{ $item->gambar }}" width="200"></td>
                         <td>{{ $item->status }}</td>
@@ -82,17 +136,66 @@
                                 onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus
                                 <i class="fa fa-trash-o"></i></button>
                             </form>
-                        </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+                          </div>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>NO</th>
+                          <th>ID Banner</th>
+                          <th>Gambar</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div> <!-- div responsive -->
+                </div>
               </div>
-            </div>
-        </div> <!-- end section -->
-    </div> <!-- .row -->
-  </div> <!-- .container-fluid -->
-</main> <!-- main -->
+            </div> <!-- end section -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+      </div> <!-- End Page wrapper  -->
+    </div> <!-- End Wrapper -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('Backend/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{ asset('Backend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ asset('Backend/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('Backend/dist/js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ asset('Backend/dist/js/sidebarmenu.js') }}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ asset('Backend/dist/js/custom.min.js') }}"></script>
+    <!-- this page js -->
+    <script src="{{ asset('Backend/assets/extra-libs/multicheck/datatable-checkbox-init.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/multicheck/jquery.multicheck.js') }}"></script>
+    <script src="{{ asset('Backend/assets/extra-libs/DataTables/datatables.min.js') }}"></script>
+    <script>
+      /****************************************
+       *       Basic Table                   *
+       ****************************************/
+      $("#zero_config").DataTable();
+    </script>
+    {{-- Mengatur lamanya alert muncul --}}
+    <script type="text/javascript">
+      window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
+    </script>
+
+  </body>
+</html>
 
 @endsection
