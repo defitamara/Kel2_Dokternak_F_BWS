@@ -192,6 +192,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_informasi/{id}/detail','DataInformasiController@detail');
     Route::resource('/dashboard/data_staf', 'DataStafController');
     Route::get('/dashboard/data_staf/{id}/detail','DataStafController@detail');
+    Route::resource('/dashboard/data_kopus', 'DataKopusController');
+    Route::get('/dashboard/data_kopus/{id}/detail','DataKopusController@detail');
     Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
     Route::get('/dashboard/data_user_staf/{id}/detail','DataUserStafController@detail');
     Route::resource('/dashboard/data_user_peternak', 'DataUserPeternakController');
@@ -200,6 +202,8 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_user_admin/{id}/detail','DataUserAdminController@detail');
     Route::resource('/dashboard/data_user_petugas', 'DataUserPetugasController');
     Route::get('/dashboard/data_user_petugas/{id}/detail','DataUserPetugasController@detail');
+    Route::resource('/dashboard/data_user_kopus', 'DataUserKopusController');
+    Route::get('/dashboard/data_user_kopus/{id}/detail','DataUserKopusController@detail');
 
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
@@ -244,6 +248,14 @@ Route::match(['get','post'], 'dashboard/datapetugas/edit/{id}','DataPetugasContr
 Route::GET('dashboard/datapetugas/delete/{id}','DataPetugasController@delete');
 Route::get('/cetak_pdf/datapetugas','DataPetugasController@cetak_pdf')->name('backend.datapetugas.cetak_pdf');
 
+//CRUD Data User Kopus -------------------------------------------------------------------
+Route::resource('/dashboard/data_user_kopus', 'DataUserKopusController');
+Route::match(['get','post'], 'dashboard/data_user_kopus/edit/{id}','DataUserKopusController@edit');
+Route::match(['get','post'], 'dashboard/data_user_kopus/ubahpw/{id}','DataUserKopusController@ubahpw')->name('data_user_kopus.ubahpw');
+Route::POST('dashboard/data_user_kopus/ubahpw/{id}/simpan','DataUserKopusController@ubahpassword')->name('data_user_kopus.ubahpassword');
+Route::GET('dashboard/data_user_kopus/delete/{id}','DataUserKopusController@delete');
+Route::get('/cetak_pdf/data_user_kopus','DataUserKopusController@cetak_pdf')->name('backend.data_user_kopus.cetak_pdf');
+
 //CRUD Data User Peternak -------------------------------------------------------------------
 Route::resource('/dashboard/data_user_peternak', 'DataUserPeternakController');
 Route::match(['get','post'], 'dashboard/data_user_peternak/edit/{id}','DataUserPeternakController@edit');
@@ -283,6 +295,14 @@ Route::POST('dashboard/data_staf/simpandata','DataStafController@store')->name('
 Route::match(['get','post'], 'dashboard/data_staf/edit/{id}','DataStafController@edit');
 Route::GET('dashboard/data_staf/delete/{id}','DataStafController@delete');
 Route::get('/cetak_pdf/data_staf','DataStafController@cetak_pdf')->name('backend.data_staf.cetak_pdf');
+
+//CRUD Data Kopus -------------------------------------------------------------------
+Route::get('/dashboard/data_kopus','DataKopusController@detail');
+Route::resource('/dashboard/data_kopus', 'DataKopusController');
+Route::POST('dashboard/data_kopus/simpandata','DataKopusController@store')->name('simpandata');
+Route::match(['get','post'], 'dashboard/data_kopus/edit/{id}','DataKopusController@edit');
+Route::GET('dashboard/data_kopus/delete/{id}','DataKopusController@delete');
+Route::get('/cetak_pdf/data_kopus','DataKopusController@cetak_pdf')->name('backend.data_kopus.cetak_pdf');
 
 //CRUD Data admin -------------------------------------------------------------------
 // Route::POST('dashboard/admin/simpandata','AdminController@store')->name('simpandata');
