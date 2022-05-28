@@ -198,6 +198,9 @@ Route::group(['namespace' => 'backend'], function()
     Route::get('/dashboard/data_user_peternak/{id}/detail','DataUserPeternakController@detail');
     Route::resource('/dashboard/data_user_admin', 'DataUserAdminController');
     Route::get('/dashboard/data_user_admin/{id}/detail','DataUserAdminController@detail');
+    Route::resource('/dashboard/data_user_petugas', 'DataUserPetugasController');
+    Route::get('/dashboard/data_user_petugas/{id}/detail','DataUserPetugasController@detail');
+
 
 //Route Cetak PDF Data Penyuluh Backend --------------------------------------------------------------------
 Route::get('cetak_pdf/dtpenyuluh','DataPenyuluhController@cetak_pdf')->name('dtpenyuluh.cetak_pdf');
@@ -256,6 +259,14 @@ Route::match(['get','post'], 'dashboard/data_user_admin/ubahpw/{id}','DataUserAd
 Route::POST('dashboard/data_user_admin/ubahpw/{id}/simpan','DataUserAdminController@ubahpassword')->name('data_user_admin.ubahpassword');
 Route::GET('dashboard/data_user_admin/delete/{id}','DataUserAdminController@delete');
 Route::get('/cetak_pdf/data_user_admin','DataUserAdminController@cetak_pdf')->name('backend.data_user_admin.cetak_pdf');
+
+//CRUD Data User Petugas -------------------------------------------------------------------
+Route::resource('/dashboard/data_user_petugas', 'DataUserPetugasController');
+Route::match(['get','post'], 'dashboard/data_user_petugas/edit/{id}','DataUserPetugasController@edit');
+Route::match(['get','post'], 'dashboard/data_user_petugas/ubahpw/{id}','DataUserPetugasController@ubahpw')->name('data_user_petugas.ubahpw');
+Route::POST('dashboard/data_user_petugas/ubahpw/{id}/simpan','DataUserPetugasController@ubahpassword')->name('data_user_petugas.ubahpassword');
+Route::GET('dashboard/data_user_petugas/delete/{id}','DataUserPetugasController@delete');
+Route::get('/cetak_pdf/data_user_petugas','DataUserPetugasController@cetak_pdf')->name('backend.data_user_petugas.cetak_pdf');
 
 //CRUD Data User Staf -------------------------------------------------------------------
 Route::resource('/dashboard/data_user_staf', 'DataUserStafController');
