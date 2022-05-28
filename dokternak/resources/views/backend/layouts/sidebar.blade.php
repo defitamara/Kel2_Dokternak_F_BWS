@@ -96,6 +96,14 @@
                     </li>
                 </li>
               </ul>
+              <ul  class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                <li class="nav-item dropdown">
+                    <li class="nav-item">
+                      <a class="nav-link pl-3" href="/dashboard/data_dokpus"><span class="ml-1 item-text">Data Dokter Puskeswan</span>
+                      </a>
+                    </li>
+                </li>
+              </ul>
               <ul class="navbar-nav flex-fill w-100 mb-2">
                 <li class="nav-item dropdown">
                   <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
