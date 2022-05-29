@@ -88,8 +88,8 @@ class DataUserAdminController extends Controller
         $admin = User:: where('is_admin','=',1)
         ->get();
         
-        $ptnk = DB::table('users')->join('is_admin','=','users.id')
-            ->get();
+        // $ptnk = DB::table('users')->join('is_admin','=','users.id')
+        //     ->get();
         return view('backend.data_user_admin.edit',compact('data','admin'));
     }
 
