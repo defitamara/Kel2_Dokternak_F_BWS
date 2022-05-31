@@ -25,7 +25,7 @@
                   </form>
                 </div>
               </div>
-              <div class="mb-2 align-items-center">
+              {{-- <div class="mb-2 align-items-center">
                 <div class="card shadow mb-4">
                   <div class="card-body">
                     <div class="row mt-1 align-items-center">
@@ -66,23 +66,333 @@
                     </div>
                   </div> <!-- .card-body -->
                 </div> <!-- .card -->
-              </div>
+              </div> --}}
+
+              <h4>Data User</h4>
               <div class="row items-align-baseline">
                 <div class="col-md-12 col-lg-4">
                   <div class="card shadow eq-card mb-4">
                     <div class="card-body mb-n3">
                       <div class="row items-align-baseline h-100">
                         <div class="col-md-6 my-3">
-                          <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Earning</strong></p>
-                          <h3>$2,562</h3>
-                          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          {{-- <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Earning</strong></p> --}}
+                          <h3>Data User Peternak</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_user_peternak">Read More >></a></b></p>
                         </div>
                         <div class="col-md-6 my-4 text-center">
                           <div lass="chart-box mx-4">
-                            <div id="radialbarWidget"></div>
+                            {{-- <div id="radialbarWidget">87</div> --}}
+                            <h1>{{ $c_userpeternak }}</h1>
+                            <p>Data</p>
                           </div>
                         </div>
-                        <div class="col-md-6 border-top py-3">
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          {{-- <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Earning</strong></p> --}}
+                          <h3>Data User Admin</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_user_admin">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            {{-- <div id="radialbarWidget">87</div> --}}
+                            <h1>{{ $c_useradmin }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data User Petugas</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_user_petugas">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $c_userpetugas }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data User Staf</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_user_staf">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+
+                            <h1>{{ $c_userstaf }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data User Kopus</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_user_kopus">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $c_userkopus }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+            
+              <h4>Data Dokter</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Dokter</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_dokter">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_petugas }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+
+                          <h3>Data Dokter Puskeswan</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_dokpus">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_dokpus }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+              
+              
+              <h4>Data Koordinator Puskeswan</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Kopus</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_kopus">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_kopus }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Staf</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Staf IT</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_staf">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_staf }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Artikel</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Artikel</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_artikel">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_artikel }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Tutorial</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Tutorial</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_tutorial">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_tutorial }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Informasi</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Informasi</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_informasi">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $c_informasi }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Puskeswan</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Puskeswan</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_puskeswan">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_pus }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Banner</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Banner</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_banner">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_banner }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              <h4>Data Kritik dan Saran</h4>
+              <div class="row items-align-baseline">
+                <div class="col-md-12 col-lg-4">
+                  <div class="card shadow eq-card mb-4">
+                    <div class="card-body mb-n3">
+                      <div class="row items-align-baseline h-100">
+                        <div class="col-md-6 my-3">
+                          <h3>Data Kritik dan Saran</h3>
+                          <p class="text-muted"><b><a href="/dashboard/data_ks">Read More >></a></b></p>
+                        </div>
+                        <div class="col-md-6 my-4 text-center">
+                          <div lass="chart-box mx-4">
+                            <h1>{{ $count_ks }}</h1>
+                            <p>Data</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- .card-body -->
+                  </div> <!-- .card -->
+                </div> <!-- .col -->
+              </div>
+
+              
+                {{-- Sisa --}}
+                {{-- <div class="col-md-6 border-top py-3">
                           <p class="mb-1"><strong class="text-muted">Cost</strong></p>
                           <h4 class="mb-0">108</h4>
                           <p class="small text-muted mb-0"><span>37.7% Last week</span></p>
@@ -91,12 +401,9 @@
                           <p class="mb-1"><strong class="text-muted">Revenue</strong></p>
                           <h4 class="mb-0">1168</h4>
                           <p class="small text-muted mb-0"><span>-18.9% Last week</span></p>
-                        </div> <!-- .col -->
-                      </div>
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
+                        </div> <!-- .col --> --}}
+                
+                {{-- <div class="col-md-12 col-lg-4">
                   <div class="card shadow eq-card mb-4">
                     <div class="card-body">
                       <div class="chart-widget mb-2">
@@ -121,8 +428,8 @@
                       </div>
                     </div> <!-- .card-body -->
                   </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
+                </div> <!-- .col --> --}}
+                {{-- <div class="col-md-12 col-lg-4">
                   <div class="card shadow eq-card mb-4">
                     <div class="card-body">
                       <div class="d-flex mt-3 mb-4">
@@ -148,10 +455,10 @@
                     </div> <!-- .card-body -->
                   </div> <!-- .card -->
                 </div> <!-- .col-md -->
-              </div> <!-- .row -->
-              <div class="row">
+              </div> <!-- .row --> --}}
+              {{-- <div class="row"> --}}
                 <!-- Recent Activity -->
-                <div class="col-md-12 col-lg-4 mb-4">
+                {{-- <div class="col-md-12 col-lg-4 mb-4">
                   <div class="card timeline shadow">
                     <div class="card-header">
                       <strong class="card-title">Recent Activity</strong>
@@ -238,9 +545,9 @@
                       </div>
                     </div> <!-- / .card-body -->
                   </div> <!-- / .card -->
-                </div> <!-- / .col-md-6 -->
+                </div> <!-- / .col-md-6 --> --}}
                 <!-- Striped rows -->
-                <div class="col-md-12 col-lg-8">
+                {{-- <div class="col-md-12 col-lg-8">
                   <div class="card shadow">
                     <div class="card-header">
                       <strong class="card-title">Recent Data</strong>
@@ -356,7 +663,7 @@
               </div> <!-- .row-->
             </div> <!-- .col-12 -->
           </div> <!-- .row -->
-        </div> <!-- .container-fluid -->
+        </div> <!-- .container-fluid --> --}}
         <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">

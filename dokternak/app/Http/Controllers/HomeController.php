@@ -16,6 +16,9 @@ use App\Models\KoordinatorPuskeswan;
 use App\Models\penyuluh;
 use App\Models\DokterUser;
 use App\Models\informasi;
+use App\Models\dokter_puskeswan;
+use App\Models\banner;
+use App\Models\kritikdansaran;
 
 
 class HomeController extends Controller
@@ -54,7 +57,29 @@ class HomeController extends Controller
         $role = $user->is_admin;
 
         if ($role == 1) {
-            return view('backend.dashboard');
+            // Hitung jumlah data 
+            $count_artikel = Artikel::count();
+            $count_petugas = Dokter::count();
+            $count_staf = Staf_it::count();
+            $count_kopus = KoordinatorPuskeswan::count();
+            $count_py = Penyuluh::count();
+            $count_pus = puskeswan::count();
+            $count_dokpus = dokter_puskeswan::count();
+            $count_tutorial = tutorial::count();
+            $count_banner = banner::count();
+            $count_ks = kritikdansaran::count();
+            $c_userpetugas = DokterUser::select('dokter.*', 'users.*')
+            ->join('users', 'users.id', '=', 'dokter.id') 
+            ->where('dokter.id','!=',0)
+            ->count();
+            $c_userpeternak = User::where('is_admin',0)->count();
+            $c_useradmin = User::where('is_admin',1)->count();
+            $c_userstaf = User::where('is_admin',3)->count();
+            $c_userkopus = User::where('is_admin',4)->count();
+            $c_informasi = informasi::count();
+
+            return view('backend.dashboard',compact('count_banner','count_ks','count_tutorial','count_dokpus','count_artikel','count_petugas','count_staf',
+            'count_kopus','count_py','count_pus','c_userpetugas','c_userstaf','c_userkopus','c_informasi','c_userpeternak','c_useradmin'));
         }
         elseif ($role  == 2) {
             return redirect()->route('lppetugas');
