@@ -79,7 +79,7 @@ class DataUserKopusController extends Controller
 
         KoordinatorPuskeswan::where('nama_kp', $nama)->update($data_simpan);
 
-        return redirect()->route('dt_user_kopus.index')
+        return redirect()->route('data_user_kopus.index')
                         ->with('success','Data koordinator puskeswan baru telah berhasil disimpan');
     }
 
