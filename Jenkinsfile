@@ -1,7 +1,7 @@
 pipeline {
- environment {
- PATH = "$PATH:/usr/bin/docker-compose"
- }
+ //environment {
+ //PATH = "$PATH:/usr/bin/docker-compose"
+ //}
  
  agent any
  stages {
