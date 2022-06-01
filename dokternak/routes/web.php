@@ -390,11 +390,11 @@ Route::group(['namespace' => 'penyuluh'], function()
     Route::POST('penyuluh/tulisartikel/uploadartikel','TulisArtikelController@store')->name('uploadartikel');
     Route::resource('penyuluh/respon-konsultasi', 'ResponKonsultasiController');
    //  Respon Konsultasi
-   Route::get('/penyuluh/respon-konsultasi', 'ResponKonsultasiController@index')->name('respon.index');
-   Route::POST('/penyuluh/respon-konsultasi/kirimbalasan', 'ResponKonsultasiController@store')->name('respon.store');
-   Route::get('/penyuluh/respon-konsultasi/{id}/detail', 'ResponKonsultasiController@detail')->name('respon.detail');
-   Route::get('/penyuluh/respon-konsultasi/{id}/detailterkirim', 'ResponKonsultasiController@detailterkirim')->name('respon.detailterkirim');
-   Route::get('/penyuluh/respon-konsultasi/{id}/hapusterkirim/{idk}/riwayat','ResponKonsultasiController@hapusterkirim')->name('respon.hapusterkirim');
+  //  Route::get('/penyuluh/respon-konsultasi', 'ResponKonsultasiController@index')->name('respon.index');
+  //  Route::POST('/penyuluh/respon-konsultasi/kirimbalasan', 'ResponKonsultasiController@store')->name('respon.store');
+  //  Route::get('/penyuluh/respon-konsultasi/{id}/detail', 'ResponKonsultasiController@detail')->name('respon.detail');
+  //  Route::get('/penyuluh/respon-konsultasi/{id}/detailterkirim', 'ResponKonsultasiController@detailterkirim')->name('respon.detailterkirim');
+  //  Route::get('/penyuluh/respon-konsultasi/{id}/hapusterkirim/{idk}/riwayat','ResponKonsultasiController@hapusterkirim')->name('respon.hapusterkirim');
    //Route Profil
   //  Route::get('/profil', 'frontend\ProfilController@index')->name('profil.index');
    Route::get('lppenyuluh/editprofil/{id}', 'EditProfilController@edit')->name('editprofilpenyuluh.edit');
@@ -518,6 +518,8 @@ Route::get('/konsultasi/{id}/hapus','frontend\KonsultasiController@hapus')->name
 Route::get('/konsultasi/{id}/hapusmasuk/{idk}/detail/{idr}','frontend\KonsultasiController@hapusmasuk')->name('konsultasi.hapusmasuk');
 
 //Route Profil
+Route::resource('/profil', 'frontend\ProfilController');
 Route::get('/profil', 'frontend\ProfilController@index')->name('profil.index');
-Route::get('/editprofil/{id}', 'frontend\ProfilController@edit')->name('editprofil.edit');
-Route::PUT('/editprofil/{id}','frontend\ProfilController@update')->name('editprofil.update');
+// Route::get('/editprofil/{id}', 'frontend\ProfilController@edit')->name('editprofil.edit');
+Route::match(['get','post'], '/profil/edit/{id}','frontend\ProfilController@edit')->name('profil.edit');
+Route::PUT('/profil/{id}/update','frontend\ProfilController@update')->name('profil.update');
