@@ -201,6 +201,25 @@
                         </div>
                     </section>
 
+                    <!--Pagination Start  -->
+                <div class="pagination-area pb-115 text-center">
+                    <div class="container">
+                        <div class="row">
+                            <!-- <div class="col-xl-10"> -->
+                                <div class="single-wrap d-flex justify-content-center">
+                                    <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-start">     
+                                    {{-- //pagination use bootstrap --}}
+                                    {{-- {{ $data['dokter']->links()}} --}}
+                                    {{ $data['dokter']->onEachSide(1)->links() }}
+                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <!-- slider Area End-->
                     <!-- Featured_job_start -->
                     <section class="featured-job-area feature-padding">
