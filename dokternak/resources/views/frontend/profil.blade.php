@@ -112,7 +112,7 @@
 </head>
 
 <body>
-    @include('frontend/layouts.navbar');
+    
      {{-- Alert --}}
      @if ($message = Session::get('success'))
      <div class="alert alert-success" role="alert">
@@ -122,6 +122,7 @@
          </button>
      </div>
      @endif
+
  <div class="slider-area ">
   <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{ asset('Frontend/assets/img/gallery/s2.jpg') }}">
           <div class="container">
@@ -139,28 +140,36 @@
    
 <section class="blog_area section-padding">
     
+
     <div class="container">
+    
                   <div class="card">
                       <div class="box">
                         @csrf
                         {{-- @foreach ($profil as $profils) --}}
                           <div class="img">
-                              <img src="https://wsjti.id/dokternak/public/data/data_peternak/{{ $profil->foto_peternak }}" alt="gambar peternak" width="300px">
+                              <img src="/data/data_peternak/{{ isset($profil) ? $profil->foto_peternak : '' }}" alt="gambar peternak" width="300px">
                           </div>        
-                          <br><h3><b>{{ $profil->namadepan_peternak }} {{ $profil->namabelakang_peternak }}</b><br></h3>
+                          <br><h3><b>{{ isset($profil) ? $profil->namadepan_peternak : '' }} {{ isset($profil) ? $profil->namabelakang_peternak : '' }}</b><br></h3>
                           <h2><span></span></h2><hr>
                           <span>Email :</span><br>
-                          <span><b>{{ $profil->email_peternak }}</b></span> <BR><hr>
+                          <span><b>{{ isset($profil) ? $profil->email_peternak : '' }}</b></span> <BR><hr>
                           <span>No. HP/WA :</span><br>
-                          <span><b>{{ $profil->no_hp }}</b></span><HR>
+                          <span><b>{{ isset($profil) ? $profil->no_hp : '' }}</b></span><HR>
                           <span>Alamat :</span><br>
-                          <span><b>{{ $profil->alamat }}</b></span><HR>
+                          <span><b>{{ isset($profil) ? $profil->alamat : '' }}</b></span><HR>
                           <span>Jenis Kelamin : </span>
-                          <span><b>{{ $profil->jenis_kelamin }}</b></span> <BR>
+                          <span><b>{{ isset($profil) ? $profil->jenis_kelamin : '' }}</b></span> <BR>
                           <span>
-                              <ul>
-                                  <li><a href="{{ route("editprofil.edit",['id'=>$profil->id_peternak]) }}" ><i class="fas fa-edit" aria-hidden="true"></i><span>Edit Akun</span></a></li>
-                              </ul>
+                            <ul>
+                              <li><a href="/profil/edit/{{ $profil->id_peternak }}" ><i class="fas fa-edit" aria-hidden="true"></i><span>Edit Profil</span></a></li>
+                            
+                            </ul>
+                          
+                          <ul>
+                            <li><a href="/home" class="bfas fa-edit" ><span>Batal</span></a></li>
+                          </ul>
+                              
                           </span>
                       </div>
                   </div>
@@ -168,9 +177,7 @@
       </div>
 </section>
 
-<footer>
-    @include('frontend/layouts.footer');
-</footer>
+
 
 
 		  <!-- All JS Custom Plugins Link Here here -->
