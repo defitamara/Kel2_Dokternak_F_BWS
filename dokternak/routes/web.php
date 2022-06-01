@@ -484,9 +484,9 @@ Route::get('change-password', 'frontend\ResetPasswordController@changePassword')
 Route::POST('update-password', 'frontend\ResetPasswordController@updatePassword')->name('update-password')->middleware('auth');
 
 //Route Artikel
-Route::get('/artikel', 'Frontend\ArtikelController@index');
-Route::get('/artikel/cari', 'Frontend\ArtikelController@cari');
-Route::get('/artikel/kategori', 'Frontend\ArtikelController@kategori');
+Route::get('/artikel', 'frontend\ArtikelController@index');
+Route::get('/artikel/cari', 'frontend\ArtikelController@cari');
+Route::get('/artikel/kategori', 'frontend\ArtikelController@kategori');
 Route::get('/artikel/{id}/detail', 'frontend\ArtikelController@detail');
 
 //Route Tutorial
