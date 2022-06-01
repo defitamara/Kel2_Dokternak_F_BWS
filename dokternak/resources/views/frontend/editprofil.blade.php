@@ -207,8 +207,9 @@ form {
 
         <center><h1> Edit Profil</h1></center><hr><br>
         
-        <form method="POST" enctype="multipart/form-data" action="{{ route('editprofil.update',$profil->id_peternak) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('profil.update',$profil->id_peternak) }}">
           {!! csrf_field() !!}
+          {!! isset($profil) ? method_field('PUT') : '' !!}
           <div class="form-group">
             <input name="_method" type="hidden" value="PUT">
             <label for="namadepan_peternak"><span class="glyphicon glyphicon-user"></span> Nama Depan</label>
@@ -266,7 +267,9 @@ form {
           </div> -->
           <div class="form-group">
             <label for="jk"><span class="glyphicon glyphicon-star"></span> Jenis Kelamin</label>
-          <div class="wrapper">
+          
+          @if (isset($profil->jenis_kelamin)) 
+            <div class="wrapper">
             <div class="tabs-2">
                 <div class="tab">
                   <input type="radio" name="jenis_kelamin" id="tab-l" class="tab-switch" value="Laki-Laki" {{ ($profil->jenis_kelamin=="Laki-Laki")? "checked" : "" }}>
@@ -279,6 +282,25 @@ form {
             </div>
             </div>
           </div>
+          @else 
+            <div class="wrapper">
+              <div class="tabs-2">
+                  <div class="tab">
+                    <input type="radio" name="jenis_kelamin" id="tab-l" class="tab-switch" value="Laki-Laki">
+                    <label for="tab-l" class="tab-label">Laki-Laki</label>
+                  </div>
+                  <div class="tab">
+                    <input type="radio" name="jenis_kelamin" id="tab-p" class="tab-switch" value="Perempuan">
+                    <label for="tab-p" class="tab-label">Perempuan</label>
+                  </div>
+              </div>
+              </div>
+            </div>
+          @endif
+          
+
+          
+          
 
           <div class="form-group">
             <label for="alamat"><span class="glyphicon glyphicon-road"></span> Alamat Lengkap</label>
@@ -297,7 +319,7 @@ form {
             <!--<label><input type="checkbox" value="" checked>Menerima Persyaratan Yang Berlaku</label>-->
           </div>
           <input type="submit" class="btn btn-info" value="Edit" name="edit">
-          <a href="/dokternak/profil" class="btn btn info-border" >Batal</a>
+          <a href="/frontend/profil" class="btn btn info-border" >Batal</a>
           <!-- <input type="reset" class="btn btn-info" value="Batal" name=""> -->
           <!-- </div> -->
 
