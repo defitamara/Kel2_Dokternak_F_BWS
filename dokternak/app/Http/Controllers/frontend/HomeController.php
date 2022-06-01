@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\artikel;
 use App\Models\dokter;
 use App\Models\penyuluh;
-use App\Models\puskeswan;
+use App\Models\Puskeswan;
 use App\Models\tutorial;
 use App\Models\informasi;
 use Illuminate\Support\Facades\Auth;

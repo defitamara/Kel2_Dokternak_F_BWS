@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Artikel;
-use App\Models\Dokter;
+use App\Models\dokter;
 use App\Models\Puskeswan;
 use App\Models\tutorial;
 use App\Models\jabatan;
@@ -59,11 +59,11 @@ class HomeController extends Controller
         if ($role == 1) {
             // Hitung jumlah data 
             $count_artikel = Artikel::count();
-            $count_petugas = Dokter::count();
+            $count_petugas = dokter::count();
             $count_staf = Staf_it::count();
             $count_kopus = KoordinatorPuskeswan::count();
-            $count_py = Penyuluh::count();
-            $count_pus = puskeswan::count();
+            $count_py = penyuluh::count();
+            $count_pus = Puskeswan::count();
             $count_dokpus = dokter_puskeswan::count();
             $count_tutorial = tutorial::count();
             $count_banner = banner::count();
@@ -142,11 +142,11 @@ class HomeController extends Controller
 
             // Hitung jumlah data 
             $count_artikel = Artikel::count();
-            $count_petugas = Dokter::count();
+            $count_petugas = dokter::count();
             $count_staf = Staf_it::count();
             $count_kopus = KoordinatorPuskeswan::count();
-            $count_py = Penyuluh::count();
-            $count_pus = puskeswan::count();
+            $count_py = penyuluh::count();
+            $count_pus = Puskeswan::count();
             $c_userpetugas = DokterUser::select('dokter.*', 'users.*')
             ->join('users', 'users.id', '=', 'dokter.id') 
             ->where('dokter.id','!=',0)
@@ -190,7 +190,7 @@ class HomeController extends Controller
             ->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
             ->where('users.id','=',$id)
             ->count();
-            $count_petugas = Dokter::count();
+            $count_petugas = dokter::count();
             return view('kopus.dashboard',compact('kopus','petugas_pus','count_petugas'));
         }
         elseif ($role  == 3) {

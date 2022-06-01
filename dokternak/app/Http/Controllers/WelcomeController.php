@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\artikel;
+use App\Models\Artikel;
 use App\Models\dokter;
-use App\Models\puskeswan;
+use App\Models\Puskeswan;
 use App\Models\penyuluh;
 use App\Models\tutorial;
 use App\Models\informasi;
@@ -19,7 +19,7 @@ class WelcomeController extends Controller
         $data = [
             'artikel' => DB::table('artikel')->join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')->paginate(2, ['*'], 'artikel'),
             'pencarian_dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->get(),
-            'tutorial' => Tutorial::orderBy('id_tutorial')->paginate(4, ['*'], 'tutorial'),
+            'tutorial' => tutorial::orderBy('id_tutorial')->paginate(4, ['*'], 'tutorial'),
             'dokter' => DB::table('dokter')->join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')->paginate(3, ['*'], 'dokter'),
             'penyuluh' => penyuluh::orderBy('id_penyuluh')->paginate(3),
             'informasi' => informasi::orderBy('id_info')->paginate(3),
@@ -70,7 +70,7 @@ class WelcomeController extends Controller
 
             ->paginate(2),
 
-            'tutorial' => Tutorial::orderBy('id_tutorial')->paginate(3),
+            'tutorial' => tutorial::orderBy('id_tutorial')->paginate(3),
             'informasi' => informasi::orderBy('id_info')->paginate(3),
             'penyuluh' => DB::table('penyuluh')
             ->where('tempat', 'LIKE', '%' . $kategori . '%')

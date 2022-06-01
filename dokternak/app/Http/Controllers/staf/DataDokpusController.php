@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\dokter_puskeswan;
 use App\Models\Puskeswan;
-use App\Models\Dokter;
+use App\Models\dokter;
 use App\Models\jabatan;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;

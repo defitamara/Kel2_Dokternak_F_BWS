@@ -78,7 +78,7 @@ class DataPuskeswanController extends Controller
             'nomer' =>$request->nomer,
         ];
 
-        puskeswan::create($data_simpan);
+        Puskeswan::create($data_simpan);
 
         return redirect()->route('dt_puskeswan.index')
                         ->with('success','Data puskeswan baru telah berhasil disimpan')

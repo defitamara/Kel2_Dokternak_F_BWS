@@ -4,7 +4,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\artikel;
+use App\Models\Artikel;
 use App\Models\KatArtikel;
 
 class ArtikelController extends Controller
