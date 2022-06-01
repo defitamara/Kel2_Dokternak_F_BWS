@@ -147,9 +147,7 @@ if (!isset($_SESSION["username"])) {
             </div>
         </div>
     </div>
-    <section>
-    @include('frontend/layouts.footer');
-    </section>
+
 
         <!-- All JS Custom Plugins Link Here here -->
         <script src="{{ asset('Petugas/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
