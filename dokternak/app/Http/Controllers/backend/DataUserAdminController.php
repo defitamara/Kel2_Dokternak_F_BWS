@@ -44,7 +44,7 @@ class DataUserAdminController extends Controller
     public function store(Request $request)
     {
 
-        $nama = $request->nama;  
+        $nama = $request->name;  
 
         $role = 1;
         $user = User::create([

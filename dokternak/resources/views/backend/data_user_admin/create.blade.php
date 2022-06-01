@@ -25,13 +25,9 @@
                 <div class="form-row">
                   <div class="col-md-8 mb-3">
                     <label>Nama Admin </label>
-                    <select name="nama" class="form-select" id="default-select">
-                        <option disabled selected> Pilih </option>
-                        @foreach ($data_admin as $item)
-                        <option value="{{ $item->nama }}" selected>{{ $item->nama}}</option>
-                        @endforeach
-                    </select>
-                    <small id="emailHelp1" class="form-text text-muted">Nama Admin yang muncul adalah admin yang belum mempunyai akun</small>
+                    <input type="text" class="form-control" id="exampleInputname" name="name" minlength="5" placeholder="Masukkan nama" aria-describedby="Masukkan nama" 
+                    value="{{ isset($dadmin) ? $dadmin->name : '' }}"  
+                    required>
                     </div> 
                 </div>
 
