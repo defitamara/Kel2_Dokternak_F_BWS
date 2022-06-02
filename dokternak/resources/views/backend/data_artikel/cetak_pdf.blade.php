@@ -12,9 +12,11 @@
 		}
 	</style>
 	<center>
-		<h5>Laporan PDF </h4>
+		<h5>Laporan PDF </h5>
+		<h5>Data Artikel yang Sudah Terverifikasi </h5>
 	</center>
  
+
 	<table class='table table-bordered'>
 		<thead>
 			<tr>
@@ -31,6 +33,42 @@
 		<tbody>
 			@php $no = 1; @endphp
 			@foreach ($artikel as $item)
+			<tr>
+				<td>{{ $no++ }}</td>
+				{{-- <td>{{ $item->id_artikel }}</td> --}}
+				<td>{{ $item->kategori_artikel }}</td>
+				<td>{{ $item->tanggal }}</td>
+				<td>{{ $item->nama_penulis }}</td>
+				<td>{{ $item->judul }}</td>
+				<td>{{\Illuminate\Support\Str::limit($item->isi , 250)}} <a href="/artikel/{{ $item->id_artikel }}/detail/" class="more-btn">  <strong> Read more » </strong></a></td>
+				<td><img src="/data/data_artikel/{{ $item->gambar }}" width="200"></td>
+				<td>{{ $item->sumber }}</td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+
+	<center>
+		<h5>Laporan PDF </h5>
+		<h5>Data Artikel yang Belum Terverifikasi </h5>
+	</center>
+
+	<table class='table table-bordered'>
+		<thead>
+			<tr>
+				<th>NO</th>
+                <th>ID Kategori</th>
+                <th>Tanggal</th>
+                <th>Nama Penulis</th>
+                <th>Judul</th>
+                <th> Isi</th>
+                <th>Gambar</th>
+                <th>Sumber</th>
+			</tr>
+		</thead>
+		<tbody>
+			@php $no = 1; @endphp
+			@foreach ($artikel2 as $item)
 			<tr>
 				<td>{{ $no++ }}</td>
 				{{-- <td>{{ $item->id_artikel }}</td> --}}

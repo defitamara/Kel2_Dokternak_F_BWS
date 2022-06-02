@@ -37,11 +37,17 @@ class DataArtikelController extends Controller
     {
     	// $artikel = Artikel::all();
         $artikel = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
+                    ->where ('status','=','tampil')
+                    ->orderBy('id_artikel','desc')
+                    ->get();
+
+        $artikel2 = Artikel::join('kategori_artikel', 'kategori_artikel.id_ktg', '=', 'artikel.id_ktg')
+                    ->where ('status','=','notampil')
                     ->orderBy('id_artikel','desc')
                     ->get();
         // $pdf = PDF::loadView('backend.data_artikel.cetak_pdf', $artikel);
-    	$pdf = PDF::loadview('backend/data_artikel/cetak_pdf',['artikel'=>$artikel]);
-    	return view ('backend.data_artikel.cetak_pdf',compact('artikel'));
+    	$pdf = PDF::loadview('backend/data_artikel/cetak_pdf',['artikel'=>$artikel , 'artikel2'=>$artikel2]);
+    	return view ('backend.data_artikel.cetak_pdf',compact('artikel','artikel2'));
         // $artikel = Artikel::latest()->get();
         // $artikel = Artikel::with('id_artikel') ->get();
         // return view('backend.data_artikel.cetak_pdf',compact('artikel'));
