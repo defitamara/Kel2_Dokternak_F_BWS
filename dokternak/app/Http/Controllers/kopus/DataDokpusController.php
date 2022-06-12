@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\dokter_puskeswan;
 use App\Models\Puskeswan;
-use App\Models\Dokter;
+use App\Models\dokter;
 use App\Models\jabatan;
 use App\Models\User;
 use Dotenv\Validator;
@@ -97,6 +97,8 @@ class DataDokpusController extends Controller
 
     public function edit($id)
     {
+        $id = Auth::id();
+
         $kopus = DB::table('users')
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
@@ -119,8 +121,9 @@ class DataDokpusController extends Controller
         $puskeswan = DB::table('puskeswan')
         ->join('koordinator_puskeswan','koordinator_puskeswan.id_puskeswan','=','puskeswan.id_puskeswan')
         ->join('users','users.id','=','koordinator_puskeswan.id')
+        ->where('users.id','=',$id)
         ->get();
-        $dokter = Dokter::all();
+        $dokter = dokter::all();
         return view('kopus.tabel_dokpus.create',compact('dtdokpus','puskeswan','dokter','kopus'));
     }
 

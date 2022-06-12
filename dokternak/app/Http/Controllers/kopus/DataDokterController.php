@@ -6,7 +6,7 @@ use App\Http\Controllers\controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Dokter;
+use App\Models\dokter;
 use App\Models\jabatan;
 use App\Models\User;
 use Dotenv\Validator;
@@ -44,8 +44,8 @@ class DataDokterController extends Controller
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
             ->get();
-        $dtdokter = Dokter::where('id_dokter',$id)->first();
-        $jabatan = Jabatan::all();
+        $dtdokter = dokter::where('id_dokter',$id)->first();
+        $jabatan = jabatan::all();
         return view('kopus.tabel_dokter.edit',compact('dtdokter','jabatan','kopus'));
     }
 
@@ -82,7 +82,7 @@ class DataDokterController extends Controller
             'sertifikasi' => 'kosong',
         ];
 
-        Dokter::where('id_dokter', $id)->update($data_simpan);
+        dokter::where('id_dokter', $id)->update($data_simpan);
 
         // Request id, agar bisa melakukan update nama dan email di tabel users sesuai id
         $id_user = $request->id;
@@ -112,7 +112,7 @@ class DataDokterController extends Controller
             ->join('koordinator_puskeswan','koordinator_puskeswan.id','=','users.id')
             ->join('puskeswan','puskeswan.id_puskeswan','=','koordinator_puskeswan.id_puskeswan')
             ->get();
-        $dtdokter = Dokter::join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
+        $dtdokter = dokter::join('jabatan', 'jabatan.id_jabatan', '=', 'dokter.id_jabatan')
                    ->orderBy('id_dokter','asc')
                    ->where('id_dokter',$id)
                    ->get();
